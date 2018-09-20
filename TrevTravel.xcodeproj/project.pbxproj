@@ -12,6 +12,10 @@
 		41903D0D2153A75C0050B508 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41903D0B2153A75C0050B508 /* Main.storyboard */; };
 		41903D0F2153A75F0050B508 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 41903D0E2153A75F0050B508 /* Assets.xcassets */; };
 		41903D122153A75F0050B508 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41903D102153A75F0050B508 /* LaunchScreen.storyboard */; };
+		41903D1A2153E4BD0050B508 /* TravelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41903D192153E4BD0050B508 /* TravelCell.swift */; };
+		41903D1C2153E4E00050B508 /* TravelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41903D1B2153E4E00050B508 /* TravelData.swift */; };
+		41903D1E2153E4FA0050B508 /* NewTravel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41903D1D2153E4FA0050B508 /* NewTravel.swift */; };
+		41903D202153E5390050B508 /* TravelList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41903D1F2153E5390050B508 /* TravelList.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +26,10 @@
 		41903D0E2153A75F0050B508 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		41903D112153A75F0050B508 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		41903D132153A75F0050B508 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		41903D192153E4BD0050B508 /* TravelCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelCell.swift; sourceTree = "<group>"; };
+		41903D1B2153E4E00050B508 /* TravelData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelData.swift; sourceTree = "<group>"; };
+		41903D1D2153E4FA0050B508 /* NewTravel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTravel.swift; sourceTree = "<group>"; };
+		41903D1F2153E5390050B508 /* TravelList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelList.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +64,10 @@
 			children = (
 				41903D072153A75C0050B508 /* AppDelegate.swift */,
 				41903D092153A75C0050B508 /* ViewController.swift */,
+				41903D192153E4BD0050B508 /* TravelCell.swift */,
+				41903D1F2153E5390050B508 /* TravelList.swift */,
+				41903D1B2153E4E00050B508 /* TravelData.swift */,
+				41903D1D2153E4FA0050B508 /* NewTravel.swift */,
 				41903D0B2153A75C0050B508 /* Main.storyboard */,
 				41903D0E2153A75F0050B508 /* Assets.xcassets */,
 				41903D102153A75F0050B508 /* LaunchScreen.storyboard */,
@@ -136,7 +148,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				41903D0A2153A75C0050B508 /* ViewController.swift in Sources */,
+				41903D1A2153E4BD0050B508 /* TravelCell.swift in Sources */,
+				41903D1E2153E4FA0050B508 /* NewTravel.swift in Sources */,
 				41903D082153A75C0050B508 /* AppDelegate.swift in Sources */,
+				41903D1C2153E4E00050B508 /* TravelData.swift in Sources */,
+				41903D202153E5390050B508 /* TravelList.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
