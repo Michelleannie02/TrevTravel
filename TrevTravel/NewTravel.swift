@@ -16,7 +16,7 @@ class NewTravel: UIViewController {
     @IBOutlet weak var contentTable: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("try 2")
+        print("try")
         // Do any additional setup after loading the view.
     }
     
