@@ -1,0 +1,6 @@
+framework module Pods_TrevTravelUITests {
+  umbrella header "Pods-TrevTravelUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}

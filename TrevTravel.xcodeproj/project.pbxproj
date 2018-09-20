@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		41399D3621542E770077E6B2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 41399D3521542E770077E6B2 /* GoogleService-Info.plist */; };
+		6D33DC681736096CE28D10DC /* Pods_TrevTravel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BCA6CA60AF18C17E0C11D11 /* Pods_TrevTravel.framework */; };
 		7437C5972151494500158DCC /* NewTravel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7437C5962151494500158DCC /* NewTravel.swift */; };
 		749E2DD6214FFBD0007B50F3 /* TravelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 749E2DD5214FFBD0007B50F3 /* TravelCell.swift */; };
 		749E2DD821500A18007B50F3 /* TravelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 749E2DD721500A18007B50F3 /* TravelData.swift */; };
@@ -17,6 +19,8 @@
 		74D950E621426A8300667497 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 74D950E421426A8300667497 /* LaunchScreen.storyboard */; };
 		74D950F121426A8300667497 /* TrevTravelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74D950F021426A8300667497 /* TrevTravelTests.swift */; };
 		74D950FC21426A8300667497 /* TrevTravelUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74D950FB21426A8300667497 /* TrevTravelUITests.swift */; };
+		8669F1BA921791AD3D2BFD23 /* Pods_TrevTravelUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 327B4B42E0F4CE5A905FE059 /* Pods_TrevTravelUITests.framework */; };
+		9793F4B739B3BBF4DEAF575B /* Pods_TrevTravelTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 564AC57EBE8DBCC0B74FEE46 /* Pods_TrevTravelTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,6 +41,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		12FD649B2E98F09B26238A62 /* Pods-TrevTravelUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TrevTravelUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TrevTravelUITests/Pods-TrevTravelUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		327B4B42E0F4CE5A905FE059 /* Pods_TrevTravelUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TrevTravelUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3A4AD4603A746440FB2383E8 /* Pods-TrevTravel.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TrevTravel.release.xcconfig"; path = "Pods/Target Support Files/Pods-TrevTravel/Pods-TrevTravel.release.xcconfig"; sourceTree = "<group>"; };
+		41399D3521542E770077E6B2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		564AC57EBE8DBCC0B74FEE46 /* Pods_TrevTravelTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TrevTravelTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5CDDE66F7E1B7A1122F6A294 /* Pods-TrevTravel.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TrevTravel.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TrevTravel/Pods-TrevTravel.debug.xcconfig"; sourceTree = "<group>"; };
+		6416383CED310144940E30E8 /* Pods-TrevTravelUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TrevTravelUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TrevTravelUITests/Pods-TrevTravelUITests.release.xcconfig"; sourceTree = "<group>"; };
 		7437C5962151494500158DCC /* NewTravel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTravel.swift; sourceTree = "<group>"; };
 		749E2DD5214FFBD0007B50F3 /* TravelCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelCell.swift; sourceTree = "<group>"; };
 		749E2DD721500A18007B50F3 /* TravelData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelData.swift; sourceTree = "<group>"; };
@@ -53,6 +64,9 @@
 		74D950F721426A8300667497 /* TrevTravelUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TrevTravelUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		74D950FB21426A8300667497 /* TrevTravelUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrevTravelUITests.swift; sourceTree = "<group>"; };
 		74D950FD21426A8300667497 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9BCA6CA60AF18C17E0C11D11 /* Pods_TrevTravel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TrevTravel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A12A1F9760E5CCE044E183D4 /* Pods-TrevTravelTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TrevTravelTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TrevTravelTests/Pods-TrevTravelTests.debug.xcconfig"; sourceTree = "<group>"; };
+		E0A3E7D2134FE05A819345FD /* Pods-TrevTravelTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TrevTravelTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TrevTravelTests/Pods-TrevTravelTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +74,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6D33DC681736096CE28D10DC /* Pods_TrevTravel.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -67,6 +82,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9793F4B739B3BBF4DEAF575B /* Pods_TrevTravelTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -74,12 +90,23 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8669F1BA921791AD3D2BFD23 /* Pods_TrevTravelUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		252410278FE414B530D89086 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9BCA6CA60AF18C17E0C11D11 /* Pods_TrevTravel.framework */,
+				564AC57EBE8DBCC0B74FEE46 /* Pods_TrevTravelTests.framework */,
+				327B4B42E0F4CE5A905FE059 /* Pods_TrevTravelUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		74D950CF21426A8100667497 = {
 			isa = PBXGroup;
 			children = (
@@ -87,6 +114,8 @@
 				74D950EF21426A8300667497 /* TrevTravelTests */,
 				74D950FA21426A8300667497 /* TrevTravelUITests */,
 				74D950D921426A8100667497 /* Products */,
+				D68B233057FD447A21A91A87 /* Pods */,
+				252410278FE414B530D89086 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -112,6 +141,7 @@
 				74D950E221426A8300667497 /* Assets.xcassets */,
 				74D950E421426A8300667497 /* LaunchScreen.storyboard */,
 				74D950E721426A8300667497 /* Info.plist */,
+				41399D3521542E770077E6B2 /* GoogleService-Info.plist */,
 			);
 			path = TrevTravel;
 			sourceTree = "<group>";
@@ -134,6 +164,19 @@
 			path = TrevTravelUITests;
 			sourceTree = "<group>";
 		};
+		D68B233057FD447A21A91A87 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				5CDDE66F7E1B7A1122F6A294 /* Pods-TrevTravel.debug.xcconfig */,
+				3A4AD4603A746440FB2383E8 /* Pods-TrevTravel.release.xcconfig */,
+				A12A1F9760E5CCE044E183D4 /* Pods-TrevTravelTests.debug.xcconfig */,
+				E0A3E7D2134FE05A819345FD /* Pods-TrevTravelTests.release.xcconfig */,
+				12FD649B2E98F09B26238A62 /* Pods-TrevTravelUITests.debug.xcconfig */,
+				6416383CED310144940E30E8 /* Pods-TrevTravelUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -141,9 +184,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 74D9510021426A8300667497 /* Build configuration list for PBXNativeTarget "TrevTravel" */;
 			buildPhases = (
+				FB54103E17D008DEB36D72D8 /* [CP] Check Pods Manifest.lock */,
 				74D950D421426A8100667497 /* Sources */,
 				74D950D521426A8100667497 /* Frameworks */,
 				74D950D621426A8100667497 /* Resources */,
+				9444BBD387B5A1B610AB317D /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -158,6 +203,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 74D9510321426A8300667497 /* Build configuration list for PBXNativeTarget "TrevTravelTests" */;
 			buildPhases = (
+				F386BDCAB1F66D42AC2E32F5 /* [CP] Check Pods Manifest.lock */,
 				74D950E821426A8300667497 /* Sources */,
 				74D950E921426A8300667497 /* Frameworks */,
 				74D950EA21426A8300667497 /* Resources */,
@@ -176,6 +222,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 74D9510621426A8300667497 /* Build configuration list for PBXNativeTarget "TrevTravelUITests" */;
 			buildPhases = (
+				C9109378BC615EEC78E5DD51 /* [CP] Check Pods Manifest.lock */,
 				74D950F321426A8300667497 /* Sources */,
 				74D950F421426A8300667497 /* Frameworks */,
 				74D950F521426A8300667497 /* Resources */,
@@ -239,6 +286,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				74D950E621426A8300667497 /* LaunchScreen.storyboard in Resources */,
+				41399D3621542E770077E6B2 /* GoogleService-Info.plist in Resources */,
 				74D950E321426A8300667497 /* Assets.xcassets in Resources */,
 				74D950E121426A8100667497 /* Main.storyboard in Resources */,
 			);
@@ -259,6 +307,97 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		9444BBD387B5A1B610AB317D /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-TrevTravel/Pods-TrevTravel-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/BoringSSL/openssl.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC/GRPCClient.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-ProtoRPC/ProtoRPC.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-RxLibrary/RxLibrary.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GRPCClient.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ProtoRPC.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxLibrary.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TrevTravel/Pods-TrevTravel-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C9109378BC615EEC78E5DD51 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-TrevTravelUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F386BDCAB1F66D42AC2E32F5 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-TrevTravelTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FB54103E17D008DEB36D72D8 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-TrevTravel-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		74D950D421426A8100667497 /* Sources */ = {
@@ -440,6 +579,7 @@
 		};
 		74D9510121426A8300667497 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5CDDE66F7E1B7A1122F6A294 /* Pods-TrevTravel.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -458,6 +598,7 @@
 		};
 		74D9510221426A8300667497 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3A4AD4603A746440FB2383E8 /* Pods-TrevTravel.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -476,6 +617,7 @@
 		};
 		74D9510421426A8300667497 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A12A1F9760E5CCE044E183D4 /* Pods-TrevTravelTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -496,6 +638,7 @@
 		};
 		74D9510521426A8300667497 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E0A3E7D2134FE05A819345FD /* Pods-TrevTravelTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -516,6 +659,7 @@
 		};
 		74D9510721426A8300667497 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 12FD649B2E98F09B26238A62 /* Pods-TrevTravelUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -535,6 +679,7 @@
 		};
 		74D9510821426A8300667497 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6416383CED310144940E30E8 /* Pods-TrevTravelUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
