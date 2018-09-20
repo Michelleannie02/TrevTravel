@@ -4,7 +4,7 @@
 //
 //  Created by Yangshan Liu on 2018-09-17.
 //  Copyright © 2018 TrevTravel. All rights reserved.
-// git test
+//
 
 import UIKit
 
@@ -15,7 +15,7 @@ class TravelList: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        print("Hi")
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
