@@ -6,12 +6,71 @@
 	objectVersion = 50;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		7437C5972151494500158DCC /* NewTravel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7437C5962151494500158DCC /* NewTravel.swift */; };
+		749E2DD6214FFBD0007B50F3 /* TravelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 749E2DD5214FFBD0007B50F3 /* TravelCell.swift */; };
+		749E2DD821500A18007B50F3 /* TravelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 749E2DD721500A18007B50F3 /* TravelData.swift */; };
+		749E2DDA215049CD007B50F3 /* TravelList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 749E2DD9215049CD007B50F3 /* TravelList.swift */; };
+		74D950DC21426A8100667497 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74D950DB21426A8100667497 /* AppDelegate.swift */; };
+		74D950E121426A8100667497 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 74D950DF21426A8100667497 /* Main.storyboard */; };
+		74D950E321426A8300667497 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 74D950E221426A8300667497 /* Assets.xcassets */; };
+		74D950E621426A8300667497 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 74D950E421426A8300667497 /* LaunchScreen.storyboard */; };
+		74D950F121426A8300667497 /* TrevTravelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74D950F021426A8300667497 /* TrevTravelTests.swift */; };
+		74D950FC21426A8300667497 /* TrevTravelUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74D950FB21426A8300667497 /* TrevTravelUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		74D950ED21426A8300667497 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 74D950D021426A8100667497 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 74D950D721426A8100667497;
+			remoteInfo = TrevTravel;
+		};
+		74D950F821426A8300667497 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 74D950D021426A8100667497 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 74D950D721426A8100667497;
+			remoteInfo = TrevTravel;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
-		41903D042153A75C0050B508 /* TrevTravel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = TrevTravel.app; path = "/Users/songliu/iOS/TrevTravel/build/Debug-iphoneos/TrevTravel.app"; sourceTree = "<absolute>"; };
+		7437C5962151494500158DCC /* NewTravel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTravel.swift; sourceTree = "<group>"; };
+		749E2DD5214FFBD0007B50F3 /* TravelCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelCell.swift; sourceTree = "<group>"; };
+		749E2DD721500A18007B50F3 /* TravelData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelData.swift; sourceTree = "<group>"; };
+		749E2DD9215049CD007B50F3 /* TravelList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelList.swift; sourceTree = "<group>"; };
+		74D950D821426A8100667497 /* TrevTravel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TrevTravel.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		74D950DB21426A8100667497 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		74D950E021426A8100667497 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		74D950E221426A8300667497 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		74D950E521426A8300667497 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		74D950E721426A8300667497 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		74D950EC21426A8300667497 /* TrevTravelTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TrevTravelTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		74D950F021426A8300667497 /* TrevTravelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrevTravelTests.swift; sourceTree = "<group>"; };
+		74D950F221426A8300667497 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		74D950F721426A8300667497 /* TrevTravelUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TrevTravelUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		74D950FB21426A8300667497 /* TrevTravelUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrevTravelUITests.swift; sourceTree = "<group>"; };
+		74D950FD21426A8300667497 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		41903D012153A75C0050B508 /* Frameworks */ = {
+		74D950D521426A8100667497 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		74D950E921426A8300667497 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		74D950F421426A8300667497 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -21,22 +80,70 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		41903CFB2153A75C0050B508 = {
+		74D950CF21426A8100667497 = {
 			isa = PBXGroup;
 			children = (
+				74D950DA21426A8100667497 /* TrevTravel */,
+				74D950EF21426A8300667497 /* TrevTravelTests */,
+				74D950FA21426A8300667497 /* TrevTravelUITests */,
+				74D950D921426A8100667497 /* Products */,
 			);
+			sourceTree = "<group>";
+		};
+		74D950D921426A8100667497 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				74D950D821426A8100667497 /* TrevTravel.app */,
+				74D950EC21426A8300667497 /* TrevTravelTests.xctest */,
+				74D950F721426A8300667497 /* TrevTravelUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		74D950DA21426A8100667497 /* TrevTravel */ = {
+			isa = PBXGroup;
+			children = (
+				74D950DB21426A8100667497 /* AppDelegate.swift */,
+				749E2DD9215049CD007B50F3 /* TravelList.swift */,
+				749E2DD5214FFBD0007B50F3 /* TravelCell.swift */,
+				749E2DD721500A18007B50F3 /* TravelData.swift */,
+				7437C5962151494500158DCC /* NewTravel.swift */,
+				74D950DF21426A8100667497 /* Main.storyboard */,
+				74D950E221426A8300667497 /* Assets.xcassets */,
+				74D950E421426A8300667497 /* LaunchScreen.storyboard */,
+				74D950E721426A8300667497 /* Info.plist */,
+			);
+			path = TrevTravel;
+			sourceTree = "<group>";
+		};
+		74D950EF21426A8300667497 /* TrevTravelTests */ = {
+			isa = PBXGroup;
+			children = (
+				74D950F021426A8300667497 /* TrevTravelTests.swift */,
+				74D950F221426A8300667497 /* Info.plist */,
+			);
+			path = TrevTravelTests;
+			sourceTree = "<group>";
+		};
+		74D950FA21426A8300667497 /* TrevTravelUITests */ = {
+			isa = PBXGroup;
+			children = (
+				74D950FB21426A8300667497 /* TrevTravelUITests.swift */,
+				74D950FD21426A8300667497 /* Info.plist */,
+			);
+			path = TrevTravelUITests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		41903D032153A75C0050B508 /* TrevTravel */ = {
+		74D950D721426A8100667497 /* TrevTravel */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 41903D162153A75F0050B508 /* Build configuration list for PBXNativeTarget "TrevTravel" */;
+			buildConfigurationList = 74D9510021426A8300667497 /* Build configuration list for PBXNativeTarget "TrevTravel" */;
 			buildPhases = (
-				41903D002153A75C0050B508 /* Sources */,
-				41903D012153A75C0050B508 /* Frameworks */,
-				41903D022153A75C0050B508 /* Resources */,
+				74D950D421426A8100667497 /* Sources */,
+				74D950D521426A8100667497 /* Frameworks */,
+				74D950D621426A8100667497 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -44,25 +151,69 @@
 			);
 			name = TrevTravel;
 			productName = TrevTravel;
-			productReference = 41903D042153A75C0050B508 /* TrevTravel.app */;
+			productReference = 74D950D821426A8100667497 /* TrevTravel.app */;
 			productType = "com.apple.product-type.application";
+		};
+		74D950EB21426A8300667497 /* TrevTravelTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 74D9510321426A8300667497 /* Build configuration list for PBXNativeTarget "TrevTravelTests" */;
+			buildPhases = (
+				74D950E821426A8300667497 /* Sources */,
+				74D950E921426A8300667497 /* Frameworks */,
+				74D950EA21426A8300667497 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				74D950EE21426A8300667497 /* PBXTargetDependency */,
+			);
+			name = TrevTravelTests;
+			productName = TrevTravelTests;
+			productReference = 74D950EC21426A8300667497 /* TrevTravelTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		74D950F621426A8300667497 /* TrevTravelUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 74D9510621426A8300667497 /* Build configuration list for PBXNativeTarget "TrevTravelUITests" */;
+			buildPhases = (
+				74D950F321426A8300667497 /* Sources */,
+				74D950F421426A8300667497 /* Frameworks */,
+				74D950F521426A8300667497 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				74D950F921426A8300667497 /* PBXTargetDependency */,
+			);
+			name = TrevTravelUITests;
+			productName = TrevTravelUITests;
+			productReference = 74D950F721426A8300667497 /* TrevTravelUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		41903CFC2153A75C0050B508 /* Project object */ = {
+		74D950D021426A8100667497 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0940;
 				LastUpgradeCheck = 0940;
-				ORGANIZATIONNAME = "Song Liu";
+				ORGANIZATIONNAME = TrevTravel;
 				TargetAttributes = {
-					41903D032153A75C0050B508 = {
+					74D950D721426A8100667497 = {
 						CreatedOnToolsVersion = 9.4.1;
+					};
+					74D950EB21426A8300667497 = {
+						CreatedOnToolsVersion = 9.4.1;
+						TestTargetID = 74D950D721426A8100667497;
+					};
+					74D950F621426A8300667497 = {
+						CreatedOnToolsVersion = 9.4.1;
+						TestTargetID = 74D950D721426A8100667497;
 					};
 				};
 			};
-			buildConfigurationList = 41903CFF2153A75C0050B508 /* Build configuration list for PBXProject "TrevTravel" */;
+			buildConfigurationList = 74D950D321426A8100667497 /* Build configuration list for PBXProject "TrevTravel" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -70,18 +221,37 @@
 				en,
 				Base,
 			);
-			mainGroup = 41903CFB2153A75C0050B508;
-			productRefGroup = 41903CFB2153A75C0050B508;
+			mainGroup = 74D950CF21426A8100667497;
+			productRefGroup = 74D950D921426A8100667497 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				41903D032153A75C0050B508 /* TrevTravel */,
+				74D950D721426A8100667497 /* TrevTravel */,
+				74D950EB21426A8300667497 /* TrevTravelTests */,
+				74D950F621426A8300667497 /* TrevTravelUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		41903D022153A75C0050B508 /* Resources */ = {
+		74D950D621426A8100667497 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				74D950E621426A8300667497 /* LaunchScreen.storyboard in Resources */,
+				74D950E321426A8300667497 /* Assets.xcassets in Resources */,
+				74D950E121426A8100667497 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		74D950EA21426A8300667497 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		74D950F521426A8300667497 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -91,17 +261,70 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		41903D002153A75C0050B508 /* Sources */ = {
+		74D950D421426A8100667497 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				749E2DD6214FFBD0007B50F3 /* TravelCell.swift in Sources */,
+				749E2DDA215049CD007B50F3 /* TravelList.swift in Sources */,
+				74D950DC21426A8100667497 /* AppDelegate.swift in Sources */,
+				7437C5972151494500158DCC /* NewTravel.swift in Sources */,
+				749E2DD821500A18007B50F3 /* TravelData.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		74D950E821426A8300667497 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				74D950F121426A8300667497 /* TrevTravelTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		74D950F321426A8300667497 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				74D950FC21426A8300667497 /* TrevTravelUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		74D950EE21426A8300667497 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 74D950D721426A8100667497 /* TrevTravel */;
+			targetProxy = 74D950ED21426A8300667497 /* PBXContainerItemProxy */;
+		};
+		74D950F921426A8300667497 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 74D950D721426A8100667497 /* TrevTravel */;
+			targetProxy = 74D950F821426A8300667497 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		74D950DF21426A8100667497 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				74D950E021426A8100667497 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		74D950E421426A8300667497 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				74D950E521426A8300667497 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
 /* Begin XCBuildConfiguration section */
-		41903D142153A75F0050B508 /* Debug */ = {
+		74D950FE21426A8300667497 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -161,7 +384,7 @@
 			};
 			name = Debug;
 		};
-		41903D152153A75F0050B508 /* Release */ = {
+		74D950FF21426A8300667497 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -215,64 +438,160 @@
 			};
 			name = Release;
 		};
-		41903D172153A75F0050B508 /* Debug */ = {
+		74D9510121426A8300667497 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 9ZF2WM3DMX;
+				DEVELOPMENT_TEAM = R9Z3MKUX29;
 				INFOPLIST_FILE = TrevTravel/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.trevtravel.TrevTravel.TrevTravel;
+				PRODUCT_BUNDLE_IDENTIFIER = com.trevtravel.TrevTravel;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
-		41903D182153A75F0050B508 /* Release */ = {
+		74D9510221426A8300667497 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 9ZF2WM3DMX;
+				DEVELOPMENT_TEAM = R9Z3MKUX29;
 				INFOPLIST_FILE = TrevTravel/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.trevtravel.TrevTravel.TrevTravel;
+				PRODUCT_BUNDLE_IDENTIFIER = com.trevtravel.TrevTravel;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
+		74D9510421426A8300667497 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = TrevTravelTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = TrevTravel.TrevTravelTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TrevTravel.app/TrevTravel";
+			};
+			name = Debug;
+		};
+		74D9510521426A8300667497 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = TrevTravelTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = TrevTravel.TrevTravelTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TrevTravel.app/TrevTravel";
+			};
+			name = Release;
+		};
+		74D9510721426A8300667497 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = TrevTravelUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = TrevTravel.TrevTravelUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = TrevTravel;
+			};
+			name = Debug;
+		};
+		74D9510821426A8300667497 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = TrevTravelUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = TrevTravel.TrevTravelUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = TrevTravel;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		41903CFF2153A75C0050B508 /* Build configuration list for PBXProject "TrevTravel" */ = {
+		74D950D321426A8100667497 /* Build configuration list for PBXProject "TrevTravel" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				41903D142153A75F0050B508 /* Debug */,
-				41903D152153A75F0050B508 /* Release */,
+				74D950FE21426A8300667497 /* Debug */,
+				74D950FF21426A8300667497 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		41903D162153A75F0050B508 /* Build configuration list for PBXNativeTarget "TrevTravel" */ = {
+		74D9510021426A8300667497 /* Build configuration list for PBXNativeTarget "TrevTravel" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				41903D172153A75F0050B508 /* Debug */,
-				41903D182153A75F0050B508 /* Release */,
+				74D9510121426A8300667497 /* Debug */,
+				74D9510221426A8300667497 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		74D9510321426A8300667497 /* Build configuration list for PBXNativeTarget "TrevTravelTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				74D9510421426A8300667497 /* Debug */,
+				74D9510521426A8300667497 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		74D9510621426A8300667497 /* Build configuration list for PBXNativeTarget "TrevTravelUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				74D9510721426A8300667497 /* Debug */,
+				74D9510821426A8300667497 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 41903CFC2153A75C0050B508 /* Project object */;
+	rootObject = 74D950D021426A8100667497 /* Project object */;
 }
