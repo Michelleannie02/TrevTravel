@@ -2,9 +2,9 @@
 //  TravelList.swift
 //  TrevTravel
 //
-//  Created by Song Liu on 2018-09-20.
-//  Copyright © 2018 Song Liu. All rights reserved.
-//
+//  Created by Yangshan Liu on 2018-09-17.
+//  Copyright © 2018 TrevTravel. All rights reserved.
+// git test
 
 import UIKit
 
@@ -15,7 +15,7 @@ class TravelList: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("hi")
+        // Do any additional setup after loading the view, typically from a nib.
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
