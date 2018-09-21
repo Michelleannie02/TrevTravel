@@ -64,7 +64,11 @@ class TravelList: UIViewController, UITableViewDelegate, UITableViewDataSource {
         let row = indexPath.row
         let travelCell = travelData.travelArray[row]
         cell.titleLabel?.text = travelCell.title
+        cell.createdAtLabel?.text = travelCell.createdAt
         cell.travelImage?.image = UIImage(named: travelCell.coverImg)
+        cell.shortTextLabel?.text = travelCell.shortText
+        cell.likesLabel?.text = travelCell.likes
+        cell.placeLabel?.text = travelCell.place
         return cell
     }
     

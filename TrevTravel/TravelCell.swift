@@ -10,8 +10,12 @@ import UIKit
 
 class TravelCell: UITableViewCell {
     
-    @IBOutlet weak var travelImage: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var createdAtLabel: UILabel!
+    @IBOutlet weak var travelImage: UIImageView!
+    @IBOutlet weak var shortTextLabel: UILabel!
+    @IBOutlet weak var likesLabel: UILabel!
+    @IBOutlet weak var placeLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
