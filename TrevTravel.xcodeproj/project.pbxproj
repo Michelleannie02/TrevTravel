@@ -19,6 +19,7 @@
 		74D950E621426A8300667497 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 74D950E421426A8300667497 /* LaunchScreen.storyboard */; };
 		74D950F121426A8300667497 /* TrevTravelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74D950F021426A8300667497 /* TrevTravelTests.swift */; };
 		74D950FC21426A8300667497 /* TrevTravelUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74D950FB21426A8300667497 /* TrevTravelUITests.swift */; };
+		74F97E812156B43D00CB8825 /* ContentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74F97E802156B43D00CB8825 /* ContentCell.swift */; };
 		8669F1BA921791AD3D2BFD23 /* Pods_TrevTravelUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 327B4B42E0F4CE5A905FE059 /* Pods_TrevTravelUITests.framework */; };
 		9793F4B739B3BBF4DEAF575B /* Pods_TrevTravelTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 564AC57EBE8DBCC0B74FEE46 /* Pods_TrevTravelTests.framework */; };
 /* End PBXBuildFile section */
@@ -64,6 +65,7 @@
 		74D950F721426A8300667497 /* TrevTravelUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TrevTravelUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		74D950FB21426A8300667497 /* TrevTravelUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrevTravelUITests.swift; sourceTree = "<group>"; };
 		74D950FD21426A8300667497 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		74F97E802156B43D00CB8825 /* ContentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentCell.swift; sourceTree = "<group>"; };
 		9BCA6CA60AF18C17E0C11D11 /* Pods_TrevTravel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TrevTravel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A12A1F9760E5CCE044E183D4 /* Pods-TrevTravelTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TrevTravelTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TrevTravelTests/Pods-TrevTravelTests.debug.xcconfig"; sourceTree = "<group>"; };
 		E0A3E7D2134FE05A819345FD /* Pods-TrevTravelTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TrevTravelTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TrevTravelTests/Pods-TrevTravelTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -137,6 +139,7 @@
 				749E2DD5214FFBD0007B50F3 /* TravelCell.swift */,
 				749E2DD721500A18007B50F3 /* TravelData.swift */,
 				7437C5962151494500158DCC /* NewTravel.swift */,
+				74F97E802156B43D00CB8825 /* ContentCell.swift */,
 				74D950DF21426A8100667497 /* Main.storyboard */,
 				74D950E221426A8300667497 /* Assets.xcassets */,
 				74D950E421426A8300667497 /* LaunchScreen.storyboard */,
@@ -407,6 +410,7 @@
 				749E2DD6214FFBD0007B50F3 /* TravelCell.swift in Sources */,
 				749E2DDA215049CD007B50F3 /* TravelList.swift in Sources */,
 				74D950DC21426A8100667497 /* AppDelegate.swift in Sources */,
+				74F97E812156B43D00CB8825 /* ContentCell.swift in Sources */,
 				7437C5972151494500158DCC /* NewTravel.swift in Sources */,
 				749E2DD821500A18007B50F3 /* TravelData.swift in Sources */,
 			);
