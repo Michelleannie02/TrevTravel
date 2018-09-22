@@ -7,9 +7,9 @@
 //
 
 import UIKit
-import Firebase
+//import Firebase
 
-class TravelList: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class TravelList: UIViewController, UITableViewDelegate, UITableViewDataSource, DataDelegate{
     
     @IBOutlet weak var travelTable: UITableView!
     
@@ -19,33 +19,7 @@ class TravelList: UIViewController, UITableViewDelegate, UITableViewDataSource {
         super.viewDidLoad()
         
         // Get all the travel diaries data from Firebase
-        print("in viewDidLoad.")
-        travelData.loadDB()
-        print("viewDidLoad, travelData.travelArray: ",travelData.travelArray.count)
-        
-//        let db = Firestore.firestore()
-//        db.collection("travelDiary").getDocuments { (querySnapshot, error) in
-//            if let err = error {
-//                print("Error getting documents from travelDiary: \(err)")
-//            } else {
-//                guard let qSnapshot = querySnapshot else {return}
-//                for document in qSnapshot.documents {
-//                    let id = document.documentID
-//                    let author = document.data()["author"] as? String ?? ""
-//                    let changedAt = document.data()["changedAt"] as? String ?? ""
-//                    let coverImg = document.data()["title"] as? String ?? ""
-//                    let createdAt = document.data()["createdAt"] as? String ?? ""
-//                    let likes = document.data()["likes"] as? String ?? ""
-//                    let place = document.data()["place"] as? String ?? ""
-//                    let shortText = document.data()["shortText"] as? String ?? ""
-//                    let title = document.data()["title"] as? String ?? ""
-//                    let contentArray = document.data()["content"] as? Array ?? []
-//                    print(id,author,changedAt,coverImg,createdAt,likes,place,shortText,title,contentArray)
-////                    print(id, author)
-//                }
-//            }
-//        }
-        
+        travelData.dataDel = self
         
         // Get data from the database of firebase
 //        let db = Firestore.firestore()
@@ -75,15 +49,25 @@ class TravelList: UIViewController, UITableViewDelegate, UITableViewDataSource {
         // db.collection("users").addDocument(data: dict)
         
         ///////////////////////////////////////////////////////////////////
-        
-        
-        
-        
-        
+    
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        loadData()
+    }
+    
+    func loadTable() {
+        travelTable.reloadData()
+        //        loadActivity.isHidden = true
+    }
+    
+    // Get all the travel diaries data from Firebase
+    func loadData() {
+        travelData.travelArray.removeAll()
+        travelData.loadDB()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // Return the amount of the section
         return travelData.travelArray.count
     }
     
@@ -91,6 +75,7 @@ class TravelList: UIViewController, UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TravelCell", for:indexPath) as! TravelCell
         let row = indexPath.row
         let travelCell = travelData.travelArray[row]
+//        print("List tabelView:",travelData.travelArray[row],travelData.travelArray.count)
         cell.titleLabel?.text = travelCell.title
         cell.createdAtLabel?.text = travelCell.createdAt
         cell.travelImage?.image = UIImage(named: travelCell.coverImg)
@@ -104,6 +89,5 @@ class TravelList: UIViewController, UITableViewDelegate, UITableViewDataSource {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    
+
 }
