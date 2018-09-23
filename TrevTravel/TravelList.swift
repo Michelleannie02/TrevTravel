@@ -64,7 +64,7 @@ class TravelList: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     // Get all the travel diaries data from Firebase
     func loadData() {
         travelData.travelArray.removeAll()
-        travelData.loadDB()
+        travelData.loadDB() // Get data from Firebase
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -75,7 +75,7 @@ class TravelList: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         let cell = tableView.dequeueReusableCell(withIdentifier: "TravelCell", for:indexPath) as! TravelCell
         let row = indexPath.row
         let travelCell = travelData.travelArray[row]
-//        print("List tabelView:",travelData.travelArray[row],travelData.travelArray.count)
+//        print("Travel List tabelView:",travelData.travelArray[row],travelData.travelArray[row].coverImg,travelData.travelArray.count)
         cell.titleLabel?.text = travelCell.title
         cell.createdAtLabel?.text = travelCell.createdAt
         cell.travelImage?.image = UIImage(named: travelCell.coverImg)

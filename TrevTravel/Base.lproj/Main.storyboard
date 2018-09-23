@@ -161,6 +161,9 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <connections>
+                                    <outlet property="delegate" destination="zJZ-Vr-nXE" id="X2r-lt-O9w"/>
+                                </connections>
                             </textView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" maximumZoomScale="2" text="Input text" translatesAutoresizingMaskIntoConstraints="NO" id="GY3-Na-zuT">
                                 <rect key="frame" x="10" y="92" width="300" height="47"/>
@@ -170,20 +173,26 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <connections>
+                                    <outlet property="delegate" destination="zJZ-Vr-nXE" id="jpr-Ro-iky"/>
+                                </connections>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="unx-hN-FXF">
                                 <rect key="frame" x="10" y="141" width="160" height="30"/>
-                                <state key="normal" title="ADD PICTURE"/>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aCz-bd-kqB">
-                                <rect key="frame" x="170" y="141" width="140" height="30"/>
-                                <state key="normal" title="SAVE"/>
+                                <state key="normal" title="CAMERA"/>
                                 <connections>
-                                    <action selector="saveData" destination="zJZ-Vr-nXE" eventType="touchUpInside" id="yh6-wd-XgB"/>
+                                    <action selector="newPicture:" destination="zJZ-Vr-nXE" eventType="touchUpInside" id="mC9-eb-Vjw"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6wJ-et-hnz">
+                                <rect key="frame" x="170" y="141" width="140" height="30"/>
+                                <state key="normal" title="PICTURE"/>
+                                <connections>
+                                    <action selector="newPicture:" destination="zJZ-Vr-nXE" eventType="touchUpInside" id="wlx-Ps-Jg2"/>
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="145" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="F93-xf-IAg">
-                                <rect key="frame" x="0.0" y="173" width="320" height="345"/>
+                                <rect key="frame" x="0.0" y="173" width="320" height="311"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ContentCell" rowHeight="150" id="TLM-HY-rT1" customClass="ContentCell" customModule="TrevTravel" customModuleProvider="target">
@@ -217,24 +226,34 @@
                                     <outlet property="delegate" destination="zJZ-Vr-nXE" id="at7-U0-hpe"/>
                                 </connections>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aCz-bd-kqB">
+                                <rect key="frame" x="10" y="484" width="300" height="30"/>
+                                <state key="normal" title="SAVE"/>
+                                <connections>
+                                    <action selector="saveData" destination="zJZ-Vr-nXE" eventType="touchUpInside" id="yh6-wd-XgB"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="Lv4-pc-8hv" firstAttribute="bottom" secondItem="F93-xf-IAg" secondAttribute="bottom" constant="1" id="0Ia-B8-WrZ"/>
                             <constraint firstItem="zO5-08-8D2" firstAttribute="top" secondItem="Lv4-pc-8hv" secondAttribute="top" constant="20" id="0pe-JF-Dqu"/>
                             <constraint firstItem="Dya-45-moY" firstAttribute="top" secondItem="gUA-XT-Gvw" secondAttribute="bottom" constant="3" id="5aD-kn-bJ9"/>
                             <constraint firstItem="zO5-08-8D2" firstAttribute="leading" secondItem="Lv4-pc-8hv" secondAttribute="leading" constant="10" id="5dD-cp-K9B"/>
+                            <constraint firstItem="6wJ-et-hnz" firstAttribute="leading" secondItem="unx-hN-FXF" secondAttribute="trailing" id="78f-my-jiJ"/>
                             <constraint firstItem="unx-hN-FXF" firstAttribute="width" secondItem="5oJ-d1-mMg" secondAttribute="width" multiplier="1:2" id="CLk-Ey-WEq"/>
+                            <constraint firstItem="Lv4-pc-8hv" firstAttribute="trailing" secondItem="6wJ-et-hnz" secondAttribute="trailing" constant="10" id="Dvx-qd-jQd"/>
                             <constraint firstItem="F93-xf-IAg" firstAttribute="leading" secondItem="Lv4-pc-8hv" secondAttribute="leading" id="EBz-Hd-7bX"/>
                             <constraint firstItem="unx-hN-FXF" firstAttribute="top" secondItem="GY3-Na-zuT" secondAttribute="bottom" constant="2" id="F2E-lX-18h"/>
+                            <constraint firstItem="aCz-bd-kqB" firstAttribute="leading" secondItem="5oJ-d1-mMg" secondAttribute="leading" constant="10" id="FSG-2j-1RX"/>
                             <constraint firstItem="gUA-XT-Gvw" firstAttribute="top" secondItem="Lv4-pc-8hv" secondAttribute="top" constant="19" id="HGv-fe-4VA"/>
                             <constraint firstItem="F93-xf-IAg" firstAttribute="width" secondItem="Lv4-pc-8hv" secondAttribute="width" id="HT9-bC-efO"/>
                             <constraint firstItem="Lv4-pc-8hv" firstAttribute="trailing" secondItem="Dya-45-moY" secondAttribute="trailing" constant="10" id="I6U-tg-ZPx"/>
+                            <constraint firstItem="Lv4-pc-8hv" firstAttribute="bottom" secondItem="aCz-bd-kqB" secondAttribute="bottom" constant="5" id="LNb-rk-v4a"/>
                             <constraint firstItem="Dya-45-moY" firstAttribute="top" secondItem="zO5-08-8D2" secondAttribute="bottom" constant="2" id="NPq-TX-9Ig"/>
                             <constraint firstItem="Lv4-pc-8hv" firstAttribute="trailing" secondItem="GY3-Na-zuT" secondAttribute="trailing" constant="10" id="QBZ-jW-QUs"/>
-                            <constraint firstItem="aCz-bd-kqB" firstAttribute="leading" secondItem="unx-hN-FXF" secondAttribute="trailing" id="UHG-a8-aat"/>
+                            <constraint firstItem="aCz-bd-kqB" firstAttribute="top" secondItem="F93-xf-IAg" secondAttribute="bottom" id="QHm-g0-wut"/>
                             <constraint firstItem="GY3-Na-zuT" firstAttribute="top" secondItem="Dya-45-moY" secondAttribute="bottom" id="WWd-2E-rka"/>
-                            <constraint firstItem="aCz-bd-kqB" firstAttribute="top" secondItem="GY3-Na-zuT" secondAttribute="bottom" constant="2" id="WtX-RN-nkj"/>
+                            <constraint firstItem="6wJ-et-hnz" firstAttribute="top" secondItem="GY3-Na-zuT" secondAttribute="bottom" constant="2" id="XDB-cQ-Ok9"/>
                             <constraint firstItem="unx-hN-FXF" firstAttribute="leading" secondItem="Lv4-pc-8hv" secondAttribute="leading" constant="10" id="XSZ-OA-cdJ"/>
                             <constraint firstItem="gUA-XT-Gvw" firstAttribute="leading" secondItem="zO5-08-8D2" secondAttribute="trailing" constant="8" symbolic="YES" id="Yyo-ut-a1N"/>
                             <constraint firstItem="Dya-45-moY" firstAttribute="leading" secondItem="Lv4-pc-8hv" secondAttribute="leading" constant="10" id="g82-9v-c3a"/>

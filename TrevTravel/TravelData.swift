@@ -8,6 +8,8 @@
 
 import UIKit
 import Firebase
+import FirebaseFirestore
+import Foundation
 
 protocol DataDelegate {
     func loadTable()
@@ -25,10 +27,12 @@ class TravelData {
 //    var travelDel: TravelDelegate?
     
     struct TravelInfo {
-        // 9 fields
+        // 10 fields
+        var id = ""
         var author = ""
         var changedAt = ""
         var content:Array<String> = []
+        var testImg:UIImage?
         var coverImg = ""
         var createdAt = ""
         var likes = ""
@@ -39,11 +43,12 @@ class TravelData {
     
     // Structure for content cell in content table
     struct Content {
-        var image = ""
+        var imgUrl = ""
+        var img:UIImage?
     }
     
     var travelArray:[TravelInfo] = []
-    var contentArray:[Content] = [] 
+    var contentArray:[Content] = [] // Content Table View
     var content:Array<String> = [] // Save content's info when add a picture
     var newTravelInfo = TravelInfo()
    
@@ -57,11 +62,11 @@ class TravelData {
                 guard let qSnapshot = querySnapshot else {return}
                 var aDiary = TravelInfo()
                 for document in qSnapshot.documents {
-//                    aDiary.id = document.documentID
+                    aDiary.id = document.documentID
                     aDiary.author = document.data()["author"] as? String ?? ""
                     aDiary.changedAt = document.data()["changedAt"] as? String ?? ""
                     aDiary.content = document.data()["content"] as? Array ?? []
-                    aDiary.coverImg = document.data()["title"] as? String ?? ""
+                    aDiary.coverImg = document.data()["coverImg"] as? String ?? ""
                     aDiary.createdAt = document.data()["createdAt"] as? String ?? ""
                     aDiary.likes = document.data()["likes"] as? String ?? ""
                     aDiary.place = document.data()["place"] as? String ?? ""
@@ -80,25 +85,29 @@ class TravelData {
     func setContentArray(array: Array<String>){
         var newContent = Content()
         for element in array {
-            newContent.image = element
+            newContent.imgUrl = element
+            newContent.img = nil //
             self.contentArray.append(newContent)
         }
     }
     
     // ContentView
-    func saveContent(image:String){
-        self.content.append(image)
+    func saveContent(img:UIImage){
+        var newContent = Content()
+        newContent.imgUrl = randomString(length:30) + "_" + String(self.contentArray.count) + ".jpg"
+        newContent.img = img
+        self.contentArray.append(newContent)
+        self.content.append(newContent.imgUrl)
     }
     
     func uploadData() {
-
         let db = Firestore.firestore()
         let dataDict = [
             "author": newTravelInfo.author,
             "changedAt": "",
-            "content": newTravelInfo.content,
+            "content": self.content,
             "coverImg": newTravelInfo.coverImg,
-            "createdAt": newTravelInfo.createdAt,
+            "createdAt": self.getCurrentTime(),
             "likes": newTravelInfo.likes,
             "place": newTravelInfo.place,
             "shortText": newTravelInfo.shortText,
@@ -110,19 +119,51 @@ class TravelData {
                 print("Error uploading data to travelDiary: \(error)")
             } else {
                 print("Document saved")
-//                if self.oneRestaurant.img != nil { self.uploadImage(imgName: imgName) }
+            
+                // Upload image to Firebase
+//                if self.contentArray != nil { self.uploadImage(self.contentArray) }
             }
         }
     }
     
-//    init() {
-//        var newContent = Content()
-//        newContent.image = "Stadshuset"
-//        contentArray.append(newContent)
-//
-//        newContent.image = "Stadshuset2"
-//        contentArray.append(newContent)
-//    The Stockholm City Hall is the building of the Municipal Council for the City of Stockholm in Sweden. It stands on the eastern tip of Kungsholmen island, next to Riddarfjärden's northern shore and facing the islands of Riddarholmen and Södermalm.
-//    }
+    func uploadImage(_ contentArray: Array<Content>){
+        for content in contentArray {
+            if let image = content.img {
+                UIGraphicsBeginImageContext(CGSize(width: 800, height: 475))
+                let ratio = Double(image.size.width/image.size.height)
+                let scaleWidth = 800.0
+                let scaleHeight = 800.0/ratio
+                let offsetX = 0.0
+                let offsetY = (scaleHeight-475)/2.0
+                image.draw(in: CGRect(x: -offsetX, y: -offsetY, width: scaleWidth, height: scaleHeight))
+                let largeImg = UIGraphicsGetImageFromCurrentImageContext()
+                UIGraphicsEndImageContext()
+                
+                if let largeImg = largeImg, let jpegData = UIImageJPEGRepresentation(largeImg, 0.7) {
+//                    let storageRef = Storage.storage().reference()
+                }
+            }
+        }
+    }
+    
+    func randomString(length: Int) -> String {
+        var output = ""
+        for _ in 0..<length {
+            let randomNumber = arc4random()  % 26 + 97
+            let randomChar = Character(UnicodeScalar(randomNumber)!)
+            output.append(randomChar)
+        }
+        let date = NSDate()
+        let timeInterval = Int(date.timeIntervalSince1970*100000)
+        output += String(timeInterval)
+        return output
+    }
+    
+    func getCurrentTime() -> String {
+        let now = NSDate()
+        let dformatter = DateFormatter()
+        dformatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        return dformatter.string(from: now as Date)
+    }
     
 }
