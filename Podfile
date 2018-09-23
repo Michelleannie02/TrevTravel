@@ -7,6 +7,13 @@ target 'TrevTravel' do
 
 	pod 'Firebase/Core'
 	pod 'Firebase/Firestore'
+	pod 'Firebase/Storage'
+	pod 'FirebaseUI'
+	pod 'FirebaseUI/Auth'
+	pod 'FirebaseUI/Google'
+	pod 'FirebaseUI/Facebook'
+	pod 'FirebaseUI/Twitter'
+	pod 'FirebaseUI/Phone'
 
 
   # Pods for TrevTravel
