@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 import FirebaseFirestore
+import FirebaseStorage
 import Foundation
 
 protocol DataDelegate {
@@ -121,12 +122,13 @@ class TravelData {
                 print("Document saved")
             
                 // Upload image to Firebase
-//                if self.contentArray != nil { self.uploadImage(self.contentArray) }
+                if self.contentArray.count != 0 { self.uploadImage(self.contentArray) }
             }
         }
     }
     
     func uploadImage(_ contentArray: Array<Content>){
+        var i = 1
         for content in contentArray {
             if let image = content.img {
                 UIGraphicsBeginImageContext(CGSize(width: 800, height: 475))
@@ -140,7 +142,21 @@ class TravelData {
                 UIGraphicsEndImageContext()
                 
                 if let largeImg = largeImg, let jpegData = UIImageJPEGRepresentation(largeImg, 0.7) {
-//                    let storageRef = Storage.storage().reference()
+                    let storageRef = Storage.storage().reference()
+                    let imgRef = storageRef.child("images").child(content.imgUrl)
+                    
+                    let metadata = StorageMetadata()
+                    metadata.contentType = "image/jpeg"
+                    
+                    imgRef.putData(jpegData, metadata: metadata) { (metadata, error) in
+                        guard metadata != nil else {
+                            print(error!)
+                            return
+                        }
+                        if i == 1 {print(i, "image uploaded")}
+                        else {print(i, "images uploaded")}
+                        i += 1
+                    }
                 }
             }
         }
