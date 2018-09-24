@@ -1,0 +1,9 @@
+/* 
+  InfoPlist.strings
+  TrevTravel
+
+  Created by Song Liu on 2018-09-24.
+  Copyright © 2018 TrevTravel. All rights reserved.
+*/
+
+CFBundleDisplayName = "TrevTravel";
