@@ -9,3 +9,7 @@
 "home" = "Hem";
 "add" = "Ny";
 "settings" = "Inställningar";
+"showChangedLanguage" = "Ändrad till: ";
+"zh-Hans" = "kinesiska";
+"en" = "engelska";
+"sv" = "svenska";
