@@ -19,7 +19,7 @@ class NewTravel: UIViewController, UITableViewDelegate, UITextViewDelegate, UITa
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        newTravelData.dataDel = self // If needs DataDelegate class
+//        newTravelData.dataDel = self // If needs DataDelegate method
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -35,10 +35,9 @@ class NewTravel: UIViewController, UITableViewDelegate, UITextViewDelegate, UITa
     }
     
     @IBAction func saveData() {
-        newTravelData.newTravelInfo.author = "Shan"
-        newTravelData.newTravelInfo.coverImg = "Stadshuset"
-        newTravelData.newTravelInfo.likes = "0"
-        newTravelData.newTravelInfo.place = "Vasagatan 22, Stockholm, Sweden"
+        newTravelData.newTravelInfo.author = "Shan" //
+        newTravelData.newTravelInfo.likes = "0" //
+        newTravelData.newTravelInfo.place = "Vasagatan 22, Stockholm, Sweden" //
         newTravelData.newTravelInfo.shortText = newShortText.text ?? ""
         newTravelData.newTravelInfo.title = newTitle.text ?? ""
         

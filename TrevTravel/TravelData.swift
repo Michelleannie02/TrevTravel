@@ -14,7 +14,6 @@ import Foundation
 
 protocol DataDelegate {
     func loadTable()
-    func loadData()
 }
 
 // Detail view
@@ -33,8 +32,8 @@ class TravelData {
         var author = ""
         var changedAt = ""
         var content:Array<String> = []
-        var testImg:UIImage?
-        var coverImg = ""
+        var coverImgUrl = ""
+        var coverImg:UIImage?
         var createdAt = ""
         var likes = ""
         var place = ""
@@ -67,7 +66,7 @@ class TravelData {
                     aDiary.author = document.data()["author"] as? String ?? ""
                     aDiary.changedAt = document.data()["changedAt"] as? String ?? ""
                     aDiary.content = document.data()["content"] as? Array ?? []
-                    aDiary.coverImg = document.data()["coverImg"] as? String ?? ""
+                    aDiary.coverImgUrl = document.data()["coverImgUrl"] as? String ?? ""
                     aDiary.createdAt = document.data()["createdAt"] as? String ?? ""
                     aDiary.likes = document.data()["likes"] as? String ?? ""
                     aDiary.place = document.data()["place"] as? String ?? ""
@@ -75,22 +74,55 @@ class TravelData {
                     aDiary.title = document.data()["title"] as? String ?? ""
                     
                     self.travelArray.append(aDiary)
-                    self.setContentArray(array: aDiary.content)
+//                    self.setContentArray(array: aDiary.content)
+                }
+                self.dataDel?.loadTable()
+                self.loadCoverImg() // TravelList loads firebasedata first, then loads firebasestorage
+            }
+        }
+    }
+    
+    func loadCoverImg() {
+        let storageRef = Storage.storage().reference()
+        let imagesRef = storageRef.child("images")
+        for (index, var aDiary) in travelArray.enumerated() {
+            let imgRef = imagesRef.child(aDiary.coverImgUrl)
+            imgRef.getData(maxSize: 1024*1024) { (data, error) in
+                if let error = error { print(error) }
+                else {
+                    if let imgData = data {
+                        aDiary.coverImg = UIImage(data: imgData)
+//                        self.travelArray[index] = aDiary
+                        self.travelArray[index].coverImg = aDiary.coverImg
+                    }
                 }
                 self.dataDel?.loadTable()
             }
         }
     }
     
+//    func loadImage(imgUrl:String) {
+//        let storageRef = Storage.storage().reference()
+//        let imgRef = storageRef.child(imgUrl)
+//        imgRef.getData(maxSize: 1024*1024) { (data, error) in
+//            if let error = error { print(error) }
+//            else {
+//                if let imgData = data {
+//
+//                }
+//            }
+//        }
+//    }
+    
     // Save content to contentArray after getting content from Firebase. ContentView
-    func setContentArray(array: Array<String>){
-        var newContent = Content()
-        for element in array {
-            newContent.imgUrl = element
-            newContent.img = nil //
-            self.contentArray.append(newContent)
-        }
-    }
+//    func setContentArray(array: Array<String>){
+//        var newContent = Content()
+//        for element in array {
+//            newContent.imgUrl = element
+//            newContent.img = nil //
+//            self.contentArray.append(newContent)
+//        }
+//    }
     
     // ContentView
     func saveContent(img:UIImage){
@@ -102,12 +134,14 @@ class TravelData {
     }
     
     func uploadData() {
+        if newTravelInfo.coverImgUrl == "" { newTravelInfo.coverImgUrl = self.content[0] }
+        
         let db = Firestore.firestore()
         let dataDict = [
             "author": newTravelInfo.author,
             "changedAt": "",
             "content": self.content,
-            "coverImg": newTravelInfo.coverImg,
+            "coverImgUrl": newTravelInfo.coverImgUrl,
             "createdAt": self.getCurrentTime(),
             "likes": newTravelInfo.likes,
             "place": newTravelInfo.place,
@@ -161,7 +195,7 @@ class TravelData {
             }
         }
     }
-    
+
     func randomString(length: Int) -> String {
         var output = ""
         for _ in 0..<length {

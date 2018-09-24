@@ -75,10 +75,11 @@ class TravelList: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         let cell = tableView.dequeueReusableCell(withIdentifier: "TravelCell", for:indexPath) as! TravelCell
         let row = indexPath.row
         let travelCell = travelData.travelArray[row]
-//        print("Travel List tabelView:",travelData.travelArray[row],travelData.travelArray[row].coverImg,travelData.travelArray.count)
+//        print("Travel List tabelView:",travelData.travelArray[row],travelData.travelArray[row].coverImgUrl,travelData.travelArray.count)
         cell.titleLabel?.text = travelCell.title
         cell.createdAtLabel?.text = travelCell.createdAt
-        cell.travelImage?.image = UIImage(named: travelCell.coverImg)
+//        cell.travelImage?.image = UIImage(named: travelCell.coverImgUrl) // When travelCell.coverImgUrl is local image
+        cell.travelImage?.image = travelCell.coverImg
         cell.shortTextLabel?.text = travelCell.shortText
         cell.likesLabel?.text = travelCell.likes
         cell.placeLabel?.text = travelCell.place
