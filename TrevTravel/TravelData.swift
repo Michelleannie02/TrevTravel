@@ -139,7 +139,7 @@ class TravelData {
         let db = Firestore.firestore()
         let dataDict = [
             "author": newTravelInfo.author,
-            "changedAt": "",
+            "changedAt": self.getCurrentTime(),
             "content": self.content,
             "coverImgUrl": newTravelInfo.coverImgUrl,
             "createdAt": self.getCurrentTime(),
@@ -162,8 +162,7 @@ class TravelData {
     }
     
     func uploadImage(_ contentArray: Array<Content>){
-        var i = 1
-        for content in contentArray {
+        for (index, content) in contentArray.enumerated() {
             if let image = content.img {
                 UIGraphicsBeginImageContext(CGSize(width: 800, height: 475))
                 let ratio = Double(image.size.width/image.size.height)
@@ -187,9 +186,8 @@ class TravelData {
                             print(error!)
                             return
                         }
-                        if i == 1 {print(i, "image uploaded")}
-                        else {print(i, "images uploaded")}
-                        i += 1
+                        if index == 0 {print(index+1, "image uploaded")}
+                        else {print(index+1, "images uploaded")}
                     }
                 }
             }

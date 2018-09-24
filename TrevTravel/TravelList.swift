@@ -63,7 +63,7 @@ class TravelList: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     
     // Get all the travel diaries data from Firebase
     func loadData() {
-        travelData.travelArray.removeAll()
+        travelData.travelArray.removeAll() // Clear the table view before getting all data
         travelData.loadDB() // Get data from Firebase
     }
     
@@ -75,15 +75,32 @@ class TravelList: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         let cell = tableView.dequeueReusableCell(withIdentifier: "TravelCell", for:indexPath) as! TravelCell
         let row = indexPath.row
         let travelCell = travelData.travelArray[row]
-//        print("Travel List tabelView:",travelData.travelArray[row],travelData.travelArray[row].coverImgUrl,travelData.travelArray.count)
+
         cell.titleLabel?.text = travelCell.title
         cell.createdAtLabel?.text = travelCell.createdAt
-//        cell.travelImage?.image = UIImage(named: travelCell.coverImgUrl) // When travelCell.coverImgUrl is local image
+//        cell.travelImage?.image = UIImage(named: travelCell.coverImgUrl) // When coverImgUrl is local image. Can try coverImg is nil (not gotten from fb storage) then get as UIImage(named: travelCell.coverImgUrl)
         cell.travelImage?.image = travelCell.coverImg
         cell.shortTextLabel?.text = travelCell.shortText
         cell.likesLabel?.text = travelCell.likes
         cell.placeLabel?.text = travelCell.place
+        
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let row = indexPath.row
+        performSegue(withIdentifier: "showTravelPage", sender: row)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showTravelPage" {
+            if let travelPage = segue.destination as? TravelPage {
+                if let indx = sender as? Int {
+                    let aTravel = travelData.travelArray[indx]
+                    travelPage.travelID = aTravel.id
+                }
+            }
+        }
     }
     
     override func didReceiveMemoryWarning() {
