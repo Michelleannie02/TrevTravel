@@ -1,0 +1,18 @@
+/* 
+  Localizable.strings
+  TrevTravel
+
+  Created by Song Liu on 2018-09-24.
+  Copyright © 2018 TrevTravel. All rights reserved.
+*/
+
+"home" = "主页";
+"add" = "添加";
+"settings" = "设置";
+
+
+// 本地化代码中的字符串方法：
+// NSLocalizedString(key, comment)
+// 如：
+// print(NSLocalizedString("home", comment: ""))
+// 中/英/瑞时分别打印出：主页/Home/Hem

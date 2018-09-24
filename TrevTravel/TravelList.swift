@@ -17,7 +17,7 @@ class TravelList: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+                
         // Get all the travel diaries data from Firebase
         travelData.dataDel = self
         
