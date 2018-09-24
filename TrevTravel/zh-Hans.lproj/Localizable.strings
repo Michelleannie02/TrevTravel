@@ -9,6 +9,10 @@
 "home" = "主页";
 "add" = "添加";
 "settings" = "设置";
+"showChangedLanguage" = "变更为: ";
+"zh-Hans" = "中文";
+"en" = "英语";
+"sv" = "瑞典语";
 
 
 // 本地化代码中的字符串方法：

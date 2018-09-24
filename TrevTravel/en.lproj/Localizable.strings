@@ -9,6 +9,7 @@
 "home" = "Home";
 "add" = "Add";
 "settings" = "Settings";
-
-
-
+"showChangedLanguage" = "Changed to: ";
+"zh-Hans" = "Chinese";
+"en" = "English";
+"sv" = "Swedish";

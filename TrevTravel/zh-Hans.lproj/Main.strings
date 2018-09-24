@@ -27,10 +27,10 @@
 "aCz-bd-kqB.normalTitle" = "SAVE";
 
 /* Class = "UITabBarItem"; title = "Add"; ObjectID = "bZA-pl-kO6"; */
-"bZA-pl-kO6.title" = "Add";
+"bZA-pl-kO6.title" = "添加";
 
 /* Class = "UITabBarItem"; title = "Setting"; ObjectID = "cYB-DK-GwT"; */
-"cYB-DK-GwT.title" = "Setting";
+"cYB-DK-GwT.title" = "设置";
 
 /* Class = "UITextView"; text = "Input title"; ObjectID = "gUA-XT-Gvw"; */
 "gUA-XT-Gvw.text" = "Input title";
@@ -48,7 +48,7 @@
 "tmD-kq-9PK.normalTitle" = "Forgot password";
 
 /* Class = "UITabBarItem"; title = "Home"; ObjectID = "ub1-Yl-TCH"; */
-"ub1-Yl-TCH.title" = "Home";
+"ub1-Yl-TCH.title" = "主页";
 
 /* Class = "UILabel"; text = "Title"; ObjectID = "unp-dm-N5H"; */
 "unp-dm-N5H.text" = "Title";
