@@ -33,6 +33,7 @@ class TravelPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     func loadPageData() {
 //        travelData.contentArray.removeAll()
         travelData.loadPageDB(travelID: travelID)
+        travelData.loadCommentsDB(travelID: travelID)
     }
     
     func loadTable() {
@@ -47,7 +48,13 @@ class TravelPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     }
   
     func loadCommentText() {
-        
+        var commentText = ""
+        for comment in travelData.commentArray {
+            commentText += comment.createdAt + "\n"
+            commentText += comment.user + ":\n"
+            commentText += comment.message + "\n\n"
+        }
+        commentsView.text = commentText
     }
     
     func tableView(_ tableView:UITableView, numberOfRowsInSection section:Int) -> Int {

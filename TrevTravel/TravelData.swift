@@ -222,6 +222,7 @@ class TravelData {
                     self.newTravelInfo.title = dataDescription["title"] as? String ?? ""
                     
                     self.travelDel?.setTravelData()
+                    
                     if self.newTravelInfo.content.count > 0 {
                         self.loadImages(imgUrlArray: self.newTravelInfo.content)
                     }
@@ -259,7 +260,7 @@ class TravelData {
         let db = Firestore.firestore()
         let docRef = db.collection("diaryComments").document(travelID).collection("comments")
         docRef.getDocuments { (querySnapshot, err) in
-            if let error = err { print(error) }
+            if let error = err { print("Error getting comments document: ", error) }
             else {
                 guard let qSnapshot = querySnapshot else {return}
                 for document in qSnapshot.documents {
@@ -275,5 +276,6 @@ class TravelData {
             }
         }
     }
+
     
 }
