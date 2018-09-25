@@ -8,13 +8,14 @@
 
 import UIKit
 
-class TravelPage: UIViewController, UITableViewDelegate, UITableViewDataSource, TravelDelegate {
+class TravelPage: UIViewController, UIScrollViewDelegate, UITableViewDelegate, UITableViewDataSource, UITextViewDelegate, TravelDelegate {
     
+    @IBOutlet weak var pageScroll: UIScrollView!
+    @IBOutlet weak var paragraphTable: UITableView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var authorLabel: UILabel!
     @IBOutlet weak var changedAtLabel: UILabel!
-    @IBOutlet weak var shotTextView: UITextView!    
-    @IBOutlet weak var paragraphTable: UITableView!
+    @IBOutlet weak var shotTextView: UITextView!
     @IBOutlet weak var commentsView: UITextView!
     
     
@@ -24,10 +25,22 @@ class TravelPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     override func viewDidLoad() {
         super.viewDidLoad()
         travelData.travelDel = self
+        // 0925 Load data when viewDidLoad
+        loadPageData()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        let sWidth = pageScroll.frame.size.width
+        let sHeight = pageScroll.frame.size.height
+        pageScroll.contentSize = CGSize(width: sWidth, height: 2*sHeight)
+        print("Scroll content size w*h: ",sWidth, " ", sHeight)
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        loadPageData()
+        // 0925 Load data when viewDidLoad
+//        loadPageData()
+        // 0925 Set textView data when viewWillAppear
+        setTravelData()
     }
     
     func loadPageData() {
