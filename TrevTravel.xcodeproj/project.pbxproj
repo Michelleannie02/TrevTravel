@@ -19,6 +19,7 @@
 		749E2DD6214FFBD0007B50F3 /* TravelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 749E2DD5214FFBD0007B50F3 /* TravelCell.swift */; };
 		749E2DD821500A18007B50F3 /* TravelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 749E2DD721500A18007B50F3 /* TravelData.swift */; };
 		749E2DDA215049CD007B50F3 /* TravelList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 749E2DD9215049CD007B50F3 /* TravelList.swift */; };
+		74D7CD882159A0950081A635 /* ParagraphCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74D7CD872159A0950081A635 /* ParagraphCell.swift */; };
 		74D950DC21426A8100667497 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74D950DB21426A8100667497 /* AppDelegate.swift */; };
 		74D950E121426A8100667497 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 74D950DF21426A8100667497 /* Main.storyboard */; };
 		74D950E321426A8300667497 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 74D950E221426A8300667497 /* Assets.xcassets */; };
@@ -73,6 +74,7 @@
 		749E2DD5214FFBD0007B50F3 /* TravelCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelCell.swift; sourceTree = "<group>"; };
 		749E2DD721500A18007B50F3 /* TravelData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelData.swift; sourceTree = "<group>"; };
 		749E2DD9215049CD007B50F3 /* TravelList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelList.swift; sourceTree = "<group>"; };
+		74D7CD872159A0950081A635 /* ParagraphCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParagraphCell.swift; sourceTree = "<group>"; };
 		74D950D821426A8100667497 /* TrevTravel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TrevTravel.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		74D950DB21426A8100667497 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		74D950E021426A8100667497 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -161,6 +163,7 @@
 				749E2DD721500A18007B50F3 /* TravelData.swift */,
 				7437C5962151494500158DCC /* NewTravel.swift */,
 				74F97E802156B43D00CB8825 /* ContentCell.swift */,
+				74D7CD872159A0950081A635 /* ParagraphCell.swift */,
 				41C5DEDE2158BC1900E90F43 /* ChangeLanguage.swift */,
 				41C5DEE821597DB100E90F43 /* Settings.swift */,
 				41C5DEEA21597DCF00E90F43 /* Login.swift */,
@@ -486,6 +489,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				74D7CD882159A0950081A635 /* ParagraphCell.swift in Sources */,
 				749E2DD6214FFBD0007B50F3 /* TravelCell.swift in Sources */,
 				749E2DDA215049CD007B50F3 /* TravelList.swift in Sources */,
 				41C5DEE921597DB100E90F43 /* Settings.swift in Sources */,

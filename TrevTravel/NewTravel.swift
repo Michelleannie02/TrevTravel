@@ -23,15 +23,11 @@ class NewTravel: UIViewController, UITableViewDelegate, UITextViewDelegate, UITa
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        loadData()
+        loadTable()
     }
 
     func loadTable() {
         contentTable.reloadData()
-    }
-
-    func loadData() {
-        loadTable()
     }
     
     @IBAction func saveData() {
@@ -72,6 +68,7 @@ class NewTravel: UIViewController, UITableViewDelegate, UITextViewDelegate, UITa
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        // Save the picked pickture to contentArray
         newTravelData.saveContent(img: (info[UIImagePickerControllerOriginalImage] as? UIImage)!)
         dismiss(animated: true, completion: nil)
     }

@@ -12,26 +12,29 @@ import FirebaseFirestore
 import FirebaseStorage
 import Foundation
 
+// Home
 protocol DataDelegate {
     func loadTable()
 }
 
-// Detail view
-//protocol TravelDelegate {
-//    func setTravelData()
-//}
+// TravelPage view
+protocol TravelDelegate {
+    func setTravelData()
+    func loadTable()
+    func loadCommentText()
+}
 
 class TravelData {
     
     var dataDel: DataDelegate?
-//    var travelDel: TravelDelegate?
+    var travelDel: TravelDelegate?
     
     struct TravelInfo {
-        // 10 fields
+        // 11 fields. 9 fields saved to firebase
         var id = ""
         var author = ""
         var changedAt = ""
-        var content:Array<String> = []
+        var content:Array<String> = [] // Home, Add
         var coverImgUrl = ""
         var coverImg:UIImage?
         var createdAt = ""
@@ -43,13 +46,21 @@ class TravelData {
     
     // Structure for content cell in content table
     struct Content {
-        var imgUrl = ""
+        var imgUrl = "" //
         var img:UIImage?
     }
     
+    struct Comment {
+        var id = ""
+        var createdAt = ""
+        var message = ""
+        var user = ""
+    }
+    
     var travelArray:[TravelInfo] = []
-    var contentArray:[Content] = [] // Content Table View
+    var contentArray:[Content] = [] // Content Table View, TravelPage
     var content:Array<String> = [] // Save content's info when add a picture
+    var commentArray:[Comment] = [] // Travel Page
     var newTravelInfo = TravelInfo()
    
     // Load data from Firebase. HOME
@@ -65,7 +76,7 @@ class TravelData {
                     aDiary.id = document.documentID
                     aDiary.author = document.data()["author"] as? String ?? ""
                     aDiary.changedAt = document.data()["changedAt"] as? String ?? ""
-                    aDiary.content = document.data()["content"] as? Array ?? []
+//                    aDiary.content = document.data()["content"] as? Array ?? [] // Load the specific diary by id again
                     aDiary.coverImgUrl = document.data()["coverImgUrl"] as? String ?? ""
                     aDiary.createdAt = document.data()["createdAt"] as? String ?? ""
                     aDiary.likes = document.data()["likes"] as? String ?? ""
@@ -74,10 +85,11 @@ class TravelData {
                     aDiary.title = document.data()["title"] as? String ?? ""
                     
                     self.travelArray.append(aDiary)
-//                    self.setContentArray(array: aDiary.content)
+//                    self.setContentArray(array: aDiary.content) // Load the specific diary by id again
                 }
                 self.dataDel?.loadTable()
-                self.loadCoverImg() // TravelList loads firebasedata first, then loads firebasestorage
+                // TravelList loads firebasedata first, then loads firebasestorage
+                if aDiary.coverImgUrl != "" { self.loadCoverImg() }
             }
         }
     }
@@ -100,33 +112,11 @@ class TravelData {
             }
         }
     }
-    
-//    func loadImage(imgUrl:String) {
-//        let storageRef = Storage.storage().reference()
-//        let imgRef = storageRef.child(imgUrl)
-//        imgRef.getData(maxSize: 1024*1024) { (data, error) in
-//            if let error = error { print(error) }
-//            else {
-//                if let imgData = data {
-//
-//                }
-//            }
-//        }
-//    }
-    
-    // Save content to contentArray after getting content from Firebase. ContentView
-//    func setContentArray(array: Array<String>){
-//        var newContent = Content()
-//        for element in array {
-//            newContent.imgUrl = element
-//            newContent.img = nil //
-//            self.contentArray.append(newContent)
-//        }
-//    }
-    
-    // ContentView
+   
+    // Add - ContentView
     func saveContent(img:UIImage){
         var newContent = Content()
+        // Set the name of the imgUrl: randomString+currentTimeInterval+index in the array.jpg
         newContent.imgUrl = randomString(length:30) + "_" + String(self.contentArray.count) + ".jpg"
         newContent.img = img
         self.contentArray.append(newContent)
@@ -212,6 +202,78 @@ class TravelData {
         let dformatter = DateFormatter()
         dformatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         return dformatter.string(from: now as Date)
+    }
+    
+    func loadPageDB(travelID:String) {
+        let db = Firestore.firestore()
+        let docRef = db.collection("travelDiary").document(travelID)
+        docRef.getDocument { (document, error) in
+            if let error = error { print(error) }
+            else if let document = document, document.exists {
+                if let dataDescription = document.data() {
+                    self.newTravelInfo.author = dataDescription["author"] as? String ?? ""
+                    self.newTravelInfo.changedAt = dataDescription["changedAt"] as? String ?? ""
+                    self.newTravelInfo.content = dataDescription["content"] as? Array ?? []
+                    self.newTravelInfo.coverImgUrl = dataDescription["coverImgUrl"] as? String ?? ""
+                    self.newTravelInfo.createdAt = dataDescription["createdAt"] as? String ?? ""
+                    self.newTravelInfo.likes = dataDescription["likes"] as? String ?? ""
+                    self.newTravelInfo.place = dataDescription["place"] as? String ?? ""
+                    self.newTravelInfo.shortText = dataDescription["shortText"] as? String ?? ""
+                    self.newTravelInfo.title = dataDescription["title"] as? String ?? ""
+                    
+                    self.travelDel?.setTravelData()
+                    if self.newTravelInfo.content.count > 0 {
+                        self.loadImages(imgUrlArray: self.newTravelInfo.content)
+                    }
+                }
+            } else { print("Document does not exist in database")}
+        }
+    }
+    
+    
+    func loadImages(imgUrlArray: Array<String>) {
+        let storageRef = Storage.storage().reference()
+        let imagesRef = storageRef.child("images")
+        var aContent = Content()
+        for imgUrl in imgUrlArray {
+            let imgRef = imagesRef.child(imgUrl)
+            imgRef.getData(maxSize: 1024*1024) { data, error in
+                if let error = error { print(error) }
+                else {
+                    if let imgData = data {
+                        if let parImg = UIImage(data: imgData) {
+                            aContent.imgUrl = imgUrl
+                            aContent.img = parImg
+                            self.contentArray.append(aContent)
+                            // self.travelDel?.loadTable() // Same Better?
+                        }
+                    }
+                }
+                self.travelDel?.loadTable()
+            }
+        }
+//        self.travelDel?.loadTable() // newTravelInfo.contentStruct
+    }
+    
+    func loadCommentsDB(travelID:String) {
+        let db = Firestore.firestore()
+        let docRef = db.collection("diaryComments").document(travelID).collection("comments")
+        docRef.getDocuments { (querySnapshot, err) in
+            if let error = err { print(error) }
+            else {
+                guard let qSnapshot = querySnapshot else {return}
+                for document in qSnapshot.documents {
+                    var aComment = Comment()
+                    aComment.id = document.documentID
+                    aComment.createdAt = document.data()["createdAt"] as? String ?? ""
+                    aComment.message = document.data()["message"] as? String ?? ""
+                    aComment.user = document.data()["user"] as? String ?? ""
+
+                    self.commentArray.append(aComment)
+                }
+                self.travelDel?.loadCommentText()
+            }
+        }
     }
     
 }
