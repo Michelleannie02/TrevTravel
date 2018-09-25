@@ -17,39 +17,10 @@ class TravelList: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     
     override func viewDidLoad() {
         super.viewDidLoad()
-                
+//        travelTable.separatorStyle = UITableViewCellSeparatorStyle.none
+        
         // Get all the travel diaries data from Firebase
-        travelData.dataDel = self
-        
-        // Get data from the database of firebase
-//        let db = Firestore.firestore()
-//        db.collection("users").whereField("name", isEqualTo: "abc").getDocuments { (snapshot, error) in
-//            if error != nil {
-//                print(error ?? "error 1")
-//            } else {
-//                for document in (snapshot?.documents)! {
-//                    if let name = document.data()["name"] as? String {
-//                        if let age = document.data()["age"] as? Int {
-//                            print(name, age)
-//                        }
-//                    }
-//                }
-//            }
-//        }
-        
-        // Add data to database
-//        let name = "xyz"
-//        let age = 80
-//        let dict :[String : Any] = ["name": name, "age": age]
-//
-        // Add data with specific ID
-//        db.collection("users").document("newID").setData(dict)
-        
-        // Add data with random ID
-        // db.collection("users").addDocument(data: dict)
-        
-        ///////////////////////////////////////////////////////////////////
-    
+        travelData.dataDel = self    
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -75,8 +46,9 @@ class TravelList: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         let cell = tableView.dequeueReusableCell(withIdentifier: "TravelCell", for:indexPath) as! TravelCell
         let row = indexPath.row
         let travelCell = travelData.travelArray[row]
-
+        
         cell.titleLabel?.text = travelCell.title
+        cell.authorLabel?.text = travelCell.author
         cell.createdAtLabel?.text = travelCell.createdAt
 //        cell.travelImage?.image = UIImage(named: travelCell.coverImgUrl) // When coverImgUrl is local image. Can try coverImg is nil (not gotten from fb storage) then get as UIImage(named: travelCell.coverImgUrl)
         cell.travelImage?.image = travelCell.coverImg
