@@ -99,6 +99,14 @@ class Login: UIViewController {
 //        }
     }
     
+    @IBAction func googleLogin(_ sender: Any) {
+        
+    }
+    
+    @IBAction func facebookLogin(_ sender: Any) {
+        
+    }
+    
     
     func reminder(_ msg:String) {
         let alert = UIAlertController(title: "Reminder", message: msg, preferredStyle: UIAlertControllerStyle.alert)

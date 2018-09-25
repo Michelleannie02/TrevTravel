@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import FirebaseAuth
 
 class Settings: UIViewController {
     
@@ -44,7 +45,7 @@ class Settings: UIViewController {
     
     @IBAction func LoginOrLogout(_ sender: Any) {
         if logInStatus == "Guest" {
-            loginBtn.setTitle("Log out", for: .normal)
+//            loginBtn.setTitle("Log out", for: .normal)
         }
         
     }
