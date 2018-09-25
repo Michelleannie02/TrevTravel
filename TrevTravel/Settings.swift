@@ -9,18 +9,23 @@
 import UIKit
 
 class Settings: UIViewController {
-
+    
+    @IBOutlet weak var userEmailBtn: UIButton!
+    @IBOutlet weak var currentLanguageBtn: UIButton!
+    
     @IBOutlet weak var loginBtn: UIButton!
-    @IBOutlet weak var currLang: UIButton!
+    @IBOutlet weak var changeLangBtn: UIButton!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         let lang = NSLocale.current.languageCode
-        currLang.setTitle(getLanguageName(lang!), for: .normal)
+        currentLanguageBtn.setTitle(getLanguageName(lang!), for: .normal)
         
+        userEmailBtn.setTitle(showUserName(""), for: .normal)
         
-        loginBtn.setTitle(showUserName(""), for: .normal)
+        // loginBtn 在有登录时显示log out, 否则显示 log in
     }
     
     func getLanguageName(_ lang:String) -> String {
