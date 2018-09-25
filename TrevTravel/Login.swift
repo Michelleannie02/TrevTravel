@@ -12,51 +12,92 @@ import Firebase
 
 
 class Login: UIViewController {
-
-    @IBOutlet weak var email: UITextField!
-    @IBOutlet weak var password: UITextField!
     
-    var hasLoggedIn: Bool = false
+    @IBOutlet weak var emailTextField: UITextField!
+    @IBOutlet weak var passwordTextField: UITextField!
     
+    let loginUser:String = Auth.auth().currentUser?.email ?? "Guest"
+    
+    let handle = Auth.auth().addStateDidChangeListener { (auth, user) in
+        if Auth.auth().currentUser != nil {
+            // User is signed in
+            let user = Auth.auth().currentUser
+            if let user = user {
+                let uid = user.uid
+                let uEmail = user.email
+            }
+        } else {
+            // No user is signed in
+            print("No user is logged in")
+        }
+    }
+   
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.email.placeholder = "Email"
-        self.password.placeholder = "password"
+        self.emailTextField.placeholder = "Email"
+        self.passwordTextField.placeholder = "password"
+
+        print("Login Email: \(loginUser)")
+        
+        
+        
+//        let status: String = UserDefaults.standard.string(forKey: "logInStatus")!
+//        if status != "" {
+//            print(status)
+//        } else {
+//            print("no status data")
+//        }
+        
+        // Load "logInStatus" from memory
+//        UserDefaults.standard.string(forKey: "logInStatus")
         
     }
     
     @IBAction func signup(_ sender: Any) {
-        Auth.auth().createUser(withEmail: self.email.text!, password: self.password.text!) { (user, error) in
+        Auth.auth().createUser(withEmail: self.emailTextField.text!, password: self.passwordTextField.text!) { (user, error) in
             if user != nil {
-                self.reminder("\(self.email.text ?? "Success!") has signed up! You can log in now")
-                self.clearInputText(textField: self.email)
-                self.clearInputText(textField: self.password)
+                self.reminder("\(self.emailTextField.text ?? "Success!") has signed up! You can log in now")
+                self.clearInputText(textField: self.emailTextField)
+                self.clearInputText(textField: self.passwordTextField)
             }
             if error != nil {
                 self.reminder("This email is already registered!")
-                self.clearInputText(textField: self.password)
+                self.clearInputText(textField: self.passwordTextField)
             }
         }
         
     }
     
     @IBAction func signin(_ sender: Any) {
-        Auth.auth().signIn(withEmail: self.email.text!, password: self.password.text!) { (user, error) in
+        Auth.auth().signIn(withEmail: self.emailTextField.text!, password: self.passwordTextField.text!) { (user, error) in
             if user != nil {
                 self.reminder("You have signed in!")
-                self.clearInputText(textField: self.email)
-                self.clearInputText(textField: self.password)
-                self.hasLoggedIn = true
+                self.clearInputText(textField: self.emailTextField)
+                self.clearInputText(textField: self.passwordTextField)
+                
+
+                print("New Login Email: \(Auth.auth().currentUser?.email ?? "No user")")
+                
+
+                // Save "logInStatus" to memory
+//                UserDefaults.standard.set(self.emailTextField.text, forKey: "logInStatus")
+//                print(self.emailTextField.text!)
             }
             if error != nil {
                 self.reminder("Email or password incorrect!")
-                self.clearInputText(textField: self.password)
+                self.clearInputText(textField: self.passwordTextField)
             }
         }
         
     }
     
+    @IBAction func resetPasswordBtn(_ sender: Any) {
+        print("resetPasswordBtn")
+//        Auth.auth().sendPasswordReset(withEmail: ) { (error) in
+//
+//        }
+    }
     
     
     func reminder(_ msg:String) {
