@@ -13,66 +13,99 @@ import FirebaseAuth
 class Settings: UIViewController {
     
     @IBOutlet weak var userEmailBtn: UIButton!
-    @IBOutlet weak var currentLanguageBtn: UIButton!
-    
     @IBOutlet weak var loginBtn: UIButton!
+    
+    @IBOutlet weak var currentLanguageBtn: UIButton!
     @IBOutlet weak var changeLangBtn: UIButton!
     
     var logInStatus:String = ""
     
+    // connect to UserDefaults for System Preferences
+    let userDefault = UserDefaults.standard
+    
+    let login:String = NSLocalizedString("login", comment: "")
+    let logout:String = NSLocalizedString("logout", comment: "")
+    let guest:String = NSLocalizedString("guest", comment: "")
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let lang = NSLocale.current.languageCode
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+//        let lang1 = NSLocale.current.languageCode
         
         // Set the language bar current Language
+        let lang = userDefault.string(forKey: "appLanguage")
+        
         currentLanguageBtn.setTitle(getLanguageName(lang!), for: .normal)
         
         // loginBtn shows "log out" when logged in, otherwise shows "log in"
-        logInStatus = Auth.auth().currentUser?.email! ?? "Guest"
+        // Check log in status
+        logInStatus = Auth.auth().currentUser?.email! ?? guest
         print("logInStatus: \(logInStatus)")
-        if logInStatus == "Guest" {
+        if logInStatus == guest {
             // When no user is logged in
-            loginBtn.setTitle("Log in", for: .normal)
+            loginBtn.setTitle(login, for: .normal)
         } else {
             // when a user is logged in
-            loginBtn.setTitle("Log out", for: .normal)
+            loginBtn.setTitle(logout, for: .normal)
         }
         userEmailBtn.setTitle(logInStatus, for: .normal)
-        
     }
     
     
     @IBAction func LoginOrLogout(_ sender: Any) {
-        if logInStatus == "Guest" {
-//            loginBtn.setTitle("Log out", for: .normal)
+        if logInStatus != guest {
+            // when logged in, this is a function for signing out
+            let firebaseAuth = Auth.auth()
+            do {
+                try firebaseAuth.signOut()
+            } catch let signOutError as NSError {
+                print("Error signing out: %@", signOutError)
+            }
+            
+            // change user bar status as a guest
+            userEmailBtn.setTitle(logInStatus, for: .normal)
+            loginBtn.setTitle(logout, for: .normal)
+            
         }
+        // When no user log in, no function
         
     }
     
     func getLanguageName(_ lang:String) -> String {
         var returnName = ""
-        switch lang {
-        case "zh-Hans":
-            returnName = "zh-Hans".localizableSstring("zh-Hans")
-        case "sv":
-            returnName = "sv".localizableSstring("sv")
-        default:
-            returnName = "en".localizableSstring("en")
-        }
-        return returnName
-    }
-    
-    func showUserName(_ name:String) -> String {
-        var username = ""
-        if name == "" {
-            username = "Guest"
+        var setLang = ""
+        if lang.prefix(2) == "zh" {
+            setLang = "zh-Hans"
         } else {
-            username = ""
+            setLang = lang
         }
         
-        return username
+        switch setLang {
+        case "zh-Hans":
+            returnName = "zh-Hans".localizableString(setLang)
+        case "sv":
+            returnName = "sv".localizableString(setLang)
+        default:
+            returnName = "en".localizableString(setLang)
+        }
+        print("getLanguage: \(lang, setLang, returnName)")
+        return returnName
     }
+//
+//    func showUserName(_ name:String) -> String {
+//        var username = ""
+//        if name == "" {
+//            username = "Guest"
+//        } else {
+//            username = ""
+//        }
+//
+//        return username
+//    }
     
     /*
     // MARK: - Navigation
