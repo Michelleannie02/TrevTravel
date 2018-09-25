@@ -10,6 +10,7 @@ import UIKit
 
 class TravelCell: UITableViewCell {
     
+    @IBOutlet weak var authorLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var createdAtLabel: UILabel!
     @IBOutlet weak var travelImage: UIImageView!
@@ -27,5 +28,6 @@ class TravelCell: UITableViewCell {
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+//        backgroundColor = UIColor.lightGray
     }
 }
