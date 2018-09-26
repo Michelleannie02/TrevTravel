@@ -64,6 +64,8 @@ class TravelData {
     var content:Array<String> = [] // Save content's info when add a picture
     var commentArray:[Comment] = [] // Travel Page
     var newTravelInfo = TravelInfo()
+    
+    var isLiked:Bool = false
    
     // Load data from Firebase. HOME
     func loadDB(){
@@ -125,18 +127,19 @@ class TravelData {
         self.content.append(newContent.imgUrl)
     }
     
+    // Add a travel diary
     func uploadData() {
         if newTravelInfo.coverImgUrl == "" { newTravelInfo.coverImgUrl = self.content[0] }
         
         let db = Firestore.firestore()
         let dataDict = [
-            "author": newTravelInfo.author,
+            "author": newTravelInfo.author, // 自动取login的email
             "changedAt": self.getCurrentTime(),
             "content": self.content,
             "coverImgUrl": newTravelInfo.coverImgUrl,
             "createdAt": self.getCurrentTime(),
-            "likes": newTravelInfo.likes,
-            "place": newTravelInfo.place,
+            "likes": 0,
+            "place": newTravelInfo.place, // 如果user定位或输入了本diary的地址
             "shortText": newTravelInfo.shortText,
             "title": newTravelInfo.title
             ] as [String : Any]
@@ -300,6 +303,11 @@ class TravelData {
         }
     }
     
+    // if loged in, load isLiked data from FB
+    func loadIsLikedDB(travelID:String){
+        let db = Firestore.firestore()
+    }
+    
     func updateLikesData(travelID:String) {
         let db = Firestore.firestore()
         let docRef = db.collection("travelDiary").document(travelID)
@@ -317,10 +325,16 @@ class TravelData {
                     self.newTravelInfo.content = dataDescription["content"] as? Array ?? []
                     self.newTravelInfo.coverImgUrl = dataDescription["coverImgUrl"] as? String ?? ""
                     self.newTravelInfo.createdAt = dataDescription["createdAt"] as? String ?? ""
-                    self.newTravelInfo.likes = (dataDescription["likes"] as? Int)! + 1
+                    self.newTravelInfo.likes = (dataDescription["likes"] as? Int)!
                     self.newTravelInfo.place = dataDescription["place"] as? String ?? ""
                     self.newTravelInfo.shortText = dataDescription["shortText"] as? String ?? ""
                     self.newTravelInfo.title = dataDescription["title"] as? String ?? ""
+                    
+//                    if self.newTravelInfo.isLiked {
+//                        self.newTravelInfo.likes = (dataDescription["likes"] as? Int)! - 1
+//                    } else {
+//                        self.newTravelInfo.likes = (dataDescription["likes"] as? Int)! + 1
+//                    }
                     
                     let dataDict = [
                         "author": self.newTravelInfo.author,
