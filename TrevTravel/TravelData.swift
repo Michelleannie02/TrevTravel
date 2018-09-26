@@ -39,7 +39,7 @@ class TravelData {
         var coverImgUrl = ""
         var coverImg:UIImage?
         var createdAt = ""
-        var likes = ""
+        var likes = 0
         var place = ""
         var shortText = ""
         var title = ""
@@ -80,7 +80,7 @@ class TravelData {
 //                    aDiary.content = document.data()["content"] as? Array ?? [] // Load the specific diary by id again
                     aDiary.coverImgUrl = document.data()["coverImgUrl"] as? String ?? ""
                     aDiary.createdAt = document.data()["createdAt"] as? String ?? ""
-                    aDiary.likes = document.data()["likes"] as? String ?? ""
+                    aDiary.likes = document.data()["likes"] as? Int ?? 0
                     aDiary.place = document.data()["place"] as? String ?? ""
                     aDiary.shortText = document.data()["shortText"] as? String ?? ""
                     aDiary.title = document.data()["title"] as? String ?? ""
@@ -217,7 +217,7 @@ class TravelData {
                     self.newTravelInfo.content = dataDescription["content"] as? Array ?? []
                     self.newTravelInfo.coverImgUrl = dataDescription["coverImgUrl"] as? String ?? ""
                     self.newTravelInfo.createdAt = dataDescription["createdAt"] as? String ?? ""
-                    self.newTravelInfo.likes = dataDescription["likes"] as? String ?? ""
+                    self.newTravelInfo.likes = (dataDescription["likes"] as? Int)!
                     self.newTravelInfo.place = dataDescription["place"] as? String ?? ""
                     self.newTravelInfo.shortText = dataDescription["shortText"] as? String ?? ""
                     self.newTravelInfo.title = dataDescription["title"] as? String ?? ""
@@ -296,6 +296,22 @@ class TravelData {
                 // Reload commentTextView.
                 self.travelDel?.loadCommentsData()
             }
+        }
+    }
+    
+    func updateLikesData(travelID:String) {
+        let db = Firestore.firestore()
+        let docRef = db.collection("travelDiary").document(travelID)
+
+        docRef.getDocument{ (document, error) in
+            if let error = error { print(error) }
+            else if let document = document, document.exists {
+                if let dataDescription = document.data() {
+                    self.newTravelInfo.likes = (dataDescription["likes"] as? Int)! + 1
+                    docRef.setValue(self.newTravelInfo.likes, forKey: "likes")
+//                    self.travelDel?.setTravelData() // 改likes显示数据
+                }
+            } else { print("Document does not exist in database")}
         }
     }
     

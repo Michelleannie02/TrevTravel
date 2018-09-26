@@ -93,9 +93,12 @@ class TravelPage: UIViewController, UIScrollViewDelegate, UITableViewDelegate, U
     
     // comment enter action func
     @IBAction func sendComment() {
+        
+//        travelData.uploadCommentData(travelID: <#T##String#>)
     }
     
     @IBAction func sendLike() {
+        travelData.updateLikesData(travelID: travelID)
     }
     
     

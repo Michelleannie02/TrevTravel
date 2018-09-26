@@ -31,9 +31,8 @@ class NewTravel: UIViewController, UITableViewDelegate, UITextViewDelegate, UITa
     }
     
     @IBAction func saveData() {
-        newTravelData.newTravelInfo.author = "Shan" //
-        newTravelData.newTravelInfo.likes = "0" //
-        newTravelData.newTravelInfo.place = "Vasagatan 22, Stockholm, Sweden" //
+//        newTravelData.newTravelInfo.author = "Shan" //
+        newTravelData.newTravelInfo.place = "Vasagatan 22, Stockholm, Sweden" // Adjust
         newTravelData.newTravelInfo.shortText = newShortText.text ?? ""
         newTravelData.newTravelInfo.title = newTitle.text ?? ""
         
