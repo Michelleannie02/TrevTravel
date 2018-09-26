@@ -91,19 +91,16 @@ class TravelPage: UIViewController, UIScrollViewDelegate, UITableViewDelegate, U
         return cell
     }
     
-    // comment enter action func
     @IBAction func sendComment() {
-        
-//        travelData.uploadCommentData(travelID: <#T##String#>)
     }
     
     @IBAction func sendLike() {
-        travelData.updateLikesData(travelID: travelID)
+        travelData.updateLikesData(travelID:travelID)
     }
-    
     
     @IBAction func chooseEdit() {
     }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
