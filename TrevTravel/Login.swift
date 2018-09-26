@@ -9,13 +9,16 @@
 import UIKit
 import Firebase
 import FirebaseAuth
+import GoogleSignIn
 
 
-class Login: UIViewController, UITextFieldDelegate {
+class Login: UIViewController, UITextFieldDelegate, GIDSignInUIDelegate {
     
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     
+    @IBOutlet weak var GIDSignInButton: UIButton!
+        
     let emailPlaceholder:String = NSLocalizedString("email", comment: "")
     let passwordPlaceholder:String = NSLocalizedString("password", comment: "")
     let reminder:String = NSLocalizedString("reminder", comment: "")
@@ -50,6 +53,9 @@ class Login: UIViewController, UITextFieldDelegate {
         self.passwordTextField.placeholder = passwordPlaceholder
 
         print("Login Email: \(loginUser)")
+        
+        GIDSignIn.sharedInstance().uiDelegate = self
+        GIDSignIn.sharedInstance().signIn()
         
         
     }

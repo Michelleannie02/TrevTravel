@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 import FirebaseAuth
+import GoogleSignIn
 
 class Settings: UIViewController {
     
@@ -71,6 +72,17 @@ class Settings: UIViewController {
             loginBtn.setTitle(logout, for: .normal)
             
         }
+        
+        // if log in with Google
+//        if <#condition#> {
+//            let firebaseAuth = Auth.auth()
+//            do {
+//                try firebaseAuth.signOut()
+//            } catch let signOutError as NSError {
+//                print ("Error signing out: %@", signOutError)
+//            }
+//
+//        }
         // When no user log in, no function
         
     }
