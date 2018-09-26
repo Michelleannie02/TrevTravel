@@ -137,8 +137,8 @@ class TravelPage: UIViewController, UIScrollViewDelegate, UITableViewDelegate, U
         
     }
     
-    @IBAction func chooseEdit() {
-    }
+//    @IBAction func chooseEdit() {
+//    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
