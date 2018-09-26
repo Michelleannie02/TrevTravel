@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="66O-C0-N3p">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="66O-C0-N3p">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -376,7 +374,7 @@
                                             <outlet property="delegate" destination="dp2-Tc-pDO" id="2RP-ja-pkh"/>
                                         </connections>
                                     </tableView>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="5sW-oH-Qcq">
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="5sW-oH-Qcq">
                                         <rect key="frame" x="10" y="455" width="300" height="455"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
@@ -833,7 +831,7 @@
                                                     <constraint firstAttribute="width" constant="45" id="FMQ-pq-mEa"/>
                                                     <constraint firstAttribute="height" constant="45" id="p55-K8-RXd"/>
                                                 </constraints>
-                                                <state key="normal" title="google" image="facebook"/>
+                                                <state key="normal" title="facebook" image="facebook"/>
                                                 <connections>
                                                     <action selector="facebookLogin:" destination="vhv-es-Y5Q" eventType="touchUpInside" id="YT9-ct-cmg"/>
                                                 </connections>
@@ -844,7 +842,7 @@
                                                     <constraint firstAttribute="width" constant="45" id="6G8-Mw-Hg4"/>
                                                     <constraint firstAttribute="height" constant="45" id="wjI-o8-Eee"/>
                                                 </constraints>
-                                                <state key="normal" title="facebook" image="google"/>
+                                                <state key="normal" title="gogole" image="google"/>
                                                 <connections>
                                                     <action selector="googleLogin:" destination="vhv-es-Y5Q" eventType="touchUpInside" id="9sf-SV-FkX"/>
                                                 </connections>
@@ -887,6 +885,8 @@
                         <viewLayoutGuide key="safeArea" id="sBz-OM-R9b"/>
                     </view>
                     <connections>
+                        <outlet property="FBSignInButton" destination="coZ-DB-trz" id="G5d-TI-MZJ"/>
+                        <outlet property="GIDSignInButton" destination="qBG-KQ-JoH" id="xXg-ot-mf5"/>
                         <outlet property="emailTextField" destination="LOI-7q-qpQ" id="Kdb-4m-D3T"/>
                         <outlet property="passwordTextField" destination="4TO-Tx-Ire" id="6RK-gO-69X"/>
                     </connections>

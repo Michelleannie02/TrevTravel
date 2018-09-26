@@ -14,6 +14,8 @@ target 'TrevTravel' do
 	pod 'FirebaseUI/Facebook'
 	pod 'FirebaseUI/Twitter'
 	pod 'FirebaseUI/Phone'
+	pod 'Firebase/Auth'
+	pod 'GoogleSignIn'
 
 
   # Pods for TrevTravel
