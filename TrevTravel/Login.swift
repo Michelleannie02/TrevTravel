@@ -131,17 +131,20 @@ class Login: UIViewController, UITextFieldDelegate, GIDSignInUIDelegate {
         alert.addAction(UIAlertAction(title: okBtn, style: .default, handler: { action in
             switch action.style {
             case .default:
-//                var delegate: Settings!
+
+//                let delegate: Settings!
 //                delegate.back(UIStoryboardSegue)
-                
-                
-                // Navigate to a new controller
-                let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-                let newViewController = storyBoard.instantiateViewController(withIdentifier: "settingController")
-                self.present(newViewController, animated: true, completion: nil)
-                
-                
+ 
                 print("********** default **********")
+
+                // If log in success, navigation to main ViewController
+                if msg == self.loginsuccess {
+                    // Navigate to a new controller
+                    let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                    let newViewController = storyBoard.instantiateViewController(withIdentifier: "settingController") as! Settings
+                    self.navigationController?.pushViewController(newViewController, animated: true)
+                }
+                
             case .cancel:
                 print("********** cancel **********")
             case .destructive:
