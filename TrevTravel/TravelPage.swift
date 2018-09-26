@@ -18,6 +18,7 @@ class TravelPage: UIViewController, UIScrollViewDelegate, UITableViewDelegate, U
     @IBOutlet weak var shotTextView: UITextView!
     @IBOutlet weak var commentsView: UITextView!
     @IBOutlet weak var messageView: UITextField!
+    @IBOutlet weak var likeNum: UILabel!
     
     var travelID = ""
     let travelData = TravelData()
@@ -46,6 +47,7 @@ class TravelPage: UIViewController, UIScrollViewDelegate, UITableViewDelegate, U
 //        loadPageData()
         // 0925 Set textView data when viewWillAppear
         setTravelData()
+        setLikeNumData()
     }
     
     func loadPageData() {
@@ -67,6 +69,8 @@ class TravelPage: UIViewController, UIScrollViewDelegate, UITableViewDelegate, U
         authorLabel.text = travelData.newTravelInfo.author
         changedAtLabel.text = travelData.newTravelInfo.changedAt
         shotTextView.text = travelData.newTravelInfo.shortText
+        
+        likeNum.text = "(" + String(travelData.newTravelInfo.likes) + ")"
     }
   
     func setCommentText() {
@@ -77,6 +81,10 @@ class TravelPage: UIViewController, UIScrollViewDelegate, UITableViewDelegate, U
             commentText += comment.message + "\n\n"
         }
         commentsView.text = commentText
+    }
+    
+    func setLikeNumData() {
+        likeNum.text = "(" + String(travelData.newTravelInfo.likes) + ")"
     }
     
     func tableView(_ tableView:UITableView, numberOfRowsInSection section:Int) -> Int {

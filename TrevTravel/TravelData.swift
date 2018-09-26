@@ -20,6 +20,7 @@ protocol DataDelegate {
 // TravelPage view
 protocol TravelDelegate {
     func setTravelData()
+    func setLikeNumData()
     func loadTable()
     func setCommentText()
     func loadCommentsData()
@@ -334,6 +335,9 @@ class TravelData {
                         ] as [String : Any]
                     
                     docRef.setData(dataDict)
+                    
+                    // change like img and likeLabel value = self.newTravelInfo.likes
+                    self.travelDel?.setLikeNumData()
                 }
             } else { print("Document does not exist in database")}
         }
