@@ -53,7 +53,7 @@ class TravelList: UIViewController, UITableViewDelegate, UITableViewDataSource, 
 //        cell.travelImage?.image = UIImage(named: travelCell.coverImgUrl) // When coverImgUrl is local image. Can try coverImg is nil (not gotten from fb storage) then get as UIImage(named: travelCell.coverImgUrl)
         cell.travelImage?.image = travelCell.coverImg
         cell.shortTextLabel?.text = travelCell.shortText
-        cell.likesLabel?.text = travelCell.likes
+        cell.likesLabel?.text = String(travelCell.likes)
         cell.placeLabel?.text = travelCell.place
         
         return cell
