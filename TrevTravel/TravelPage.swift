@@ -27,6 +27,11 @@ class TravelPage: UIViewController, UIScrollViewDelegate, UITableViewDelegate, U
         travelData.travelDel = self
         // 0925 Load data when viewDidLoad
         loadPageData()
+        loadCommentsData()
+        // In 10 secs reload comments data
+        Timer.scheduledTimer(withTimeInterval: 10.0, repeats: true, block: { (timer) in
+            self.loadCommentsData()
+        })
     }
     
     override func viewDidLayoutSubviews() {
@@ -44,8 +49,12 @@ class TravelPage: UIViewController, UIScrollViewDelegate, UITableViewDelegate, U
     }
     
     func loadPageData() {
-//        travelData.contentArray.removeAll()
         travelData.loadPageDB(travelID: travelID)
+        
+    }
+    
+    func loadCommentsData() {
+        travelData.commentArray.removeAll()
         travelData.loadCommentsDB(travelID: travelID)
     }
     
@@ -60,7 +69,7 @@ class TravelPage: UIViewController, UIScrollViewDelegate, UITableViewDelegate, U
         shotTextView.text = travelData.newTravelInfo.shortText
     }
   
-    func loadCommentText() {
+    func setCommentText() {
         var commentText = ""
         for comment in travelData.commentArray {
             commentText += comment.createdAt + "\n"
@@ -81,6 +90,9 @@ class TravelPage: UIViewController, UIScrollViewDelegate, UITableViewDelegate, U
         cell.parImgView.image = paragraphCell.img
         return cell
     }
+    
+    // comment enter action func
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

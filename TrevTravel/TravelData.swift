@@ -21,7 +21,8 @@ protocol DataDelegate {
 protocol TravelDelegate {
     func setTravelData()
     func loadTable()
-    func loadCommentText()
+    func setCommentText()
+    func loadCommentsData()
 }
 
 class TravelData {
@@ -143,7 +144,7 @@ class TravelData {
             if let error = err {
                 print("Error uploading data to travelDiary: \(error)")
             } else {
-                print("Document saved")
+                print("Travel diary document saved")
             
                 // Upload image to Firebase
                 if self.contentArray.count != 0 { self.uploadImage(self.contentArray) }
@@ -272,10 +273,30 @@ class TravelData {
 
                     self.commentArray.append(aComment)
                 }
-                self.travelDel?.loadCommentText()
+                self.travelDel?.setCommentText()
             }
         }
     }
 
+    func uploadCommentData(travelID:String) {
+        let db = Firestore.firestore()
+        let docRef = db.collection("diaryComments").document(travelID).collection("comments")
+        
+        let dataDict = [
+            "createdAt": self.getCurrentTime(),
+            "message": "",
+            "user": ""
+            ] as [String : Any]
+        
+        docRef.document().setData(dataDict) { (err) in
+            if let error = err {
+                print("Error uploading data to diaryComments: \(error)")
+            } else {
+                print("Comments document saved")
+                // Reload commentTextView.
+                self.travelDel?.loadCommentsData()
+            }
+        }
+    }
     
 }
