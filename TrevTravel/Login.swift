@@ -18,7 +18,8 @@ class Login: UIViewController, UITextFieldDelegate, GIDSignInUIDelegate {
     @IBOutlet weak var passwordTextField: UITextField!
     
     @IBOutlet weak var GIDSignInButton: UIButton!
-        
+    @IBOutlet weak var FBSignInButton: UIButton!
+    
     let emailPlaceholder:String = NSLocalizedString("email", comment: "")
     let passwordPlaceholder:String = NSLocalizedString("password", comment: "")
     let reminder:String = NSLocalizedString("reminder", comment: "")
