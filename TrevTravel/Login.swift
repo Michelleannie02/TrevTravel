@@ -16,6 +16,17 @@ class Login: UIViewController {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     
+    let emailPlaceholder:String = NSLocalizedString("email", comment: "")
+    let passwordPlaceholder:String = NSLocalizedString("password", comment: "")
+    let reminder:String = NSLocalizedString("reminder", comment: "")
+    let okBtn:String = NSLocalizedString("ok", comment: "")
+    let loginError:String = NSLocalizedString("loginerror", comment: "")
+    let loginsuccess:String = NSLocalizedString("loginsuccess", comment: "")
+    let signuperror:String = NSLocalizedString("signuperror", comment: "")
+    let signupsuccess:String = NSLocalizedString("signupsuccess", comment: "")
+
+    
+    
     let loginUser:String = Auth.auth().currentUser?.email ?? "Guest"
     
     let handle = Auth.auth().addStateDidChangeListener { (auth, user) in
@@ -28,41 +39,30 @@ class Login: UIViewController {
             }
         } else {
             // No user is signed in
-            print("No user is logged in")
+            print("No user logged in")
         }
     }
    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.emailTextField.placeholder = "Email"
-        self.passwordTextField.placeholder = "password"
+        self.emailTextField.placeholder = emailPlaceholder
+        self.passwordTextField.placeholder = passwordPlaceholder
 
         print("Login Email: \(loginUser)")
         
-        
-        
-//        let status: String = UserDefaults.standard.string(forKey: "logInStatus")!
-//        if status != "" {
-//            print(status)
-//        } else {
-//            print("no status data")
-//        }
-        
-        // Load "logInStatus" from memory
-//        UserDefaults.standard.string(forKey: "logInStatus")
         
     }
     
     @IBAction func signup(_ sender: Any) {
         Auth.auth().createUser(withEmail: self.emailTextField.text!, password: self.passwordTextField.text!) { (user, error) in
             if user != nil {
-                self.reminder("\(self.emailTextField.text ?? "Success!") has signed up! You can log in now")
+                self.reminder(self.signupsuccess)
                 self.clearInputText(textField: self.emailTextField)
                 self.clearInputText(textField: self.passwordTextField)
             }
             if error != nil {
-                self.reminder("This email is already registered!")
+                self.reminder(self.signuperror)
                 self.clearInputText(textField: self.passwordTextField)
             }
         }
@@ -72,7 +72,7 @@ class Login: UIViewController {
     @IBAction func signin(_ sender: Any) {
         Auth.auth().signIn(withEmail: self.emailTextField.text!, password: self.passwordTextField.text!) { (user, error) in
             if user != nil {
-                self.reminder("You have signed in!")
+                self.reminder(self.loginsuccess)
                 self.clearInputText(textField: self.emailTextField)
                 self.clearInputText(textField: self.passwordTextField)
                 
@@ -80,12 +80,9 @@ class Login: UIViewController {
                 print("New Login Email: \(Auth.auth().currentUser?.email ?? "No user")")
                 
 
-                // Save "logInStatus" to memory
-//                UserDefaults.standard.set(self.emailTextField.text, forKey: "logInStatus")
-//                print(self.emailTextField.text!)
             }
             if error != nil {
-                self.reminder("Email or password incorrect!")
+                self.reminder(self.loginError)
                 self.clearInputText(textField: self.passwordTextField)
             }
         }
@@ -109,10 +106,13 @@ class Login: UIViewController {
     
     
     func reminder(_ msg:String) {
-        let alert = UIAlertController(title: "Reminder", message: msg, preferredStyle: UIAlertControllerStyle.alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
+        let alert = UIAlertController(title: reminder, message: msg, preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: okBtn, style: .default, handler: { action in
             switch action.style {
             case .default:
+//                var delegate: Settings!
+//                delegate.back(UIStoryboardSegue)
+                
                 print("********** default **********")
             case .cancel:
                 print("********** cancel **********")
@@ -129,14 +129,5 @@ class Login: UIViewController {
     }
     
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

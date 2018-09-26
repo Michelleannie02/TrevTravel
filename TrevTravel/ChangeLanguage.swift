@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ChangeLanguage: UIViewController {
+class ChangeLanguage: UIViewController, UIGestureRecognizerDelegate {
 
     @IBOutlet weak var changeToZH: UIButton!
     @IBOutlet weak var changeToEN: UIButton!
@@ -16,21 +16,35 @@ class ChangeLanguage: UIViewController {
     
     @IBOutlet weak var currentLan: UILabel!
     
-    //var currentLanguage = NSLocale.current.languageCode
-    
+    // connect to UserDefaults for System Preferences
+    let userDefault = UserDefaults.standard
+    /*
+     1. initiate:
+        let userDefault = UserDefaults.standard
+     2. set data to UserDefaults:
+        userDefault.set("abc", forKey: "abc")
+        userDefault.set(123, forKey: "def")
+     3.  get data from UserDefaults:
+        userDefault.string(forKey: "abc")
+        userDefault.integer(forKey: "def")
+    */
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Add this line for back function
+        navigationController?.interactivePopGestureRecognizer?.delegate = self
         
+        currentLan.alpha = 0.0
     }
     
     
     
     @IBAction func clickZH() {
-//        currentLan.text = "home".localizableSstring("zh-Hans")
+//        currentLan.text = "home".localizableString("zh-Hans")
 //        Bundle.main.onLanguage()
         changeLanguage("zh-Hans")
+//        self.dismiss(animated: <#T##Bool#>, completion: <#T##(() -> Void)?##(() -> Void)?##() -> Void#>)
     }
     
     @IBAction func clickEN() {
@@ -41,39 +55,51 @@ class ChangeLanguage: UIViewController {
         changeLanguage("sv")
     }
     
-
+//    @IBAction func back(segue: UIStoryboardSegue) {
+//        print("closed")
+//    }
 
     
     
     func changeLanguage(_ lan: String) {
-        // 切换语言前
-        let langArr1 = UserDefaults.standard.value(forKey: "AppleLanguages") as? [Any]
+        // Current Language before changing
+        let langArr1 = userDefault.value(forKey: "AppleLanguages") as? [Any]
         let language1 = langArr1?.first as? String
-        print("*********** Language before changing: \(language1 ?? "")  ***********")
         
-        // 切换语言
+        // Changing
         let lans = [lan]
-        UserDefaults.standard.set(lans, forKey: "AppleLanguages")
+        userDefault.set(lans, forKey: "AppleLanguages")
         
-        // 切换语言后
-        let langArr2 = UserDefaults.standard.value(forKey: "AppleLanguages") as? [Any]
+        // Changed current Language
+        let langArr2 = userDefault.value(forKey: "AppleLanguages") as? [Any]
         let language2 = langArr2?.first as? String
-        print("*********** Language changed to: \(language2 ?? "")  ***********")
+        print("*********** Language change: \(language1 ?? "") → \(language2 ?? "")")
+        print("lan: \(lan)")
         
-        showChangedLanguage(lan)
+        userDefault.set(lan, forKey: "appLanguage")
+        showChangedLanguage(language1!, lan)
 //        buttonColorOfCurrentLanguage(lan)
-        
-        // 重新设置rootViewController
-//        refreshView()
         
     }
     
-    func showChangedLanguage(_ lan:String) {
+    func showChangedLanguage(_ previousLan:String, _ changedLan:String) {
         var remindText = ""
-        remindText += "showChangedLanguage".localizableSstring(lan)
-        remindText += lan.localizableSstring(lan)
+        remindText += "showChangedLanguage".localizableString(previousLan)
+        remindText += changedLan.localizableString(previousLan)
         
+        currentLan.alpha = 1.0
         currentLan.text = remindText
+        // Disappear text after 1 seconds
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+//            UIView.animate(withDuration: 1.0, animations: {
+//                self.currentLan.text = ""
+//            })
+//        }
+        UIView.animate(withDuration: 1.0, delay: 0.5, options: .curveEaseOut, animations: {
+            self.currentLan.alpha = 0.0
+        })
+        
+        
     }
     
     func buttonColorOfCurrentLanguage(_ lan:String) {
@@ -128,7 +154,7 @@ class ChangeLanguage: UIViewController {
 
 public extension String {
 
-    func localizableSstring(_ loc: String) -> String {
+    func localizableString(_ loc: String) -> String {
         let path = Bundle.main.path(forResource: loc, ofType: "lproj")
         let bundle = Bundle(path: path!)
 
