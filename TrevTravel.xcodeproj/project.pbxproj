@@ -10,6 +10,7 @@
 		410F1F64215854F5003495A7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 410F1F66215854F5003495A7 /* InfoPlist.strings */; };
 		410F1F6B2158579A003495A7 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 410F1F6D2158579A003495A7 /* Localizable.strings */; };
 		41399D3621542E770077E6B2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 41399D3521542E770077E6B2 /* GoogleService-Info.plist */; };
+		41B2B251215C26FB00211E6B /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B2B250215C26FB00211E6B /* MapViewController.swift */; };
 		41C5DEDF2158BC1900E90F43 /* ChangeLanguage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C5DEDE2158BC1900E90F43 /* ChangeLanguage.swift */; };
 		41C5DEE921597DB100E90F43 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C5DEE821597DB100E90F43 /* Settings.swift */; };
 		41C5DEEB21597DCF00E90F43 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C5DEEA21597DCF00E90F43 /* Login.swift */; };
@@ -63,6 +64,7 @@
 		410F1F6E215857A5003495A7 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		410F1F6F215857A7003495A7 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/Localizable.strings; sourceTree = "<group>"; };
 		41399D3521542E770077E6B2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		41B2B250215C26FB00211E6B /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		41C5DEDE2158BC1900E90F43 /* ChangeLanguage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeLanguage.swift; sourceTree = "<group>"; };
 		41C5DEE821597DB100E90F43 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		41C5DEEA21597DCF00E90F43 /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
@@ -167,6 +169,7 @@
 				41C5DEDE2158BC1900E90F43 /* ChangeLanguage.swift */,
 				41C5DEE821597DB100E90F43 /* Settings.swift */,
 				41C5DEEA21597DCF00E90F43 /* Login.swift */,
+				41B2B250215C26FB00211E6B /* MapViewController.swift */,
 				74D950DF21426A8100667497 /* Main.storyboard */,
 				74D950E221426A8300667497 /* Assets.xcassets */,
 				74D950E421426A8300667497 /* LaunchScreen.storyboard */,
@@ -496,6 +499,7 @@
 				74D950DC21426A8100667497 /* AppDelegate.swift in Sources */,
 				742AFBB22158E31B0034B7F1 /* TravelPage.swift in Sources */,
 				74F97E812156B43D00CB8825 /* ContentCell.swift in Sources */,
+				41B2B251215C26FB00211E6B /* MapViewController.swift in Sources */,
 				7437C5972151494500158DCC /* NewTravel.swift in Sources */,
 				41C5DEEB21597DCF00E90F43 /* Login.swift in Sources */,
 				749E2DD821500A18007B50F3 /* TravelData.swift in Sources */,
