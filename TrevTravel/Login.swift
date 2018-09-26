@@ -11,7 +11,7 @@ import Firebase
 import FirebaseAuth
 
 
-class Login: UIViewController {
+class Login: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
@@ -55,15 +55,19 @@ class Login: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        
+        emailTextField.becomeFirstResponder()
+        
         let screenWidth = UIScreen.main.bounds.width
-        print("move distance: \(-screenWidth * 33 / 64)")
+        let moveDistance = -screenWidth * 33 / 64
+        print("move distance: \(moveDistance)")
         
         if UIDevice.current.orientation.isLandscape {
-            UIView.animate(withDuration: 0.0, delay: 0.0, options: [], animations: {
-                self.view.transform = CGAffineTransform(translationX: 0, y: -screenWidth * 33 / 64)
-            })
+            self.view.transform = CGAffineTransform(translationX: 0, y: moveDistance)
         }
     }
+
     
     @IBAction func signup(_ sender: Any) {
         Auth.auth().createUser(withEmail: self.emailTextField.text!, password: self.passwordTextField.text!) { (user, error) in
