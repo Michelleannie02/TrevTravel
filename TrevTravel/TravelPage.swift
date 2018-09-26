@@ -85,6 +85,7 @@ class TravelPage: UIViewController, UIScrollViewDelegate, UITableViewDelegate, U
     
     func setLikeNumData() {
         likeNum.text = "(" + String(travelData.newTravelInfo.likes) + ")"
+        
     }
     
     func tableView(_ tableView:UITableView, numberOfRowsInSection section:Int) -> Int {
