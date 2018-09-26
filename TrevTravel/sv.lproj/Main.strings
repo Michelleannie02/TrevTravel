@@ -1,30 +1,30 @@
 
 /* Class = "UILabel"; text = "ShortText"; ObjectID = "3mP-VY-Iua"; */
-"3mP-VY-Iua.text" = "ShortText";
+"3mP-VY-Iua.text" = "KortText";
 
 /* Class = "UIButton"; normalTitle = "Register"; ObjectID = "581-As-ys0"; */
-"581-As-ys0.normalTitle" = "Register";
+"581-As-ys0.normalTitle" = "Registrera";
 
 /* Class = "UILabel"; text = "XXXX-XX-XX"; ObjectID = "69n-cz-oXT"; */
 "69n-cz-oXT.text" = "XXXX-XX-XX";
 
 /* Class = "UIButton"; normalTitle = "PICTURE"; ObjectID = "6wJ-et-hnz"; */
-"6wJ-et-hnz.normalTitle" = "PICTURE";
+"6wJ-et-hnz.normalTitle" = "Bild";
 
 /* Class = "UIButton"; normalTitle = "Tap to login"; ObjectID = "AXh-Mn-hfX"; */
-"AXh-Mn-hfX.normalTitle" = "Tap to login";
+"AXh-Mn-hfX.normalTitle" = "Tryck för att logga in";
 
 /* Class = "UILabel"; text = "Short Text:"; ObjectID = "Dya-45-moY"; */
-"Dya-45-moY.text" = "Short Text:";
+"Dya-45-moY.text" = "Kort Text:";
 
 /* Class = "UITextView"; text = "Input text"; ObjectID = "GY3-Na-zuT"; */
-"GY3-Na-zuT.text" = "Input text";
+"GY3-Na-zuT.text" = "Mata in text";
 
 /* Class = "UILabel"; text = "Place"; ObjectID = "IdV-Ft-cy6"; */
-"IdV-Ft-cy6.text" = "Place";
+"IdV-Ft-cy6.text" = "Plats";
 
 /* Class = "UIButton"; normalTitle = "SAVE"; ObjectID = "aCz-bd-kqB"; */
-"aCz-bd-kqB.normalTitle" = "SAVE";
+"aCz-bd-kqB.normalTitle" = "SPARA";
 
 /* Class = "UITabBarItem"; title = "Add"; ObjectID = "bZA-pl-kO6"; */
 "bZA-pl-kO6.title" = "Ny";
@@ -33,19 +33,19 @@
 "cYB-DK-GwT.title" = "Inställningar";
 
 /* Class = "UITextView"; text = "Input title"; ObjectID = "gUA-XT-Gvw"; */
-"gUA-XT-Gvw.text" = "Input title";
+"gUA-XT-Gvw.text" = "Mata in title";
 
 /* Class = "UIButton"; normalTitle = "Change Language"; ObjectID = "o9W-JD-zgc"; */
-"o9W-JD-zgc.normalTitle" = "Change Language";
+"o9W-JD-zgc.normalTitle" = "Byta Language";
 
 /* Class = "UILabel"; text = "Likes"; ObjectID = "oz7-UC-n8o"; */
-"oz7-UC-n8o.text" = "Likes";
+"oz7-UC-n8o.text" = "Gillar";
 
 /* Class = "UIButton"; normalTitle = "Log in"; ObjectID = "tJy-9d-12b"; */
-"tJy-9d-12b.normalTitle" = "Log in";
+"tJy-9d-12b.normalTitle" = "Logga in";
 
 /* Class = "UIButton"; normalTitle = "Forgot password"; ObjectID = "tmD-kq-9PK"; */
-"tmD-kq-9PK.normalTitle" = "Forgot password";
+"tmD-kq-9PK.normalTitle" = "glömt lösenord";
 
 /* Class = "UITabBarItem"; title = "Home"; ObjectID = "ub1-Yl-TCH"; */
 "ub1-Yl-TCH.title" = "Hem";
@@ -54,10 +54,10 @@
 "unp-dm-N5H.text" = "Title";
 
 /* Class = "UIButton"; normalTitle = "CAMERA"; ObjectID = "unx-hN-FXF"; */
-"unx-hN-FXF.normalTitle" = "CAMERA";
+"unx-hN-FXF.normalTitle" = "KAMERA";
 
 /* Class = "UILabel"; text = "Othe login ways"; ObjectID = "zJa-R6-P6S"; */
-"zJa-R6-P6S.text" = "Othe login ways";
+"zJa-R6-P6S.text" = "Övriga inloggningsmetoder";
 
 /* Class = "UILabel"; text = "Title:"; ObjectID = "zO5-08-8D2"; */
 "zO5-08-8D2.text" = "Title:";

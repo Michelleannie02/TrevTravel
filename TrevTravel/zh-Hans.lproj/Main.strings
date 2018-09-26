@@ -1,30 +1,30 @@
 
 /* Class = "UILabel"; text = "ShortText"; ObjectID = "3mP-VY-Iua"; */
-"3mP-VY-Iua.text" = "ShortText";
+"3mP-VY-Iua.text" = "短文字";
 
 /* Class = "UIButton"; normalTitle = "Register"; ObjectID = "581-As-ys0"; */
-"581-As-ys0.normalTitle" = "Register";
+"581-As-ys0.normalTitle" = "注册";
 
 /* Class = "UILabel"; text = "XXXX-XX-XX"; ObjectID = "69n-cz-oXT"; */
 "69n-cz-oXT.text" = "XXXX-XX-XX";
 
 /* Class = "UIButton"; normalTitle = "PICTURE"; ObjectID = "6wJ-et-hnz"; */
-"6wJ-et-hnz.normalTitle" = "PICTURE";
+"6wJ-et-hnz.normalTitle" = "相册";
 
 /* Class = "UIButton"; normalTitle = "Tap to login"; ObjectID = "AXh-Mn-hfX"; */
-"AXh-Mn-hfX.normalTitle" = "Tap to login";
+"AXh-Mn-hfX.normalTitle" = "点击登录";
 
 /* Class = "UILabel"; text = "Short Text:"; ObjectID = "Dya-45-moY"; */
-"Dya-45-moY.text" = "Short Text:";
+"Dya-45-moY.text" = " 短文字:";
 
 /* Class = "UITextView"; text = "Input text"; ObjectID = "GY3-Na-zuT"; */
-"GY3-Na-zuT.text" = "Input text";
+"GY3-Na-zuT.text" = "输入文字";
 
 /* Class = "UILabel"; text = "Place"; ObjectID = "IdV-Ft-cy6"; */
-"IdV-Ft-cy6.text" = "Place";
+"IdV-Ft-cy6.text" = "地点";
 
 /* Class = "UIButton"; normalTitle = "SAVE"; ObjectID = "aCz-bd-kqB"; */
-"aCz-bd-kqB.normalTitle" = "SAVE";
+"aCz-bd-kqB.normalTitle" = "保存";
 
 /* Class = "UITabBarItem"; title = "Add"; ObjectID = "bZA-pl-kO6"; */
 "bZA-pl-kO6.title" = "添加";
@@ -33,31 +33,31 @@
 "cYB-DK-GwT.title" = "设置";
 
 /* Class = "UITextView"; text = "Input title"; ObjectID = "gUA-XT-Gvw"; */
-"gUA-XT-Gvw.text" = "Input title";
+"gUA-XT-Gvw.text" = "输入标题";
 
 /* Class = "UIButton"; normalTitle = "Change Language"; ObjectID = "o9W-JD-zgc"; */
-"o9W-JD-zgc.normalTitle" = "Change Language";
+"o9W-JD-zgc.normalTitle" = "更换语言";
 
 /* Class = "UILabel"; text = "Likes"; ObjectID = "oz7-UC-n8o"; */
-"oz7-UC-n8o.text" = "Likes";
+"oz7-UC-n8o.text" = "喜欢";
 
 /* Class = "UIButton"; normalTitle = "Log in"; ObjectID = "tJy-9d-12b"; */
-"tJy-9d-12b.normalTitle" = "Log in";
+"tJy-9d-12b.normalTitle" = "登录";
 
 /* Class = "UIButton"; normalTitle = "Forgot password"; ObjectID = "tmD-kq-9PK"; */
-"tmD-kq-9PK.normalTitle" = "Forgot password";
+"tmD-kq-9PK.normalTitle" = "忘记密码";
 
 /* Class = "UITabBarItem"; title = "Home"; ObjectID = "ub1-Yl-TCH"; */
 "ub1-Yl-TCH.title" = "主页";
 
 /* Class = "UILabel"; text = "Title"; ObjectID = "unp-dm-N5H"; */
-"unp-dm-N5H.text" = "Title";
+"unp-dm-N5H.text" = "标题";
 
 /* Class = "UIButton"; normalTitle = "CAMERA"; ObjectID = "unx-hN-FXF"; */
-"unx-hN-FXF.normalTitle" = "CAMERA";
+"unx-hN-FXF.normalTitle" = "相机";
 
 /* Class = "UILabel"; text = "Othe login ways"; ObjectID = "zJa-R6-P6S"; */
-"zJa-R6-P6S.text" = "Othe login ways";
+"zJa-R6-P6S.text" = "其它登录方式";
 
 /* Class = "UILabel"; text = "Title:"; ObjectID = "zO5-08-8D2"; */
-"zO5-08-8D2.text" = "Title:";
+"zO5-08-8D2.text" = "标题:";

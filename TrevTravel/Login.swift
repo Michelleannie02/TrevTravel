@@ -54,6 +54,17 @@ class Login: UIViewController {
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        let screenWidth = UIScreen.main.bounds.width
+        print("move distance: \(-screenWidth * 33 / 64)")
+        
+        if UIDevice.current.orientation.isLandscape {
+            UIView.animate(withDuration: 0.0, delay: 0.0, options: [], animations: {
+                self.view.transform = CGAffineTransform(translationX: 0, y: -screenWidth * 33 / 64)
+            })
+        }
+    }
+    
     @IBAction func signup(_ sender: Any) {
         Auth.auth().createUser(withEmail: self.emailTextField.text!, password: self.passwordTextField.text!) { (user, error) in
             if user != nil {
