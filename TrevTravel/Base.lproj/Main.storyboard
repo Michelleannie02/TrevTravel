@@ -510,6 +510,7 @@
                         <outlet property="authorLabel" destination="xze-Ng-E97" id="REG-Qj-BjW"/>
                         <outlet property="changedAtLabel" destination="Nrn-xZ-Gzp" id="RDy-hQ-0WG"/>
                         <outlet property="commentsView" destination="5sW-oH-Qcq" id="oKz-p0-L9e"/>
+                        <outlet property="likeBtn" destination="BTP-Pq-WsN" id="ZAq-3u-2aI"/>
                         <outlet property="likeNum" destination="RG4-I7-ihZ" id="j1E-JD-HbB"/>
                         <outlet property="messageView" destination="R4q-Vm-luc" id="G35-1M-YUM"/>
                         <outlet property="pageScroll" destination="YFF-QH-HXz" id="YPE-EX-r8Z"/>
