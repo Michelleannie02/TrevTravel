@@ -57,9 +57,6 @@ class Login: UIViewController, UITextFieldDelegate, GIDSignInUIDelegate {
 
         print("Login Email: \(loginUser)")
         
-        GIDSignIn.sharedInstance().uiDelegate = self
-        GIDSignIn.sharedInstance().signIn()
-        
         
     }
     
@@ -100,7 +97,6 @@ class Login: UIViewController, UITextFieldDelegate, GIDSignInUIDelegate {
                 self.clearInputText(textField: self.emailTextField)
                 self.clearInputText(textField: self.passwordTextField)
                 
-
                 print("New Login Email: \(Auth.auth().currentUser?.email ?? "No user")")
                 
 
@@ -121,7 +117,8 @@ class Login: UIViewController, UITextFieldDelegate, GIDSignInUIDelegate {
     }
     
     @IBAction func googleLogin(_ sender: Any) {
-        
+        GIDSignIn.sharedInstance().uiDelegate = self
+        GIDSignIn.sharedInstance().signIn()
     }
     
     @IBAction func facebookLogin(_ sender: Any) {
@@ -136,6 +133,13 @@ class Login: UIViewController, UITextFieldDelegate, GIDSignInUIDelegate {
             case .default:
 //                var delegate: Settings!
 //                delegate.back(UIStoryboardSegue)
+                
+                
+                // Navigate to a new controller
+                let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                let newViewController = storyBoard.instantiateViewController(withIdentifier: "settingController")
+                self.present(newViewController, animated: true, completion: nil)
+                
                 
                 print("********** default **********")
             case .cancel:
