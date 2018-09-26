@@ -9,17 +9,41 @@
 import UIKit
 import Firebase
 
-class NewTravel: UIViewController, UITableViewDelegate, UITextViewDelegate, UITableViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class NewTravel: UIViewController, UITableViewDelegate, UITextViewDelegate, UITableViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
     
-    @IBOutlet weak var newTitle: UITextView!
-    @IBOutlet weak var newShortText: UITextView!
+    @IBOutlet weak var newTitle: UITextField!
+//    @IBOutlet weak var newShortText: UITextField!
+    @IBOutlet weak var newContent: UITextView!
+    
     @IBOutlet weak var contentTable: UITableView!
+    @IBOutlet weak var addressBtn: UIButton!
+
     
     var newTravelData = TravelData()
+    var placeholderLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 //        newTravelData.dataDel = self // If needs DataDelegate method
+        
+        self.newTitle.delegate = self
+        self.newContent.delegate = self
+        
+        // decorate the UITextView(newContent)
+        self.newContent.layer.borderWidth = 1.0
+        self.newContent.layer.borderColor = UIColor.gray.cgColor
+        
+        // newContent PlaceHolder
+        placeholderLabel = UILabel()
+        placeholderLabel.text = "Some describtion of your photos"
+        newContent.addSubview(placeholderLabel)
+        placeholderLabel.frame.origin = CGPoint(x: 5, y: (newContent.font?.pointSize)! / 2)
+        placeholderLabel.textColor = UIColor.lightGray
+        placeholderLabel.isHidden = !newContent.text.isEmpty
+    }
+    
+    func textViewDidChange(_ textView: UITextView) {
+        placeholderLabel.isHidden = !newContent.text.isEmpty
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -33,7 +57,8 @@ class NewTravel: UIViewController, UITableViewDelegate, UITextViewDelegate, UITa
     @IBAction func saveData() {
 //        newTravelData.newTravelInfo.author = "Shan" //
         newTravelData.newTravelInfo.place = "Vasagatan 22, Stockholm, Sweden" // Adjust
-        newTravelData.newTravelInfo.shortText = newShortText.text ?? ""
+        newTravelData.newTravelInfo.shortText = newContent.text ?? ""
+//        newTravelData.newTravelInfo.shortText = newShortText.text ?? ""
         newTravelData.newTravelInfo.title = newTitle.text ?? ""
         
         // upload the saved data to Firebase
@@ -76,5 +101,23 @@ class NewTravel: UIViewController, UITableViewDelegate, UITextViewDelegate, UITa
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    
+    // Hide keyboard when user touch outside
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
+    // Hide keyboard when user tap on return key
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        newTitle.resignFirstResponder()
+        return(true)
+    }
+    
+    private func textFieldShouldReturn(_ textView: UITableView) -> Bool {
+        newContent.resignFirstResponder()
+        return(true)
+    }
+    
     
 }

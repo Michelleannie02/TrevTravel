@@ -57,6 +57,8 @@ class Login: UIViewController, UITextFieldDelegate, GIDSignInUIDelegate {
 
         print("Login Email: \(loginUser)")
         
+        self.emailTextField.delegate = self
+        self.passwordTextField.delegate = self
         
     }
     
@@ -157,6 +159,18 @@ class Login: UIViewController, UITextFieldDelegate, GIDSignInUIDelegate {
     
     func clearInputText(textField: UITextField) {
         textField.text = ""
+    }
+    
+    // Hide keyboard when user touch outside
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
+    // Hide keyboard when user tap on return key
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        emailTextField.resignFirstResponder()
+        passwordTextField.resignFirstResponder()
+        return(true)
     }
     
     
