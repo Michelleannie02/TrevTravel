@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TravelPage: UIViewController, UIScrollViewDelegate, UITableViewDelegate, UITableViewDataSource, UITextViewDelegate, TravelDelegate {
+class TravelPage: UIViewController, UIScrollViewDelegate, UITableViewDelegate, UITableViewDataSource, UITextViewDelegate, UITextFieldDelegate, TravelDelegate {
     
     @IBOutlet weak var pageScroll: UIScrollView!
     @IBOutlet weak var paragraphTable: UITableView!
@@ -17,7 +17,7 @@ class TravelPage: UIViewController, UIScrollViewDelegate, UITableViewDelegate, U
     @IBOutlet weak var changedAtLabel: UILabel!
     @IBOutlet weak var shotTextView: UITextView!
     @IBOutlet weak var commentsView: UITextView!
-    
+    @IBOutlet weak var messageView: UITextField!
     
     var travelID = ""
     let travelData = TravelData()
@@ -92,8 +92,15 @@ class TravelPage: UIViewController, UIScrollViewDelegate, UITableViewDelegate, U
     }
     
     // comment enter action func
+    @IBAction func sendComment() {
+    }
     
-
+    @IBAction func sendLike() {
+    }
+    
+    
+    @IBAction func chooseEdit() {
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
