@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseAuth
 
 class TravelPage: UIViewController, UIScrollViewDelegate, UITableViewDelegate, UITableViewDataSource, UITextViewDelegate, UITextFieldDelegate, TravelDelegate {
     
@@ -19,9 +21,11 @@ class TravelPage: UIViewController, UIScrollViewDelegate, UITableViewDelegate, U
     @IBOutlet weak var commentsView: UITextView!
     @IBOutlet weak var messageView: UITextField!
     @IBOutlet weak var likeNum: UILabel!
+    @IBOutlet weak var likeBtn: UIButton!
     
     var travelID = ""
     let travelData = TravelData()
+    var userEmail = Auth.auth().currentUser?.email! ?? "Guest"
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,6 +33,7 @@ class TravelPage: UIViewController, UIScrollViewDelegate, UITableViewDelegate, U
         // 0925 Load data when viewDidLoad
         loadPageData()
         loadCommentsData()
+        loadIsLikedData()
         // In 10 secs reload comments data
         Timer.scheduledTimer(withTimeInterval: 10.0, repeats: true, block: { (timer) in
             self.loadCommentsData()
@@ -48,6 +53,7 @@ class TravelPage: UIViewController, UIScrollViewDelegate, UITableViewDelegate, U
         // 0925 Set textView data when viewWillAppear
         setTravelData()
         setLikeNumData()
+        setIsLikedImgBtn(isLiked: travelData.isLiked)
     }
     
     func loadPageData() {
@@ -58,6 +64,11 @@ class TravelPage: UIViewController, UIScrollViewDelegate, UITableViewDelegate, U
     func loadCommentsData() {
         travelData.commentArray.removeAll()
         travelData.loadCommentsDB(travelID: travelID)
+    }
+    
+    func loadIsLikedData() {
+        if userEmail != "Guest" { travelData.loadIsLikedDB(travelID: travelID, userEmail: userEmail) }
+        else { travelData.isLiked = false }
     }
     
     func loadTable() {
@@ -88,6 +99,14 @@ class TravelPage: UIViewController, UIScrollViewDelegate, UITableViewDelegate, U
         
     }
     
+    func setIsLikedImgBtn(isLiked:Bool) {
+        if isLiked {
+            likeBtn.setImage(UIImage(named: "like_after"), for: UIControlState.normal)
+        } else {
+            likeBtn.setImage(UIImage(named: "like_before"), for: UIControlState.normal)
+        }
+    }
+    
     func tableView(_ tableView:UITableView, numberOfRowsInSection section:Int) -> Int {
         return travelData.contentArray.count
     }
@@ -101,14 +120,25 @@ class TravelPage: UIViewController, UIScrollViewDelegate, UITableViewDelegate, U
     }
     
     @IBAction func sendComment() {
+//        if userEmail != "Guest" {
+//            travelData.newComment.message = commentsView.text ?? ""
+//            travelData.uploadCommentData(travelID: travelID, userEmail: userEmail)
+//        }
+        let aMessage = messageView.text ?? ""
+        travelData.uploadCommentData(travelID: travelID, userEmail: userEmail, message: aMessage)
     }
     
     @IBAction func sendLike() {
-        travelData.updateLikesData(travelID:travelID)
+        if userEmail != "Guest" { travelData.updateLikesData(travelID:travelID, userEmail:userEmail) }
+        else {
+            // 提示要log in
+            print("Log in before like it!")
+        }
+        
     }
     
-    @IBAction func chooseEdit() {
-    }
+//    @IBAction func chooseEdit() {
+//    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

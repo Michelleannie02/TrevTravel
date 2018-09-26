@@ -21,6 +21,7 @@ protocol DataDelegate {
 protocol TravelDelegate {
     func setTravelData()
     func setLikeNumData()
+    func setIsLikedImgBtn(isLiked:Bool)
     func loadTable()
     func setCommentText()
     func loadCommentsData()
@@ -282,14 +283,14 @@ class TravelData {
         }
     }
 
-    func uploadCommentData(travelID:String) {
+    func uploadCommentData(travelID:String, userEmail:String, message:String) {
         let db = Firestore.firestore()
         let docRef = db.collection("diaryComments").document(travelID).collection("comments")
         
         let dataDict = [
             "createdAt": self.getCurrentTime(),
-            "message": "",
-            "user": ""
+            "message": message,
+            "user": userEmail
             ] as [String : Any]
         
         docRef.document().setData(dataDict) { (err) in
@@ -304,37 +305,67 @@ class TravelData {
     }
     
     // if loged in, load isLiked data from FB
-    func loadIsLikedDB(travelID:String){
+    func loadIsLikedDB(travelID:String, userEmail:String){
         let db = Firestore.firestore()
+        let docRef = db.collection("likeDiary").document(travelID).collection("isLiked").document(userEmail)
+        
+        docRef.getDocument { (document, error) in
+            if let error = error { print(error) }
+            else if let document = document, document.exists {
+                if let dataDescription = document.data() {
+                    self.isLiked = dataDescription["isLiked"] as? Bool ?? false
+                    
+                    self.travelDel?.setIsLikedImgBtn(isLiked: self.isLiked)
+                }
+            }
+        }
     }
     
-    func updateLikesData(travelID:String) {
+    func updateLikesData(travelID:String, userEmail:String) {
+        var afterLiking:Bool
+        var didLike:Int
+        if self.isLiked {
+            afterLiking = false
+            didLike = -1
+        } else {
+            afterLiking = true
+            didLike = 1
+        }
+        
+        let db = Firestore.firestore()
+        let likeRef = db.collection("likeDiary").document(travelID).collection("isLiked").document(userEmail)
+        let dataDict = ["isLiked": afterLiking] as [String : Any]
+        likeRef.setData(dataDict){ (err) in
+            if let error = err {
+                print("Error updating data to likeDiary: \(error)")
+            } else {
+                print("Like status changed")
+                self.isLiked = afterLiking
+                self.travelDel?.setIsLikedImgBtn(isLiked: self.isLiked)
+                
+                // update travelDiary likes number
+                self.updateLikeNumData(travelID:travelID, didLike:didLike)
+            }
+        }
+    }
+    
+    func updateLikeNumData(travelID:String, didLike:Int){
         let db = Firestore.firestore()
         let docRef = db.collection("travelDiary").document(travelID)
-
+        
         docRef.getDocument{ (document, error) in
             if let error = error { print(error) }
             else if let document = document, document.exists {
                 if let dataDescription = document.data() {
-//                    self.newTravelInfo.likes = (dataDescription["likes"] as? Int)! + 1
-//                    docRef.setValue(self.newTravelInfo.likes, forKey: "likes")
-//                    self.travelDel?.setTravelData() // 改likes显示数据
-                    
                     self.newTravelInfo.author = dataDescription["author"] as? String ?? ""
                     self.newTravelInfo.changedAt = dataDescription["changedAt"] as? String ?? ""
                     self.newTravelInfo.content = dataDescription["content"] as? Array ?? []
                     self.newTravelInfo.coverImgUrl = dataDescription["coverImgUrl"] as? String ?? ""
                     self.newTravelInfo.createdAt = dataDescription["createdAt"] as? String ?? ""
-                    self.newTravelInfo.likes = (dataDescription["likes"] as? Int)!
+                    self.newTravelInfo.likes = (dataDescription["likes"] as? Int)! + didLike
                     self.newTravelInfo.place = dataDescription["place"] as? String ?? ""
                     self.newTravelInfo.shortText = dataDescription["shortText"] as? String ?? ""
                     self.newTravelInfo.title = dataDescription["title"] as? String ?? ""
-                    
-//                    if self.newTravelInfo.isLiked {
-//                        self.newTravelInfo.likes = (dataDescription["likes"] as? Int)! - 1
-//                    } else {
-//                        self.newTravelInfo.likes = (dataDescription["likes"] as? Int)! + 1
-//                    }
                     
                     let dataDict = [
                         "author": self.newTravelInfo.author,
@@ -350,7 +381,6 @@ class TravelData {
                     
                     docRef.setData(dataDict)
                     
-                    // change like img and likeLabel value = self.newTravelInfo.likes
                     self.travelDel?.setLikeNumData()
                 }
             } else { print("Document does not exist in database")}
