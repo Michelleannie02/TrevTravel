@@ -110,6 +110,9 @@ class Login: UIViewController {
         alert.addAction(UIAlertAction(title: okBtn, style: .default, handler: { action in
             switch action.style {
             case .default:
+//                var delegate: Settings!
+//                delegate.back(UIStoryboardSegue)
+                
                 print("********** default **********")
             case .cancel:
                 print("********** cancel **********")

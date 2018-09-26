@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ChangeLanguage: UIViewController {
+class ChangeLanguage: UIViewController, UIGestureRecognizerDelegate {
 
     @IBOutlet weak var changeToZH: UIButton!
     @IBOutlet weak var changeToEN: UIButton!
@@ -32,6 +32,9 @@ class ChangeLanguage: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Add this line for back function
+        navigationController?.interactivePopGestureRecognizer?.delegate = self
+        
         currentLan.alpha = 0.0
     }
     
@@ -41,7 +44,7 @@ class ChangeLanguage: UIViewController {
 //        currentLan.text = "home".localizableString("zh-Hans")
 //        Bundle.main.onLanguage()
         changeLanguage("zh-Hans")
-        self.dismiss(animated: <#T##Bool#>, completion: <#T##(() -> Void)?##(() -> Void)?##() -> Void#>)
+//        self.dismiss(animated: <#T##Bool#>, completion: <#T##(() -> Void)?##(() -> Void)?##() -> Void#>)
     }
     
     @IBAction func clickEN() {
@@ -52,7 +55,9 @@ class ChangeLanguage: UIViewController {
         changeLanguage("sv")
     }
     
-
+//    @IBAction func back(segue: UIStoryboardSegue) {
+//        print("closed")
+//    }
 
     
     
