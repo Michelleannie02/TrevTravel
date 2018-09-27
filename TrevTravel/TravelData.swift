@@ -10,6 +10,7 @@ import UIKit
 import Firebase
 import FirebaseFirestore
 import FirebaseStorage
+import FirebaseAuth
 import Foundation
 
 // Home
@@ -61,6 +62,7 @@ class TravelData {
     }
     
     var travelArray:[TravelInfo] = []
+    var searchArray:[TravelInfo] = []
     var contentArray:[Content] = [] // Content Table View, TravelPage
     var content:Array<String> = [] // Save content's info when add a picture
     var commentArray:[Comment] = [] // Travel Page

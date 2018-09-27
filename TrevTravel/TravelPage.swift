@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 import FirebaseAuth
+import GoogleSignIn
 
 class TravelPage: UIViewController, UIScrollViewDelegate, UITableViewDelegate, UITableViewDataSource, UITextViewDelegate, UITextFieldDelegate, TravelDelegate {
     
