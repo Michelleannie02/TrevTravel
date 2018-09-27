@@ -34,9 +34,13 @@ class TravelList: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.placeholder = "Search"
-        navigationItem.searchController = searchController // Valid only ios11 or newer
+        if #available(iOS 11.0, *) {
+            navigationItem.searchController = searchController // Valid only ios11 or newer
+        } else {
+            // Fallback on earlier versions
+            travelTable.tableHeaderView = searchController.searchBar // added in ch version, can older ios10
+        }
         definesPresentationContext = true
-//        travelTable.tableHeaderView = searchController.searchBar // added in ch version, can older ios10
 
 //        travelTable.separatorStyle = UITableViewCellSeparatorStyle.none // Display cell line
         
