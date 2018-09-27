@@ -32,6 +32,7 @@ class NewTravel: UIViewController, UITableViewDelegate, UITextViewDelegate, UITa
     var newTravelData = TravelData()
     var placeholderLabel: UILabel!
     var userEmail = "Guest"
+    var address:String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -170,7 +171,36 @@ class NewTravel: UIViewController, UITableViewDelegate, UITextViewDelegate, UITa
         self.loadTable()
 
     }
-
     
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if segue.identifier == "showMap" {
+//            if let mPage = segue.destination as? MapPage {
+//                mPage.restName = restData.oneRestaurant.name
+//                mPage.address = restData.oneRestaurant.adress
+//            }
+//        }
+//    }
+//
+//    @IBAction func rateRestaurant(segue: UIStoryboardSegue) {
+//        if let rating = segue.identifier, let rate = Double(rating)  {
+//
+//            betyg = (antal*betyg + rate)/(antal+1.0)
+//            antal += 1
+//            reviewButton.setTitle("Betyg: \(betyg)", for: .normal)
+//            //                    print("Betyg \(betyg). Satta betyg \(antal)")
+//        }
+//    }
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "" {
+            print("prepare segue")
+        }
+    }
+    
+    @IBAction func getAddress(segue: UIStoryboardSegue) {
+//        if let inputAddress = segue.identifier, let newAddress = inputAddress {
+//
+//        }
+    }
     
 }
