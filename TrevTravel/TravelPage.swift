@@ -125,11 +125,11 @@ class TravelPage: UIViewController, UIScrollViewDelegate, UITableViewDelegate, U
     }
     
     @IBAction func sendComment() {
-        if userEmail != "Guest" {
+        if userEmail == "Guest" {
+            self.reminder(self.remindLogin)
+        } else {
             let aMessage = messageView.text ?? ""
             travelData.uploadCommentData(travelID: travelID, userEmail: userEmail, message: aMessage)
-        } else {
-            
         }
 //        let aMessage = messageView.text ?? ""
 //        travelData.uploadCommentData(travelID: travelID, userEmail: userEmail, message: aMessage)
