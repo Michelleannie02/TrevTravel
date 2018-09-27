@@ -209,14 +209,14 @@
                                 </connections>
                             </button>
                             <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6wJ-et-hnz">
-                                <rect key="frame" x="81.5" y="184" width="80" height="32"/>
-                                <state key="normal" title="Photo" image="photos"/>
+                                <rect key="frame" x="81.5" y="184" width="53" height="32"/>
+                                <state key="normal" image="photos"/>
                                 <connections>
                                     <action selector="newPicture:" destination="zJZ-Vr-nXE" eventType="touchUpInside" id="wlx-Ps-Jg2"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OA8-Py-k9P">
-                                <rect key="frame" x="193.5" y="184" width="106.5" height="32"/>
+                                <rect key="frame" x="142.5" y="184" width="157.5" height="32"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="32" id="6cC-Ko-Kcw"/>
                                 </constraints>
@@ -288,11 +288,11 @@
                             <constraint firstItem="Lv4-pc-8hv" firstAttribute="bottom" secondItem="aCz-bd-kqB" secondAttribute="bottom" constant="5" id="LNb-rk-v4a"/>
                             <constraint firstItem="aCz-bd-kqB" firstAttribute="top" secondItem="F93-xf-IAg" secondAttribute="bottom" id="QHm-g0-wut"/>
                             <constraint firstItem="unx-hN-FXF" firstAttribute="leading" secondItem="Lv4-pc-8hv" secondAttribute="leading" constant="20" id="XSZ-OA-cdJ"/>
-                            <constraint firstItem="6wJ-et-hnz" firstAttribute="width" secondItem="Lv4-pc-8hv" secondAttribute="width" multiplier="1:4" id="aYd-RB-3Ch"/>
+                            <constraint firstItem="6wJ-et-hnz" firstAttribute="width" secondItem="Lv4-pc-8hv" secondAttribute="width" multiplier="1:6" id="aYd-RB-3Ch"/>
+                            <constraint firstItem="OA8-Py-k9P" firstAttribute="leading" secondItem="6wJ-et-hnz" secondAttribute="trailing" constant="8" id="cMW-r2-NL5"/>
                             <constraint firstItem="Lv4-pc-8hv" firstAttribute="trailing" secondItem="OA8-Py-k9P" secondAttribute="trailing" constant="20" id="ed3-7I-Z1Y"/>
                             <constraint firstItem="Lv4-pc-8hv" firstAttribute="trailing" secondItem="hZs-kM-QJX" secondAttribute="trailing" constant="20" id="ib4-jR-Mce"/>
                             <constraint firstItem="Hne-fc-VeI" firstAttribute="top" secondItem="hZs-kM-QJX" secondAttribute="bottom" constant="8" id="jto-V4-n52"/>
-                            <constraint firstItem="OA8-Py-k9P" firstAttribute="width" secondItem="F93-xf-IAg" secondAttribute="width" multiplier="1:3" id="m0g-KH-P5k"/>
                             <constraint firstItem="Lv4-pc-8hv" firstAttribute="trailing" secondItem="F93-xf-IAg" secondAttribute="trailing" id="oAg-qY-5DO"/>
                             <constraint firstItem="Lv4-pc-8hv" firstAttribute="trailing" secondItem="aCz-bd-kqB" secondAttribute="trailing" constant="20" id="oDT-vH-6as"/>
                             <constraint firstItem="hZs-kM-QJX" firstAttribute="top" secondItem="Lv4-pc-8hv" secondAttribute="top" constant="8" id="r3j-Fi-Ra0"/>
@@ -1095,11 +1095,11 @@
         <image name="google" width="64" height="64"/>
         <image name="home" width="32" height="32"/>
         <image name="language" width="32" height="32"/>
-        <image name="like_before" width="64" height="64"/>
-        <image name="likes" width="64" height="64"/>
+        <image name="like_before" width="32" height="32"/>
+        <image name="likes" width="32" height="32"/>
         <image name="location" width="32" height="32"/>
         <image name="photos" width="32" height="32"/>
-        <image name="placeholder" width="64" height="64"/>
+        <image name="placeholder" width="32" height="32"/>
         <image name="setting" width="32" height="32"/>
         <image name="travel" width="970" height="450"/>
         <image name="user" width="32" height="32"/>
