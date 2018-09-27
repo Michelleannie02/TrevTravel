@@ -85,7 +85,7 @@ class NewTravel: UIViewController, UITableViewDelegate, UITextViewDelegate, UITa
         } else {
             newTravelData.newTravelInfo.author = userEmail
             
-            newTravelData.newTravelInfo.place = userDefault.string(forKey: "returnAddress")!
+            newTravelData.newTravelInfo.place = userDefault.string(forKey: "returnAddress") ?? ""
             newTravelData.newTravelInfo.shortText = newContent.text ?? ""
             newTravelData.newTravelInfo.title = newTitle.text ?? ""
             
