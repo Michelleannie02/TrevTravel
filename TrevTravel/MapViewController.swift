@@ -10,37 +10,28 @@ import UIKit
 import MapKit
 import CoreLocation
 
-class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
+class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate, UITextFieldDelegate {
 
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var mapTypeBtn: UISegmentedControl!
     @IBOutlet weak var doneButton: UIBarButtonItem!
-    @IBOutlet weak var tempTextField: UITextField!
     
     // textField is added programlly
     @IBOutlet weak var searchTextField: UITextField!
     
     var address:String = ""
     var location:CLLocation = CLLocation(latitude: 59.347582, longitude: 18.110607)
-    
+    let locationManager = CLLocationManager()
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         
-        showMap()
         addSearchBarOnNavigationBar()
-        searchTextField.delegate = self as? UITextFieldDelegate
+        findMyLocation()
         
-//        let inPutAddress = searchTextField.text
-//        print(inPutAddress ?? "No input")
-//        print(inPutAddress == "")
-        
-//        var button = UIButton()
-//        button.addTarget(self, action: #selector(self.buttonClicked(sender:)), for: .touchUpInside)
-        
-        stringToLocation("450 Washington St, Boston, MA 02111, USA")
+//        stringToLocation("450 Washington St, Boston, MA 02111, USA")
     }
     
     
@@ -57,7 +48,10 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
             // Use your location
             print("location2: \(location.coordinate.latitude)")
             
-            
+            // showMap
+            let latitude = location.coordinate.latitude
+            let longitude = location.coordinate.longitude
+            self.showMap(latitude, longitude)
             
             
         }
@@ -65,9 +59,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         
     }
     
-    func showMap() {
-        // 59.347582, 18.110607
-        let location = CLLocationCoordinate2DMake(59.347582, 18.110607)
+    func showMap(_ latitude:Double, _ longitude:Double) {
+        let location = CLLocationCoordinate2DMake(latitude, longitude)
         let span = MKCoordinateSpanMake(0.002, 0.002)
         let region = MKCoordinateRegionMake(location, span)
         mapView.setRegion(region, animated: true)
@@ -78,7 +71,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         // get a pin
         let annotation = MKPointAnnotation()
         annotation.coordinate = location
-        annotation.title = "Stockholm"
+        annotation.title = ""
         mapView.addAnnotation(annotation)
     }
     
@@ -101,7 +94,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         textField.returnKeyType = UIReturnKeyType.search
         textField.clearButtonMode = UITextFieldViewMode.whileEditing
         textField.contentVerticalAlignment = UIControlContentVerticalAlignment.center
-        textField.delegate = self as? UITextFieldDelegate
+        textField.delegate = self
 
         searchTextField = textField
         self.view.addSubview(searchTextField)
@@ -111,11 +104,18 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     }
     
     
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField == searchTextField {
-            print("点击了搜索")
-            print(textField.text ?? "no text")
-            print(textField.text == "")
+            
+            let inPutAddress = searchTextField.text ?? ""
+            print(inPutAddress)
+
+            if inPutAddress != "" {
+                stringToLocation(inPutAddress)
+            }
+            
+            
+            
             textField.resignFirstResponder()
             return false
         }
@@ -138,13 +138,19 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     }
     
     @IBAction func doneSearch(_ sender: Any) {
-    
+        
+        self.navigationController?.popViewController(animated: false)
     }
     
-    
-//    func buttonClicked(sender: UIButton){
-//        print("button Clicked")
-//    }
+    func findMyLocation() {
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.requestWhenInUseAuthorization()
+        
+        if CLLocationManager.locationServicesEnabled() {
+            locationManager.startUpdatingLocation()
+        }
+    }
     
     
     /*
