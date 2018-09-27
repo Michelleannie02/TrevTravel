@@ -26,6 +26,7 @@ class NewTravel: UIViewController, UITableViewDelegate, UITextViewDelegate, UITa
         super.viewDidLoad()
 //        newTravelData.dataDel = self // If needs DataDelegate method
         
+        
         self.newTitle.delegate = self
         self.newContent.delegate = self
         

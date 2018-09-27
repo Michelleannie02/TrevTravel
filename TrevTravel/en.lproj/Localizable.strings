@@ -26,7 +26,7 @@
 "ok" = "OK";
 "loginerror" = "Email or password incorrect!";
 "loginsuccess" = "You have signed in!";
-"signuperror" = "This email is already registered!";
+"signuperror" = "Enter a correct information, or this email is already registered!";
 "signupsuccess" = "Congratulation, you can log in now";
 "" = "";
 "" = "";
