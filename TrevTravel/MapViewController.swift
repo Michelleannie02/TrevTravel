@@ -29,7 +29,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         super.viewDidLoad()
         addSearchBarOnNavigationBar()
 
-        address = "Stortorget 2, 103 16 Stockholm"
+//        address = "Stortorget 2, 103 16 Stockholm"
         // Receive data from segue
         if searchTextField != nil || address != "" {
             searchTextField.text = address
