@@ -132,7 +132,12 @@ class TravelData {
     
     // Add a travel diary
     func uploadData() {
-        if newTravelInfo.coverImgUrl == "" { newTravelInfo.coverImgUrl = self.content[0] }
+        if self.contentArray.count != 0 {
+            if newTravelInfo.coverImgUrl == "" { newTravelInfo.coverImgUrl = self.content[0] }
+        } else {
+            newTravelInfo.coverImgUrl = ""
+        }
+        
         
         let db = Firestore.firestore()
         let dataDict = [

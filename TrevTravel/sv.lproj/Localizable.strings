@@ -28,7 +28,7 @@
 "loginsuccess" = "Du har loggat in!";
 "signuperror" = "Ange ett korrekt information, eller e-posten är redan registrerat!";
 "signupsuccess" = "Grattis, du kan logga in nu";
-"" = "";
+"remindLogin" = "Logga in innan du gillar det!";
 "" = "";
 "" = "";
 "" = "";
