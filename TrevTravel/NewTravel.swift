@@ -20,8 +20,15 @@ class NewTravel: UIViewController, UITableViewDelegate, UITextViewDelegate, UITa
     @IBOutlet weak var contentTable: UITableView!
     @IBOutlet weak var addressBtn: UIButton!
 
+    // Translation
     let reminder:String = NSLocalizedString("reminder", comment: "")
     let okBtn:String = NSLocalizedString("ok", comment: "")
+    let noContentMsg:String = NSLocalizedString("nocontentmsg", comment: "")
+    let noLoginMsg:String = NSLocalizedString("nologinmsg", comment: "")
+    let saveSuccessMsg:String = NSLocalizedString("savesuccessmsg", comment: "")
+    let guest:String = NSLocalizedString("guest", comment: "")
+    let contentTextPlaceHolder:String = NSLocalizedString("contenttextplaceholder", comment: "")
+    
     var newTravelData = TravelData()
     var placeholderLabel: UILabel!
     var userEmail = "Guest"
@@ -40,7 +47,7 @@ class NewTravel: UIViewController, UITableViewDelegate, UITextViewDelegate, UITa
         
         // newContent PlaceHolder
         placeholderLabel = UILabel()
-        placeholderLabel.text = "Some describtion of your photos"
+        placeholderLabel.text = contentTextPlaceHolder
         newContent.addSubview(placeholderLabel)
         placeholderLabel.frame.origin = CGPoint(x: 5, y: (newContent.font?.pointSize)! / 2)
         placeholderLabel.textColor = UIColor.lightGray
@@ -53,7 +60,7 @@ class NewTravel: UIViewController, UITableViewDelegate, UITextViewDelegate, UITa
     
     override func viewWillAppear(_ animated: Bool) {
         
-        userEmail = Auth.auth().currentUser?.email! ?? "Guest"
+        userEmail = Auth.auth().currentUser?.email! ?? guest
         
         loadTable()
     }
@@ -64,23 +71,22 @@ class NewTravel: UIViewController, UITableViewDelegate, UITextViewDelegate, UITa
     
     @IBAction func saveData() {
         
-        if newTitle.text == "" {
-            reminder("Write someting")
-        } else if userEmail == "Guest" {
-            reminder("You need to log in first")
+        if userEmail == guest {
+            reminder(noLoginMsg)
+        } else if newTitle.text == "" {
+            reminder(noContentMsg)
         } else {
             newTravelData.newTravelInfo.author = userEmail
             
             newTravelData.newTravelInfo.place = "Vasagatan 22, Stockholm, Sweden" // Adjust
             newTravelData.newTravelInfo.shortText = newContent.text ?? ""
-    //        newTravelData.newTravelInfo.shortText = newShortText.text ?? ""
             newTravelData.newTravelInfo.title = newTitle.text ?? ""
             
             // upload the saved data to Firebase
             newTravelData.uploadData()
             
-            reminder("Save Success!")
-            clearText()
+            reminder(saveSuccessMsg)
+            
         }
     }
     
@@ -142,7 +148,9 @@ class NewTravel: UIViewController, UITableViewDelegate, UITextViewDelegate, UITa
         alert.addAction(UIAlertAction(title: okBtn, style: .default, handler: { action in
             switch action.style {
             case .default:
-//                self.navigationController?.popViewController(animated: false)
+                if msg == self.saveSuccessMsg {
+                    self.clearContent()
+                }
                 print("********** default **********")
             case .cancel:
                 print("********** cancel **********")
@@ -154,7 +162,7 @@ class NewTravel: UIViewController, UITableViewDelegate, UITextViewDelegate, UITa
         
     }
     
-    func clearText() {
+    func clearContent() {
         newTitle.text = ""
         newContent.text = ""
 
