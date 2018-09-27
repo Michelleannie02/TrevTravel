@@ -26,7 +26,10 @@ class TravelPage: UIViewController, UIScrollViewDelegate, UITableViewDelegate, U
     
     var travelID = ""
     let travelData = TravelData()
-    var userEmail = Auth.auth().currentUser?.email! ?? "Guest"
+    var userEmail = "Guest"
+    let reminder:String = NSLocalizedString("reminder", comment: "")
+    let okBtn:String = NSLocalizedString("ok", comment: "")
+    let remindLogin:String = NSLocalizedString("remindLogin", comment: "")
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,6 +52,7 @@ class TravelPage: UIViewController, UIScrollViewDelegate, UITableViewDelegate, U
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        userEmail = Auth.auth().currentUser?.email! ?? "Guest"
         // 0925 Load data when viewDidLoad
 //        loadPageData()
         // 0925 Set textView data when viewWillAppear
@@ -121,25 +125,44 @@ class TravelPage: UIViewController, UIScrollViewDelegate, UITableViewDelegate, U
     }
     
     @IBAction func sendComment() {
-//        if userEmail != "Guest" {
-//            travelData.newComment.message = commentsView.text ?? ""
-//            travelData.uploadCommentData(travelID: travelID, userEmail: userEmail)
-//        }
-        let aMessage = messageView.text ?? ""
-        travelData.uploadCommentData(travelID: travelID, userEmail: userEmail, message: aMessage)
+        if userEmail != "Guest" {
+            let aMessage = messageView.text ?? ""
+            travelData.uploadCommentData(travelID: travelID, userEmail: userEmail, message: aMessage)
+        } else {
+            
+        }
+//        let aMessage = messageView.text ?? ""
+//        travelData.uploadCommentData(travelID: travelID, userEmail: userEmail, message: aMessage)
     }
     
     @IBAction func sendLike() {
         if userEmail != "Guest" { travelData.updateLikesData(travelID:travelID, userEmail:userEmail) }
         else {
             // 提示要log in
-            print("Log in before like it!")
+            self.reminder(self.remindLogin)
+            print("Log in before you like it!")
         }
         
     }
     
 //    @IBAction func chooseEdit() {
 //    }
+    
+    func reminder(_ msg:String) {
+        let alert = UIAlertController(title: reminder, message: msg, preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: okBtn, style: .default, handler: { action in
+            switch action.style {
+            case .default:
+                print("********** default **********")
+            case .cancel:
+                print("********** cancel **********")
+            case .destructive:
+                print("********** destructive **********")
+            }
+        }))
+        self.present(alert, animated: true, completion: nil)
+        
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
