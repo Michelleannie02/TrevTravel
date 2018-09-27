@@ -217,7 +217,7 @@ class TravelData {
         return dformatter.string(from: now as Date)
     }
     
-    func loadPageDB(travelID:String) {
+    func loadPageDB(travelID:String, userEmail:String) {
         let db = Firestore.firestore()
         let docRef = db.collection("travelDiary").document(travelID)
         docRef.getDocument { (document, error) in
@@ -235,6 +235,10 @@ class TravelData {
                     self.newTravelInfo.title = dataDescription["title"] as? String ?? ""
                     
                     self.travelDel?.setTravelData()
+                    
+                    if self.newTravelInfo.likes > 0 && userEmail != "Guest" {
+                        self.loadIsLikedDB(travelID: travelID, userEmail: userEmail)
+                    }
                     
                     if self.newTravelInfo.content.count > 0 {
                         self.loadImages(imgUrlArray: self.newTravelInfo.content)
