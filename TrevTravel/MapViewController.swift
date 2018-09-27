@@ -16,6 +16,10 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     @IBOutlet weak var mapTypeBtn: UISegmentedControl!
     @IBOutlet weak var doneButton: UIBarButtonItem!
     
+    var address:String = ""
+    var location:CLLocation = CLLocation(latitude: 59.347582, longitude: 18.110607)
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,15 +29,12 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
 
         addSearchBarOnNavigationBar()
         
-        let getlocation = stringToLocation("450 Washington St, Boston, MA 02111, USA")
-        print("getlocation: \(getlocation.coordinate.latitude)")
+        stringToLocation("450 Washington St, Boston, MA 02111, USA")
     }
     
     
-    func stringToLocation(_ address:String) -> CLLocation {
+    func stringToLocation(_ address:String) {
         
-//        let address = "Malmvägen 1, 115 41 Stockholm"
-        var returnLocation:CLLocation = CLLocation(latitude: 59.347582, longitude: 18.110607)
         
         let geoCoder = CLGeocoder()
         geoCoder.geocodeAddressString(address) { (placemarks, error) in
@@ -44,14 +45,13 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
                     // handle no location found
                     return
             }
-            returnLocation = location
-            print("location: \(location.coordinate.latitude)")
             // Use your location
+            print("location2: \(location.coordinate.latitude)")
+            
+            
+            
+            
         }
-        
-        print("return: \(returnLocation.coordinate.latitude)")
-
-        return returnLocation
     }
     
     func showMap() {

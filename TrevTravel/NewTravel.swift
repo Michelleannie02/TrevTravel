@@ -8,6 +8,8 @@
 
 import UIKit
 import Firebase
+import FirebaseAuth
+import GoogleSignIn
 
 class NewTravel: UIViewController, UITableViewDelegate, UITextViewDelegate, UITableViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
     
@@ -18,9 +20,11 @@ class NewTravel: UIViewController, UITableViewDelegate, UITextViewDelegate, UITa
     @IBOutlet weak var contentTable: UITableView!
     @IBOutlet weak var addressBtn: UIButton!
 
-    
+    let reminder:String = NSLocalizedString("reminder", comment: "")
+    let okBtn:String = NSLocalizedString("ok", comment: "")
     var newTravelData = TravelData()
     var placeholderLabel: UILabel!
+    var userEmail = "Guest"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,6 +52,9 @@ class NewTravel: UIViewController, UITableViewDelegate, UITextViewDelegate, UITa
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        
+        userEmail = Auth.auth().currentUser?.email! ?? "Guest"
+        
         loadTable()
     }
 
@@ -56,15 +63,25 @@ class NewTravel: UIViewController, UITableViewDelegate, UITextViewDelegate, UITa
     }
     
     @IBAction func saveData() {
-//        newTravelData.newTravelInfo.author = "Shan" //
-        newTravelData.newTravelInfo.place = "Vasagatan 22, Stockholm, Sweden" // Adjust
-        newTravelData.newTravelInfo.shortText = newContent.text ?? ""
-//        newTravelData.newTravelInfo.shortText = newShortText.text ?? ""
-        newTravelData.newTravelInfo.title = newTitle.text ?? ""
         
-        // upload the saved data to Firebase
-        newTravelData.uploadData()
-        
+        if newTitle.text == "" {
+            reminder("Write someting")
+        } else if userEmail == "Guest" {
+            reminder("You need to log in first")
+        } else {
+            newTravelData.newTravelInfo.author = userEmail
+            
+            newTravelData.newTravelInfo.place = "Vasagatan 22, Stockholm, Sweden" // Adjust
+            newTravelData.newTravelInfo.shortText = newContent.text ?? ""
+    //        newTravelData.newTravelInfo.shortText = newShortText.text ?? ""
+            newTravelData.newTravelInfo.title = newTitle.text ?? ""
+            
+            // upload the saved data to Firebase
+            newTravelData.uploadData()
+            
+            reminder("Save Success!")
+            clearText()
+        }
     }
     
     func textViewShouldReturn(_ textView: UITextView) -> Bool {
@@ -119,6 +136,33 @@ class NewTravel: UIViewController, UITableViewDelegate, UITextViewDelegate, UITa
         newContent.resignFirstResponder()
         return(true)
     }
+    
+    func reminder(_ msg:String) {
+        let alert = UIAlertController(title: reminder, message: msg, preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: okBtn, style: .default, handler: { action in
+            switch action.style {
+            case .default:
+//                self.navigationController?.popViewController(animated: false)
+                print("********** default **********")
+            case .cancel:
+                print("********** cancel **********")
+            case .destructive:
+                print("********** destructive **********")
+            }
+        }))
+        self.present(alert, animated: true, completion: nil)
+        
+    }
+    
+    func clearText() {
+        newTitle.text = ""
+        newContent.text = ""
+
+        newTravelData.contentArray.removeAll()
+        self.loadTable()
+
+    }
+
     
     
 }
