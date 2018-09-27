@@ -28,7 +28,11 @@
 "loginsuccess" = "登录成功";
 "signuperror" = "输入正确注册信息，或该邮件地址已被注册";
 "signupsuccess" = "恭喜，请登录";
-"remindLogin" = "请登录再点赞！";
+"remindLogin" = "请登录再操作！";
+"nocontentmsg" = "请输入内容";
+"nologinmsg" = "请先登录";
+"savesuccessmsg" = "成功保存!";
+"contenttextplaceholder" = "描述你的内容";
 "" = "";
 "" = "";
 "" = "";

@@ -29,6 +29,10 @@
 "signuperror" = "Ange ett korrekt information, eller e-posten är redan registrerat!";
 "signupsuccess" = "Grattis, du kan logga in nu";
 "remindLogin" = "Logga in innan du gillar det!";
+"nocontentmsg" = "Skriv någonting";
+"nologinmsg" = "Du får logga in först";
+"savesuccessmsg" = "Spara framgång!";
+"contenttextplaceholder" = "Några beskrivningar";
 "" = "";
 "" = "";
 "" = "";
