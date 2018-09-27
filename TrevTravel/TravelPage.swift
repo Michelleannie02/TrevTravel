@@ -39,6 +39,7 @@ class TravelPage: UIViewController, UIScrollViewDelegate, UITableViewDelegate, U
     let okBtn:String = NSLocalizedString("ok", comment: "")
     let remindLogin:String = NSLocalizedString("remindLogin", comment: "")
     let nocontentmsg:String = NSLocalizedString("nocontentmsg", comment: "")
+    let userDefault = UserDefaults.standard
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -191,7 +192,10 @@ class TravelPage: UIViewController, UIScrollViewDelegate, UITableViewDelegate, U
         self.present(alert, animated: true, completion: nil)
     }
     
-    
+    //travelData.newTravelInfo.place
+    @IBAction func showMap(_ sender: Any) {
+        self.userDefault.set(travelData.newTravelInfo.place, forKey: "showMap")
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

@@ -31,6 +31,12 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         self.locationManager.requestWhenInUseAuthorization()
         
         findMyLocation()
+        
+        // show map of post address
+        let postAddress:String = userDefault.string(forKey: "showMap") ?? ""
+        if postAddress != "" {
+            address = postAddress
+        }
         // address = "Stortorget 2, 103 16 Stockholm"
         // Receive data from segue
         if searchTextField != nil || address != "" {
@@ -40,6 +46,9 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         
     }
     
+    override func viewDidDisappear(_ animated: Bool) {
+        userDefault.set("", forKey: "showMap")
+    }
     
     func stringToLocation(_ address:String) {
         let geoCoder = CLGeocoder()
@@ -164,40 +173,36 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         
         if CLLocationManager.locationServicesEnabled() {
             locationManager.startUpdatingLocation()
+            locationManager.stopUpdatingLocation()
         }
     }
     
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        let newLocation = locations[0]
-        print(newLocation)
-        let distance = myLocation.distance(from: newLocation)
-        if distance > 10 {
-            myLocation = newLocation
-        }
+        
+//        let newLocation = locations[0]
+//        print(newLocation)
+//        let distance = myLocation.distance(from: newLocation)
+//        if distance > 10 {
+//            myLocation = newLocation
+//        }
         
         
-//        let locValue:CLLocationCoordinate2D = manager.location!.coordinate
-//        print("location = \(locValue.latitude) \(locValue.longitude)")
-//        let userLocation = locations.last
-//        let viewRegion = MKCoordinateRegionMakeWithDistance((userLocation?.coordinate)!, 600, 600)
-//        self.mapView.setRegion(viewRegion, animated: true)
+        let locValue:CLLocationCoordinate2D = manager.location!.coordinate
+        print("location = \(locValue.latitude) \(locValue.longitude)")
+        let userLocation = locations.last
+        let viewRegion = MKCoordinateRegionMakeWithDistance((userLocation?.coordinate)!, 600, 600)
+        self.mapView.setRegion(viewRegion, animated: true)
+//        manager.stopUpdatingLocation()
         
     }
     
     @IBAction func navigation(_ sender: Any) {
-        
-        
         findMyLocation()
         print("navigation")
     }
     
-    /*
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     
-    }
-    */
-
+   
 }
 
 
