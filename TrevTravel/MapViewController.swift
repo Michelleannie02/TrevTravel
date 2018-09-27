@@ -15,6 +15,10 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var mapTypeBtn: UISegmentedControl!
     @IBOutlet weak var doneButton: UIBarButtonItem!
+    @IBOutlet weak var tempTextField: UITextField!
+    
+    // textField is added programlly
+    @IBOutlet weak var searchTextField: UITextField!
     
     var address:String = ""
     var location:CLLocation = CLLocation(latitude: 59.347582, longitude: 18.110607)
@@ -26,16 +30,21 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
 
         
         showMap()
-
         addSearchBarOnNavigationBar()
+        searchTextField.delegate = self as? UITextFieldDelegate
+        
+//        let inPutAddress = searchTextField.text
+//        print(inPutAddress ?? "No input")
+//        print(inPutAddress == "")
+        
+//        var button = UIButton()
+//        button.addTarget(self, action: #selector(self.buttonClicked(sender:)), for: .touchUpInside)
         
         stringToLocation("450 Washington St, Boston, MA 02111, USA")
     }
     
     
     func stringToLocation(_ address:String) {
-        
-        
         let geoCoder = CLGeocoder()
         geoCoder.geocodeAddressString(address) { (placemarks, error) in
             guard
@@ -52,6 +61,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
             
             
         }
+        
+        
     }
     
     func showMap() {
@@ -76,7 +87,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         let screenWidth = UIScreen.main.bounds.width
         print("screenWidth: \(screenWidth)")
         let searchBarWidth = screenWidth * 0.67
-        
+
         // Add search bar on navigation bar
         let navigation = self.navigationController?.navigationBar
         navigation?.barStyle = UIBarStyle.default
@@ -87,15 +98,32 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         textField.borderStyle = UITextBorderStyle.roundedRect
         textField.autocorrectionType = UITextAutocorrectionType.no
         textField.keyboardType = UIKeyboardType.default
-        textField.returnKeyType = UIReturnKeyType.done
+        textField.returnKeyType = UIReturnKeyType.search
         textField.clearButtonMode = UITextFieldViewMode.whileEditing
         textField.contentVerticalAlignment = UIControlContentVerticalAlignment.center
         textField.delegate = self as? UITextFieldDelegate
-        self.view.addSubview(textField)
-        
-        navigationItem.titleView = textField
-       
+
+        searchTextField = textField
+        self.view.addSubview(searchTextField)
+
+        navigationItem.titleView = searchTextField
+        print("addSearchBarOnNavigationBar")
     }
+    
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        if textField == searchTextField {
+            print("点击了搜索")
+            print(textField.text ?? "no text")
+            print(textField.text == "")
+            textField.resignFirstResponder()
+            return false
+        }
+        return true
+    }
+    
+
+    
     
     @IBAction func swapMap(_ sender: UISegmentedControl) {
         
@@ -112,6 +140,11 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     @IBAction func doneSearch(_ sender: Any) {
     
     }
+    
+    
+//    func buttonClicked(sender: UIButton){
+//        print("button Clicked")
+//    }
     
     
     /*
