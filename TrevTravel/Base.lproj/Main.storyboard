@@ -320,9 +320,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="uO1-cd-BMF">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="uO1-cd-BMF">
                                 <rect key="frame" x="0.0" y="64" width="320" height="455"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <outlet property="delegate" destination="Vea-I8-gXR" id="OcC-Fp-4qB"/>
+                                </connections>
                             </mapView>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="t40-cd-2Oq">
                                 <rect key="frame" x="189" y="481" width="121" height="28"/>
@@ -331,6 +333,9 @@
                                     <segment title="First"/>
                                     <segment title="Second"/>
                                 </segments>
+                                <connections>
+                                    <action selector="swapMap:" destination="Vea-I8-gXR" eventType="valueChanged" id="Jzd-tL-aNn"/>
+                                </connections>
                             </segmentedControl>
                             <searchBar contentMode="redraw" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ndE-bc-REJ">
                                 <rect key="frame" x="0.0" y="64" width="320" height="56"/>
@@ -339,9 +344,21 @@
                             </searchBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="uO1-cd-BMF" firstAttribute="trailing" secondItem="rVk-py-WYc" secondAttribute="trailing" id="Q9A-Yu-EEt"/>
+                            <constraint firstItem="uO1-cd-BMF" firstAttribute="leading" secondItem="rVk-py-WYc" secondAttribute="leading" id="R8e-rW-u8y"/>
+                            <constraint firstItem="uO1-cd-BMF" firstAttribute="bottom" secondItem="rVk-py-WYc" secondAttribute="bottom" id="i9y-1q-7BG"/>
+                            <constraint firstItem="uO1-cd-BMF" firstAttribute="top" secondItem="rVk-py-WYc" secondAttribute="top" id="l8N-VY-bWB"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="rVk-py-WYc"/>
                     </view>
                     <navigationItem key="navigationItem" id="N2Q-NS-rO6"/>
+                    <connections>
+                        <outlet property="mapTypeBtn" destination="t40-cd-2Oq" id="F7y-es-V8Q"/>
+                        <outlet property="mapView" destination="uO1-cd-BMF" id="TGc-9j-A1X"/>
+                        <outlet property="searchAdd" destination="ndE-bc-REJ" id="sin-EE-o7o"/>
+                        <outlet property="searchBarView" destination="ndE-bc-REJ" id="0hA-nb-Q84"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fc2-10-AAq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
