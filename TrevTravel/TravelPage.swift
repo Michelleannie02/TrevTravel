@@ -149,9 +149,6 @@ class TravelPage: UIViewController, UIScrollViewDelegate, UITableViewDelegate, U
         
     }
     
-//    @IBAction func chooseEdit() {
-//    }
-    
     func reminder(_ msg:String) {
         let alert = UIAlertController(title: reminder, message: msg, preferredStyle: UIAlertControllerStyle.alert)
         alert.addAction(UIAlertAction(title: okBtn, style: .default, handler: { action in
@@ -165,7 +162,6 @@ class TravelPage: UIViewController, UIScrollViewDelegate, UITableViewDelegate, U
             }
         }))
         self.present(alert, animated: true, completion: nil)
-        
     }
     
     override func didReceiveMemoryWarning() {

@@ -289,6 +289,15 @@ class TravelData {
 
                     self.commentArray.append(aComment)
                 }
+                // Sort the comments according createdAt
+                let increases = self.commentArray.sorted(by: { (a, b) -> Bool in
+                    return a.createdAt > b.createdAt
+                })
+                
+                self.commentArray = increases.filter({ (a) -> Bool in
+                return true
+                })
+                
                 self.travelDel?.setCommentText()
             }
         }
