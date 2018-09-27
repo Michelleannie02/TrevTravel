@@ -19,7 +19,13 @@ class TravelPage: UIViewController, UIScrollViewDelegate, UITableViewDelegate, U
     @IBOutlet weak var authorLabel: UILabel!
     @IBOutlet weak var changedAtLabel: UILabel!
     @IBOutlet weak var shotTextView: UITextView!
+    
+    @IBOutlet weak var shortTextViewHeightCons: NSLayoutConstraint!
+    
     @IBOutlet weak var commentsView: UITextView!
+    
+    @IBOutlet weak var commentsTextViewHeightCons: NSLayoutConstraint!
+    
     @IBOutlet weak var messageView: UITextField!
     @IBOutlet weak var likeNum: UILabel!
     @IBOutlet weak var likeBtn: UIButton!
@@ -47,10 +53,18 @@ class TravelPage: UIViewController, UIScrollViewDelegate, UITableViewDelegate, U
     }
     
     override func viewDidLayoutSubviews() {
+        shortTextViewHeightCons.constant = self.shotTextView.contentSize.height
+        commentsTextViewHeightCons.constant = self.commentsView.contentSize.height
+        
+//        paragraphTable.rowHeight = UITableViewAutomaticDimension
+//        paragraphTable.estimatedRowHeight = UITableViewAutomaticDimension
+        
         let sWidth = pageScroll.frame.size.width
         let sHeight = pageScroll.frame.size.height
-        pageScroll.contentSize = CGSize(width: sWidth, height: 2*sHeight)
+        pageScroll.contentSize = CGSize(width: sWidth, height: 100 + sHeight + self.commentsView.contentSize.height + self.shotTextView.contentSize.height)
         print("Scroll content size w*h: ",sWidth, " ", sHeight)
+        
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -115,6 +129,10 @@ class TravelPage: UIViewController, UIScrollViewDelegate, UITableViewDelegate, U
             likeBtn.setImage(UIImage(named: "like_before"), for: UIControlState.normal)
         }
     }
+    
+//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        return UITableViewAutomaticDimension
+//    }
     
     func tableView(_ tableView:UITableView, numberOfRowsInSection section:Int) -> Int {
         return travelData.contentArray.count
