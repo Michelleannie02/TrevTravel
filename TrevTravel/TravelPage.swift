@@ -61,6 +61,8 @@ class TravelPage: UIViewController, UIScrollViewDelegate, UITableViewDelegate, U
         setTravelData()
         setLikeNumData()
         setIsLikedImgBtn(isLiked: travelData.isLiked)
+        
+       
     }
     
     func loadPageData() {
