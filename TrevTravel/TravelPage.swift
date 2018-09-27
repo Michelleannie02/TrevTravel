@@ -11,13 +11,15 @@ import Firebase
 import FirebaseAuth
 import GoogleSignIn
 
-class TravelPage: UIViewController, UIScrollViewDelegate, UITableViewDelegate, UITableViewDataSource, UITextViewDelegate, UITextFieldDelegate, TravelDelegate {
+class TravelPage: UIViewController, UIScrollViewDelegate, UITableViewDelegate, UITableViewDataSource, UITextViewDelegate, UITextFieldDelegate, UINavigationControllerDelegate, TravelDelegate {
     
     @IBOutlet weak var pageScroll: UIScrollView!
     @IBOutlet weak var paragraphTable: UITableView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var authorLabel: UILabel!
     @IBOutlet weak var changedAtLabel: UILabel!
+    
+    @IBOutlet weak var placeBtn: UIButton!
     @IBOutlet weak var shotTextView: UITextView!
     
     @IBOutlet weak var shortTextViewHeightCons: NSLayoutConstraint!
@@ -61,7 +63,7 @@ class TravelPage: UIViewController, UIScrollViewDelegate, UITableViewDelegate, U
         
         let sWidth = pageScroll.frame.size.width
         let sHeight = pageScroll.frame.size.height
-        pageScroll.contentSize = CGSize(width: sWidth, height: 100 + sHeight + self.commentsView.contentSize.height + self.shotTextView.contentSize.height)
+        pageScroll.contentSize = CGSize(width: sWidth, height: 300 + sHeight + self.commentsView.contentSize.height + self.shotTextView.contentSize.height)
         print("Scroll content size w*h: ",sWidth, " ", sHeight)
         
         
@@ -102,6 +104,7 @@ class TravelPage: UIViewController, UIScrollViewDelegate, UITableViewDelegate, U
         titleLabel.text = travelData.newTravelInfo.title
         authorLabel.text = travelData.newTravelInfo.author
         changedAtLabel.text = travelData.newTravelInfo.changedAt
+        placeBtn.setTitle(travelData.newTravelInfo.place, for: .normal)
         shotTextView.text = travelData.newTravelInfo.shortText
         
         likeNum.text = "(" + String(travelData.newTravelInfo.likes) + ")"
@@ -109,12 +112,16 @@ class TravelPage: UIViewController, UIScrollViewDelegate, UITableViewDelegate, U
   
     func setCommentText() {
         var commentText = ""
-        for comment in travelData.commentArray {
-            commentText += comment.createdAt + "\n"
-            commentText += comment.user + ":\n"
-            commentText += comment.message + "\n\n"
+        if !travelData.commentArray.isEmpty {
+            commentText = "All comments:\n\n\n"
+            for comment in travelData.commentArray {
+                commentText += comment.createdAt + "\n"
+                commentText += comment.user + ":\n"
+                commentText += comment.message + "\n\n"
+            }
         }
         commentsView.text = commentText
+        commentsTextViewHeightCons.constant = self.commentsView.contentSize.height
     }
     
     func setLikeNumData() {
@@ -183,6 +190,8 @@ class TravelPage: UIViewController, UIScrollViewDelegate, UITableViewDelegate, U
         }))
         self.present(alert, animated: true, completion: nil)
     }
+    
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

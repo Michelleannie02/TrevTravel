@@ -75,13 +75,11 @@ class TravelList: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TravelCell", for:indexPath) as! TravelCell
         let row = indexPath.row
-//        let travelCell = travelData.travelArray[row]
+        var travelCell = travelData.travelArray[row]
         
-        let travelCell: TravelData.TravelInfo
+//        let travelCell: TravelData.TravelInfo // Not right
         if isFiltering(){
             travelCell = travelData.searchArray[row]
-        } else {
-            travelCell = travelData.travelArray[row]
         }
         
         cell.titleLabel?.text = travelCell.title
@@ -90,7 +88,7 @@ class TravelList: UIViewController, UITableViewDelegate, UITableViewDataSource, 
 //        cell.travelImage?.image = UIImage(named: travelCell.coverImgUrl) // When coverImgUrl is local image. Can try coverImg is nil (not gotten from fb storage) then get as UIImage(named: travelCell.coverImgUrl)
         cell.travelImage?.image = travelCell.coverImg
         cell.shortTextLabel?.text = travelCell.shortText
-        cell.likesLabel?.text = String(travelCell.likes)
+        cell.likesLabel?.text = "(" + String(travelCell.likes) + ")"
         cell.placeLabel?.text = travelCell.place
         
         return cell
