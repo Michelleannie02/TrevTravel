@@ -88,6 +88,7 @@ class TravelPage: UIViewController, UIScrollViewDelegate, UITableViewDelegate, U
     }
     
     func loadCommentsData() {
+        messageView.text = ""
         travelData.commentArray.removeAll()
         travelData.loadCommentsDB(travelID: travelID)
     }
