@@ -21,23 +21,22 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     
     let userDefault = UserDefaults.standard
     var address:String = ""
-    var location:CLLocation = CLLocation(latitude: 59.347582, longitude: 18.110607)
+    var myLocation:CLLocation = CLLocation(latitude: 59.347582, longitude: 18.110607)
     let locationManager = CLLocationManager()
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         addSearchBarOnNavigationBar()
-
-//        address = "Stortorget 2, 103 16 Stockholm"
+        self.locationManager.requestWhenInUseAuthorization()
+        
+        findMyLocation()
+        // address = "Stortorget 2, 103 16 Stockholm"
         // Receive data from segue
         if searchTextField != nil || address != "" {
             searchTextField.text = address
-            
             print(textFieldShouldReturn(searchTextField)) // DO NOT DELETE
         }
-        
-        findMyLocation()
         
     }
     
@@ -68,7 +67,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     
     func showMap(_ latitude:Double, _ longitude:Double) {
         let location = CLLocationCoordinate2DMake(latitude, longitude)
-        let span = MKCoordinateSpanMake(0.002, 0.002)
+        let span = MKCoordinateSpanMake(0.01, 0.01)
         let region = MKCoordinateRegionMake(location, span)
         mapView.setRegion(region, animated: true)
         
@@ -168,8 +167,29 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         }
     }
     
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        let newLocation = locations[0]
+        print(newLocation)
+        let distance = myLocation.distance(from: newLocation)
+        if distance > 10 {
+            myLocation = newLocation
+        }
+        
+        
+//        let locValue:CLLocationCoordinate2D = manager.location!.coordinate
+//        print("location = \(locValue.latitude) \(locValue.longitude)")
+//        let userLocation = locations.last
+//        let viewRegion = MKCoordinateRegionMakeWithDistance((userLocation?.coordinate)!, 600, 600)
+//        self.mapView.setRegion(viewRegion, animated: true)
+        
+    }
+    
     @IBAction func navigation(_ sender: Any) {
         
+        
+        findMyLocation()
+        print("navigation")
     }
     
     /*

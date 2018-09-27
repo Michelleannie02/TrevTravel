@@ -128,10 +128,7 @@ class NewTravel: UIViewController, UITableViewDelegate, UITextViewDelegate, UITa
         dismiss(animated: true, completion: nil)
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+    
     
     
     // Hide keyboard when user touch outside
@@ -173,6 +170,7 @@ class NewTravel: UIViewController, UITableViewDelegate, UITextViewDelegate, UITa
         newTitle.text = ""
         newContent.text = ""
         userDefault.set("", forKey: "returnAddress")
+        addressBtn.setTitle("address", for: .normal)
 
         newTravelData.contentArray.removeAll()
         self.loadTable()
