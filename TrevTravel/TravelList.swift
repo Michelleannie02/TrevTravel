@@ -7,20 +7,43 @@
 //
 
 import UIKit
-//import Firebase
+import Firebase
+import FirebaseAuth
+import GoogleSignIn
+
+extension TravelList: UISearchResultsUpdating {
+    // MARK: - UISearchResultsUpdating Delegate
+    func updateSearchResults(for searchController: UISearchController) {
+        // TODO
+        filterContentForSearchText(searchController.searchBar.text!)
+    }
+}
+
 
 class TravelList: UIViewController, UITableViewDelegate, UITableViewDataSource, DataDelegate{
     
     @IBOutlet weak var travelTable: UITableView!
     
     var travelData = TravelData()
+    let searchController = UISearchController(searchResultsController: nil) // use the same view when searching
+//    var filteredTravels = [TravelData]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        travelTable.separatorStyle = UITableViewCellSeparatorStyle.none
+        // Setup the Search Controller
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = "Search"
+        navigationItem.searchController = searchController // Valid only ios11 or newer
+        definesPresentationContext = true
+//        travelTable.tableHeaderView = searchController.searchBar // added in ch version
+
+//        travelTable.separatorStyle = UITableViewCellSeparatorStyle.none // Display cell line
         
         // Get all the travel diaries data from Firebase
-        travelData.dataDel = self    
+        travelData.dataDel = self
+        
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -39,13 +62,23 @@ class TravelList: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if isFiltering() {
+            return travelData.searchArray.count
+        }
         return travelData.travelArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TravelCell", for:indexPath) as! TravelCell
         let row = indexPath.row
-        let travelCell = travelData.travelArray[row]
+//        let travelCell = travelData.travelArray[row]
+        
+        let travelCell: TravelData.TravelInfo
+        if isFiltering(){
+            travelCell = travelData.searchArray[row]
+        } else {
+            travelCell = travelData.travelArray[row]
+        }
         
         cell.titleLabel?.text = travelCell.title
         cell.authorLabel?.text = travelCell.author
@@ -68,12 +101,42 @@ class TravelList: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         if segue.identifier == "showTravelPage" {
             if let travelPage = segue.destination as? TravelPage {
                 if let indx = sender as? Int {
-                    let aTravel = travelData.travelArray[indx]
+//                    let aTravel = travelData.travelArray[indx]
+                    
+                    let aTravel:TravelData.TravelInfo
+                    if isFiltering() {
+                        aTravel = travelData.searchArray[indx]
+                    } else {
+                        aTravel = travelData.travelArray[indx]
+                    }
+                    
                     travelPage.travelID = aTravel.id
                 }
             }
         }
     }
+    
+    // MARK: - Private instance methods
+    
+    func searchBarIsEmpty() -> Bool {
+        // Returns true if the text is empty or nil
+        return searchController.searchBar.text?.isEmpty ?? true
+    }
+    
+    func filterContentForSearchText(_ searchText: String, scope: String = "All") {
+        travelData.searchArray = travelData.travelArray.filter({( aTravel : TravelData.TravelInfo) -> Bool in
+            // filter author+title+shortText
+            let filterString = aTravel.author + " " + aTravel.title + " " + aTravel.shortText
+            return filterString.lowercased().contains(searchText.lowercased())
+        })
+        
+        travelTable.reloadData()
+    }
+
+    func isFiltering() -> Bool {
+        return searchController.isActive && !searchBarIsEmpty()
+    }
+
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
