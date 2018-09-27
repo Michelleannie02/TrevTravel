@@ -33,6 +33,7 @@ class NewTravel: UIViewController, UITableViewDelegate, UITextViewDelegate, UITa
     var placeholderLabel: UILabel!
     var userEmail = "Guest"
     var address:String = ""
+    let userDefault = UserDefaults.standard
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,6 +63,11 @@ class NewTravel: UIViewController, UITableViewDelegate, UITextViewDelegate, UITa
     override func viewWillAppear(_ animated: Bool) {
         
         userEmail = Auth.auth().currentUser?.email! ?? guest
+        
+        if userDefault.string(forKey: "returnAddress") != nil {
+            address = userDefault.string(forKey: "returnAddress")!
+            addressBtn.setTitle(address, for: .normal)
+        }
         
         loadTable()
     }
@@ -166,41 +172,25 @@ class NewTravel: UIViewController, UITableViewDelegate, UITextViewDelegate, UITa
     func clearContent() {
         newTitle.text = ""
         newContent.text = ""
+        userDefault.set("", forKey: "returnAddress")
 
         newTravelData.contentArray.removeAll()
         self.loadTable()
 
     }
     
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "showMap" {
-//            if let mPage = segue.destination as? MapPage {
-//                mPage.restName = restData.oneRestaurant.name
-//                mPage.address = restData.oneRestaurant.adress
-//            }
-//        }
-//    }
-//
-//    @IBAction func rateRestaurant(segue: UIStoryboardSegue) {
-//        if let rating = segue.identifier, let rate = Double(rating)  {
-//
-//            betyg = (antal*betyg + rate)/(antal+1.0)
-//            antal += 1
-//            reviewButton.setTitle("Betyg: \(betyg)", for: .normal)
-//            //                    print("Betyg \(betyg). Satta betyg \(antal)")
-//        }
-//    }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "" {
-            print("prepare segue")
-        }
+        guard let mapVC = segue.destination as? MapViewController else { return }
+        mapVC.address = ""
     }
     
-    @IBAction func getAddress(segue: UIStoryboardSegue) {
-//        if let inputAddress = segue.identifier, let newAddress = inputAddress {
-//
-//        }
+    @IBAction func getAddress(_ sender: UIStoryboardSegue) {
+//        guard let mapVC = sender.source as? MapViewController else { return }
+//        addressBtn.setTitle(mapVC.address, for: .normal)
+
     }
+    
+
     
 }

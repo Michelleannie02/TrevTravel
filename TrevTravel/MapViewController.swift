@@ -19,6 +19,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     // textField is added programlly
     @IBOutlet weak var searchTextField: UITextField!
     
+    let userDefault = UserDefaults.standard
     var address:String = ""
     var location:CLLocation = CLLocation(latitude: 59.347582, longitude: 18.110607)
     let locationManager = CLLocationManager()
@@ -26,12 +27,18 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        
         addSearchBarOnNavigationBar()
+
+        address = "Stortorget 2, 103 16 Stockholm"
+        // Receive data from segue
+        if searchTextField != nil || address != "" {
+            searchTextField.text = address
+            
+            print(textFieldShouldReturn(searchTextField)) // DO NOT DELETE
+        }
+        
         findMyLocation()
         
-//        stringToLocation("450 Washington St, Boston, MA 02111, USA")
     }
     
     
@@ -113,9 +120,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
             if inPutAddress != "" {
                 stringToLocation(inPutAddress)
             }
-            
-            
-            
+
             textField.resignFirstResponder()
             return false
         }
@@ -138,9 +143,20 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     }
     
     @IBAction func doneSearch(_ sender: Any) {
-        
+        var addressText = ""
+        let returnAdd:String = self.searchTextField.text ?? ""
+
+        if returnAdd.contains(",") {
+            addressText = returnAdd.getSubString(of: ",")
+        }
+
+        self.userDefault.set(addressText, forKey: "returnAddress")
+        print("Saved info: \(addressText)")
+        // 返回
         self.navigationController?.popViewController(animated: false)
     }
+    
+
     
     func findMyLocation() {
         locationManager.delegate = self
@@ -163,3 +179,14 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     */
 
 }
+
+
+extension String {
+    func getSubString(of char: Character) -> String {
+        guard let pos = self.range(of: String(char)) else { return self }
+        // or  guard let pos = self.index(of: char) else { return self }
+        let subString = self[..<pos.lowerBound]
+        return String(subString)
+    }
+}
+
