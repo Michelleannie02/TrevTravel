@@ -152,6 +152,9 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         }
     }
     
+    @IBAction func navigation(_ sender: Any) {
+        
+    }
     
     /*
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

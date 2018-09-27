@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="66O-C0-N3p">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="66O-C0-N3p">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -166,7 +164,7 @@
         <!--New Travel-->
         <scene sceneID="Mwa-i6-SDS">
             <objects>
-                <viewController id="zJZ-Vr-nXE" customClass="NewTravel" customModule="TrevTravel" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="newTravel" id="zJZ-Vr-nXE" customClass="NewTravel" customModule="TrevTravel" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5oJ-d1-mMg">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -314,7 +312,7 @@
         <!--Map View Controller-->
         <scene sceneID="Can-0v-gTK">
             <objects>
-                <viewController id="Vea-I8-gXR" customClass="MapViewController" customModule="TrevTravel" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="mapView" id="Vea-I8-gXR" customClass="MapViewController" customModule="TrevTravel" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="mnf-ng-QPO">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -340,13 +338,26 @@
                                     <action selector="swapMap:" destination="Vea-I8-gXR" eventType="valueChanged" id="Jzd-tL-aNn"/>
                                 </connections>
                             </segmentedControl>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GWy-kj-Hvj">
+                                <rect key="frame" x="10" y="484" width="25" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="25" id="koq-Lt-ro3"/>
+                                    <constraint firstAttribute="width" constant="25" id="tZk-3D-q5c"/>
+                                </constraints>
+                                <state key="normal" title="Button" image="navigation2"/>
+                                <connections>
+                                    <action selector="navigation:" destination="Vea-I8-gXR" eventType="touchUpInside" id="7wd-IT-yyj"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="rVk-py-WYc" firstAttribute="bottom" secondItem="t40-cd-2Oq" secondAttribute="bottom" constant="10" id="LMm-NI-SDL"/>
                             <constraint firstItem="uO1-cd-BMF" firstAttribute="trailing" secondItem="rVk-py-WYc" secondAttribute="trailing" id="Q9A-Yu-EEt"/>
                             <constraint firstItem="uO1-cd-BMF" firstAttribute="leading" secondItem="rVk-py-WYc" secondAttribute="leading" id="R8e-rW-u8y"/>
+                            <constraint firstItem="GWy-kj-Hvj" firstAttribute="leading" secondItem="mnf-ng-QPO" secondAttribute="leading" constant="10" id="bD6-PZ-ayt"/>
                             <constraint firstItem="uO1-cd-BMF" firstAttribute="bottom" secondItem="rVk-py-WYc" secondAttribute="bottom" id="i9y-1q-7BG"/>
+                            <constraint firstItem="rVk-py-WYc" firstAttribute="bottom" secondItem="GWy-kj-Hvj" secondAttribute="bottom" constant="10" id="jb8-xC-UmN"/>
                             <constraint firstItem="uO1-cd-BMF" firstAttribute="top" secondItem="rVk-py-WYc" secondAttribute="top" id="l8N-VY-bWB"/>
                             <constraint firstItem="rVk-py-WYc" firstAttribute="trailing" secondItem="t40-cd-2Oq" secondAttribute="trailing" constant="10" id="ocR-fk-CDe"/>
                         </constraints>
@@ -458,7 +469,7 @@
                                             <outlet property="delegate" destination="dp2-Tc-pDO" id="2RP-ja-pkh"/>
                                         </connections>
                                     </tableView>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="5sW-oH-Qcq">
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="5sW-oH-Qcq">
                                         <rect key="frame" x="10" y="678.5" width="300" height="100"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -1107,6 +1118,7 @@
         <image name="like_before" width="32" height="32"/>
         <image name="likes" width="32" height="32"/>
         <image name="location" width="32" height="32"/>
+        <image name="navigation2" width="32" height="32"/>
         <image name="photos" width="32" height="32"/>
         <image name="placeholder" width="32" height="32"/>
         <image name="setting" width="32" height="32"/>
