@@ -88,7 +88,7 @@ class TravelPage: UIViewController, UIScrollViewDelegate, UITableViewDelegate, U
     }
     
     func loadCommentsData() {
-//        messageView.text = ""
+        messageView.text = ""
         travelData.commentArray.removeAll()
         travelData.loadCommentsDB(travelID: travelID)
     }
@@ -196,6 +196,23 @@ class TravelPage: UIViewController, UIScrollViewDelegate, UITableViewDelegate, U
     //travelData.newTravelInfo.place
     @IBAction func showMap(_ sender: Any) {
         self.userDefault.set(travelData.newTravelInfo.place, forKey: "showMap")
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        messageView.resignFirstResponder()
+       
+        UIView.animate(withDuration: 1.0, delay: 0.0, options: [], animations: {
+            self.view.transform = .identity
+        })
+        return true
+    }
+    
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        UIView.animate(withDuration: 1.0, delay: 0.0, options: [], animations: {
+            self.view.transform = CGAffineTransform(translationX: 0, y: -177)
+        })
+        
+        return true
     }
     
     override func didReceiveMemoryWarning() {
