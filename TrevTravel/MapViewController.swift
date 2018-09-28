@@ -49,7 +49,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     
     override func viewDidDisappear(_ animated: Bool) {
         userDefault.set("", forKey: "showMap")
-        self.userDefault.set("", forKey: "returnAddress")
+//        self.userDefault.set("", forKey: "returnAddress")
     }
     
     func stringToLocation(_ address:String) {
