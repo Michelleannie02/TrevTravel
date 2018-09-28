@@ -198,6 +198,23 @@ class TravelPage: UIViewController, UIScrollViewDelegate, UITableViewDelegate, U
         self.userDefault.set(travelData.newTravelInfo.place, forKey: "showMap")
     }
     
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        messageView.resignFirstResponder()
+       
+        UIView.animate(withDuration: 1.0, delay: 0.0, options: [], animations: {
+            self.view.transform = .identity
+        })
+        return true
+    }
+    
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        UIView.animate(withDuration: 1.0, delay: 0.0, options: [], animations: {
+            self.view.transform = CGAffineTransform(translationX: 0, y: -177)
+        })
+        
+        return true
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
