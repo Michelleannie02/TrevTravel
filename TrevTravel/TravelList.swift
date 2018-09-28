@@ -48,7 +48,7 @@ class TravelList: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         travelData.dataDel = self
         
         //0928
-        loadData()
+//        loadData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
