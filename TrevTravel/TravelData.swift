@@ -79,7 +79,7 @@ class TravelData {
             } else {
                 guard let qSnapshot = querySnapshot else {return}
                 var aDiary = TravelInfo()
-                for document in qSnapshot.documents {
+                for (index, document) in qSnapshot.documents.enumerated() {
                     aDiary.id = document.documentID
                     aDiary.author = document.data()["author"] as? String ?? ""
                     aDiary.changedAt = document.data()["changedAt"] as? String ?? ""
@@ -93,15 +93,17 @@ class TravelData {
                     
                     self.travelArray.append(aDiary)
 //                    self.setContentArray(array: aDiary.content) // Load the specific diary by id again
+                    if aDiary.coverImgUrl != "" { self.loadCoverImg(index:index) } //0928  index:index
                 }
                 self.dataDel?.loadTable()
                 // TravelList loads firebasedata first, then loads firebasestorage
-                if aDiary.coverImgUrl != "" { self.loadCoverImg() }
+//                if aDiary.coverImgUrl != "" { self.loadCoverImg() } //0928
             }
         }
     }
     
-    func loadCoverImg() {
+    //0928  index:index
+    func loadCoverImg(index:Int) {
         let storageRef = Storage.storage().reference()
         let imagesRef = storageRef.child("images")
         for (index, var aDiary) in travelArray.enumerated() {
