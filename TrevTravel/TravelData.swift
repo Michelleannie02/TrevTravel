@@ -137,7 +137,7 @@ class TravelData {
         if self.contentArray.count != 0 {
             if newTravelInfo.coverImgUrl == "" { newTravelInfo.coverImgUrl = self.content[0] }
         } else {
-            newTravelInfo.coverImgUrl = ""
+            newTravelInfo.coverImgUrl = "iiipocdiaucpjigowhcyqchxzgpmxj153910115505137_0.jpg" // Default img for NO IMAGE
         }
         
         
