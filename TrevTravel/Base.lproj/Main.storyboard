@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="66O-C0-N3p">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="66O-C0-N3p">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -32,7 +30,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Author" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="unp-dm-N5H">
-                                                    <rect key="frame" x="10" y="3" width="180" height="20.5"/>
+                                                    <rect key="frame" x="10" y="3" width="180" height="20"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="20" id="TxE-39-3ur"/>
                                                     </constraints>
@@ -41,13 +39,13 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="XXXX-XX-XX" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="69n-cz-oXT">
-                                                    <rect key="frame" x="195" y="3" width="120" height="20.5"/>
+                                                    <rect key="frame" x="195" y="3" width="120" height="20"/>
                                                     <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="11"/>
                                                     <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eWn-f5-Z8z">
-                                                    <rect key="frame" x="10" y="23" width="300" height="28.5"/>
+                                                    <rect key="frame" x="10" y="23" width="300" height="26"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" red="0.85664264899999998" green="0.58455749420000003" blue="0.34898636890000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -124,6 +122,7 @@
                                                 <constraint firstAttribute="trailing" secondItem="3mP-VY-Iua" secondAttribute="trailing" constant="10" id="srO-cC-LY0"/>
                                                 <constraint firstItem="oz7-UC-n8o" firstAttribute="height" secondItem="unp-dm-N5H" secondAttribute="height" multiplier="8:10" id="unV-Bo-uE2"/>
                                                 <constraint firstItem="69n-cz-oXT" firstAttribute="leading" secondItem="unp-dm-N5H" secondAttribute="trailing" constant="5" id="yFY-lJ-a9I"/>
+                                                <constraint firstItem="eWn-f5-Z8z" firstAttribute="height" secondItem="unp-dm-N5H" secondAttribute="height" multiplier="1.3:1" id="z6Z-hB-Ah8"/>
                                                 <constraint firstItem="unp-dm-N5H" firstAttribute="leading" secondItem="4Ak-I6-w2x" secondAttribute="leading" constant="10" id="zPM-D4-6RQ"/>
                                                 <constraint firstAttribute="trailing" secondItem="IdV-Ft-cy6" secondAttribute="trailing" constant="5" id="zgf-Hz-5Ou"/>
                                             </constraints>
@@ -505,7 +504,7 @@
                                             <outlet property="delegate" destination="dp2-Tc-pDO" id="2RP-ja-pkh"/>
                                         </connections>
                                     </tableView>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="5sW-oH-Qcq">
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="5sW-oH-Qcq">
                                         <rect key="frame" x="10" y="694.5" width="300" height="100"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
