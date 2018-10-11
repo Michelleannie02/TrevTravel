@@ -87,15 +87,19 @@ class NewTravel: UIViewController, UITableViewDelegate, UITextViewDelegate, UITa
         } else if newTitle.text == "" {
             reminder(noContentMsg)
         } else {
+            // Save info into Database
             newTravelData.newTravelInfo.author = userEmail
             
-            newTravelData.newTravelInfo.place = userDefault.string(forKey: "returnAddress") ?? ""
+            newTravelData.newTravelInfo.place = address
+            print("saved address: \(address)")
+            
             newTravelData.newTravelInfo.shortText = newContent.text ?? ""
             newTravelData.newTravelInfo.title = newTitle.text ?? ""
             
             // upload the saved data to Firebase
             newTravelData.uploadData()
             
+            // Show success info
             reminder(saveSuccessMsg)
             
         }
