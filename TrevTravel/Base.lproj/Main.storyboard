@@ -787,7 +787,6 @@
                                         <state key="normal" title="Chinese (中文)"/>
                                         <connections>
                                             <action selector="clickZH" destination="I7u-ff-j2p" eventType="touchUpInside" id="NHl-Bg-glV"/>
-                                            <segue destination="ofp-Eq-7Zr" kind="unwind" unwindAction="back:" id="Ghh-z8-Vf8"/>
                                         </connections>
                                     </button>
                                 </subviews>

@@ -65,8 +65,12 @@ class NewTravel: UIViewController, UITableViewDelegate, UITextViewDelegate, UITa
         userEmail = Auth.auth().currentUser?.email! ?? guest
         
         if userDefault.string(forKey: "returnAddress") != nil {
-            address = userDefault.string(forKey: "returnAddress")!
-            addressBtn.setTitle(address, for: .normal)
+            if userDefault.string(forKey: "returnAddress") != "" {
+                address = userDefault.string(forKey: "returnAddress")!
+                addressBtn.setTitle(address, for: .normal)
+            } else {
+                addressBtn.setTitle("address", for: .normal)
+            }
         }
         
         loadTable()
