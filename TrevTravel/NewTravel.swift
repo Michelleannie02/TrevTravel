@@ -177,6 +177,7 @@ class NewTravel: UIViewController, UITableViewDelegate, UITextViewDelegate, UITa
         addressBtn.setTitle("address", for: .normal)
 
         newTravelData.contentArray.removeAll()
+        newTravelData.content.removeAll()
         self.loadTable()
 
     }
