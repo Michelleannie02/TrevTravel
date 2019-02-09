@@ -64,8 +64,12 @@ class NewTravel: UIViewController, UITableViewDelegate, UITextViewDelegate, UITa
         userEmail = Auth.auth().currentUser?.email! ?? guest
         
         if userDefault.string(forKey: "returnAddress") != nil {
-            address = userDefault.string(forKey: "returnAddress")!
-            addressBtn.setTitle(address, for: .normal)
+            if userDefault.string(forKey: "returnAddress") != "" {
+                address = userDefault.string(forKey: "returnAddress")!
+                addressBtn.setTitle(address, for: .normal)
+            } else {
+                addressBtn.setTitle("address", for: .normal)
+            }
         }
         
         loadTable()
@@ -81,14 +85,19 @@ class NewTravel: UIViewController, UITableViewDelegate, UITextViewDelegate, UITa
         } else if newTitle.text == "" {
             reminder(noContentMsg)
         } else {
+            // Save info into Database
             newTravelData.newTravelInfo.author = userEmail
-            newTravelData.newTravelInfo.place = userDefault.string(forKey: "returnAddress") ?? ""
+            
+            newTravelData.newTravelInfo.place = address
+            print("saved address: \(address)")
+            
             newTravelData.newTravelInfo.shortText = newContent.text ?? ""
             newTravelData.newTravelInfo.title = newTitle.text ?? ""
             
             // upload the saved data to Firebase
-            newTravelData.uploadData(isEdit: false)
+            newTravelData.uploadData()
             
+            // Show success info
             reminder(saveSuccessMsg)
             
         }

@@ -31,7 +31,7 @@ class Login: UIViewController, UITextFieldDelegate, GIDSignInUIDelegate {
     let signuperror:String = NSLocalizedString("signuperror", comment: "")
     let signupsuccess:String = NSLocalizedString("signupsuccess", comment: "")
 
-    
+
     
     let loginUser:String = Auth.auth().currentUser?.email ?? "Guest"
     
