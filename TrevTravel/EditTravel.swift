@@ -41,7 +41,7 @@ class EditTravel: UIViewController, UITableViewDelegate, UITextViewDelegate, UIT
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        newTravelData.editTravelDel = self
+        //        newTravelData.editTravelDel = self
         userEmail = Auth.auth().currentUser?.email! ?? "Guest"
         newTravelData.newTravelInfo = editTravelInfo
         address = newTravelData.newTravelInfo.place
@@ -83,7 +83,7 @@ class EditTravel: UIViewController, UITableViewDelegate, UITextViewDelegate, UIT
         loadTable()
     }
     func loadEditInfo() {
-//        newTravelData.newTravelInfo = editTravelInfo
+        //        newTravelData.newTravelInfo = editTravelInfo
         
         if editContentArray.count > 0 {
             newTravelData.contentArray = editContentArray
@@ -123,7 +123,7 @@ class EditTravel: UIViewController, UITableViewDelegate, UITextViewDelegate, UIT
             newTravelData.newTravelInfo.place = userDefault.string(forKey: "returnAddress") ?? ""
             newTravelData.newTravelInfo.shortText = newContent.text ?? ""
             newTravelData.newTravelInfo.title = newTitle.text ?? ""
-//            print("newTravelData.contentArray.count: ", newTravelData.contentArray.count)
+            //            print("newTravelData.contentArray.count: ", newTravelData.contentArray.count)
             
             // upload the saved data to Firebase , oldContentCount: editTravelInfo.content.count
             newTravelData.uploadData(isEdit:true)
@@ -218,8 +218,8 @@ class EditTravel: UIViewController, UITableViewDelegate, UITextViewDelegate, UIT
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        guard let mapVC = segue.destination as? MapViewController else { return }
-//        mapVC.address = ""
+        //        guard let mapVC = segue.destination as? MapViewController else { return }
+        //        mapVC.address = ""
         if segue.identifier == "showMapView" {
             if let mapView = segue.destination as? MapViewController {
                 if let addressBtnTitle = sender as? String {

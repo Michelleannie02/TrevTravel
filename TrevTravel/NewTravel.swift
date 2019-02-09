@@ -95,7 +95,7 @@ class NewTravel: UIViewController, UITableViewDelegate, UITextViewDelegate, UITa
             newTravelData.newTravelInfo.title = newTitle.text ?? ""
             
             // upload the saved data to Firebase
-            newTravelData.uploadData()
+            newTravelData.uploadData(isEdit: false)
             
             // Show success info
             reminder(saveSuccessMsg)
