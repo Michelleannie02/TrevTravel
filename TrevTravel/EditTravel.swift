@@ -96,7 +96,7 @@ class EditTravel: UIViewController, UITableViewDelegate, UITextViewDelegate, UIT
         self.navigationController?.navigationBar.tintColor = UIColor.lightGray
         self.navigationController?.navigationBar.topItem?.title = ""
         self.navigationItem.title = "Edit"
-        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor:#colorLiteral(red: 0.1078509044, green: 0.5802940753, blue: 0.7578327396, alpha: 1)]
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor:#colorLiteral(red: 0.1240907066, green: 0.6070433936, blue: 1, alpha: 1)]
         deleteBtn.isEnabled = true
         deleteBtn.tintColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
         

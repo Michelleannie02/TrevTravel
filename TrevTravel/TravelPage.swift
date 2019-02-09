@@ -126,7 +126,7 @@ class TravelPage: UIViewController, UIScrollViewDelegate, UITableViewDelegate, U
         self.navigationController?.navigationBar.tintColor = UIColor.lightGray
         self.navigationController?.navigationBar.topItem?.title = ""
         self.navigationItem.title = "Detail Page"
-        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor:#colorLiteral(red: 0.1078509044, green: 0.5802940753, blue: 0.7578327396, alpha: 1)]
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor:#colorLiteral(red: 0.1240907066, green: 0.6070433936, blue: 1, alpha: 1)]
 //        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor:#colorLiteral(red: 0.8549019608, green: 0.5843137255, blue: 0.3490196078, alpha: 1)]
         if userEmail == travelPageInfo.author {
             deleteBtn.isEnabled = true
