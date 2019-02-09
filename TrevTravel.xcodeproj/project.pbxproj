@@ -17,6 +17,7 @@
 		6D33DC681736096CE28D10DC /* Pods_TrevTravel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BCA6CA60AF18C17E0C11D11 /* Pods_TrevTravel.framework */; };
 		742AFBB22158E31B0034B7F1 /* TravelPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 742AFBB12158E31B0034B7F1 /* TravelPage.swift */; };
 		7437C5972151494500158DCC /* NewTravel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7437C5962151494500158DCC /* NewTravel.swift */; };
+		747B1CDB220CAF1800A30DA7 /* EditTravel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 747B1CDA220CAF1800A30DA7 /* EditTravel.swift */; };
 		749E2DD6214FFBD0007B50F3 /* TravelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 749E2DD5214FFBD0007B50F3 /* TravelCell.swift */; };
 		749E2DD821500A18007B50F3 /* TravelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 749E2DD721500A18007B50F3 /* TravelData.swift */; };
 		749E2DDA215049CD007B50F3 /* TravelList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 749E2DD9215049CD007B50F3 /* TravelList.swift */; };
@@ -73,6 +74,7 @@
 		6416383CED310144940E30E8 /* Pods-TrevTravelUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TrevTravelUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TrevTravelUITests/Pods-TrevTravelUITests.release.xcconfig"; sourceTree = "<group>"; };
 		742AFBB12158E31B0034B7F1 /* TravelPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelPage.swift; sourceTree = "<group>"; };
 		7437C5962151494500158DCC /* NewTravel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTravel.swift; sourceTree = "<group>"; };
+		747B1CDA220CAF1800A30DA7 /* EditTravel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTravel.swift; sourceTree = "<group>"; };
 		749E2DD5214FFBD0007B50F3 /* TravelCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelCell.swift; sourceTree = "<group>"; };
 		749E2DD721500A18007B50F3 /* TravelData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelData.swift; sourceTree = "<group>"; };
 		749E2DD9215049CD007B50F3 /* TravelList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelList.swift; sourceTree = "<group>"; };
@@ -164,6 +166,7 @@
 				749E2DD5214FFBD0007B50F3 /* TravelCell.swift */,
 				749E2DD721500A18007B50F3 /* TravelData.swift */,
 				7437C5962151494500158DCC /* NewTravel.swift */,
+				747B1CDA220CAF1800A30DA7 /* EditTravel.swift */,
 				74F97E802156B43D00CB8825 /* ContentCell.swift */,
 				74D7CD872159A0950081A635 /* ParagraphCell.swift */,
 				41C5DEDE2158BC1900E90F43 /* ChangeLanguage.swift */,
@@ -285,6 +288,11 @@
 				TargetAttributes = {
 					74D950D721426A8100667497 = {
 						CreatedOnToolsVersion = 9.4.1;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 0;
+							};
+						};
 					};
 					74D950EB21426A8300667497 = {
 						CreatedOnToolsVersion = 9.4.1;
@@ -503,6 +511,7 @@
 				7437C5972151494500158DCC /* NewTravel.swift in Sources */,
 				41C5DEEB21597DCF00E90F43 /* Login.swift in Sources */,
 				749E2DD821500A18007B50F3 /* TravelData.swift in Sources */,
+				747B1CDB220CAF1800A30DA7 /* EditTravel.swift in Sources */,
 				41C5DEDF2158BC1900E90F43 /* ChangeLanguage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

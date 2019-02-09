@@ -32,6 +32,8 @@
 "nocontentmsg" = "Skriv någonting";
 "nologinmsg" = "Du får logga in först";
 "savesuccessmsg" = "Spara framgång!";
+"deleteselectmsg" = "Säkert att radera?";
+"deletesuccessmsg" = "Raderats!";
 "contenttextplaceholder" = "Några beskrivningar";
 "" = "";
 "" = "";

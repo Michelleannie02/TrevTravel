@@ -18,27 +18,28 @@ class TravelPage: UIViewController, UIScrollViewDelegate, UITableViewDelegate, U
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var authorLabel: UILabel!
     @IBOutlet weak var changedAtLabel: UILabel!
-    
     @IBOutlet weak var placeBtn: UIButton!
     @IBOutlet weak var shotTextView: UITextView!
-    
     @IBOutlet weak var shortTextViewHeightCons: NSLayoutConstraint!
-    
     @IBOutlet weak var commentsView: UITextView!
-    
     @IBOutlet weak var commentsTextViewHeightCons: NSLayoutConstraint!
-    
     @IBOutlet weak var messageView: UITextField!
     @IBOutlet weak var likeNum: UILabel!
     @IBOutlet weak var likeBtn: UIButton!
     
+    @IBOutlet weak var deleteBtn: UIBarButtonItem!
+    @IBOutlet weak var editBtn: UIBarButtonItem!
+    
     var travelID = ""
     let travelData = TravelData()
+    var travelPageInfo = TravelData.TravelInfo()
     var userEmail = "Guest"
     let reminder:String = NSLocalizedString("reminder", comment: "")
     let okBtn:String = NSLocalizedString("ok", comment: "")
     let remindLogin:String = NSLocalizedString("remindLogin", comment: "")
     let nocontentmsg:String = NSLocalizedString("nocontentmsg", comment: "")
+    let deleteSelectMsg:String = NSLocalizedString("deleteselectmsg", comment: "")
+    let deleteSuccessMsg:String = NSLocalizedString("deletesuccessmsg", comment: "")
     let userDefault = UserDefaults.standard
 
     override func viewDidLoad() {
@@ -48,7 +49,7 @@ class TravelPage: UIViewController, UIScrollViewDelegate, UITableViewDelegate, U
         userEmail = Auth.auth().currentUser?.email! ?? "Guest"
         loadPageData()
         loadCommentsData()
-        loadIsLikedData()
+        loadIsLikedData() // checkIsLiked insteads
         // In 10 secs reload comments data
         Timer.scheduledTimer(withTimeInterval: 10.0, repeats: true, block: { (timer) in
             self.loadCommentsData()
@@ -65,7 +66,7 @@ class TravelPage: UIViewController, UIScrollViewDelegate, UITableViewDelegate, U
         let sWidth = pageScroll.frame.size.width
         let sHeight = pageScroll.frame.size.height
         pageScroll.contentSize = CGSize(width: sWidth, height: 300 + sHeight + self.commentsView.contentSize.height + self.shotTextView.contentSize.height)
-        print("Scroll content size w*h: ",sWidth, " ", sHeight)
+//        print("Scroll content size w*h: ",sWidth, " ", sHeight)
         
         
     }
@@ -75,15 +76,26 @@ class TravelPage: UIViewController, UIScrollViewDelegate, UITableViewDelegate, U
         // 0925 Load data when viewDidLoad
 //        loadPageData()
         // 0925 Set textView data when viewWillAppear
-        setTravelData()
+//        setTravelData()
         setLikeNumData()
         setIsLikedImgBtn(isLiked: travelData.isLiked)
-        
        
     }
     
     func loadPageData() {
-        travelData.loadPageDB(travelID: travelID, userEmail: userEmail)
+//        travelData.loadPageDB(travelID: travelID, userEmail: userEmail) // Segue sends travelPageInfo insteads
+        travelData.newTravelInfo = travelPageInfo
+        if travelPageInfo.content.count > 0 {
+//            travelData.contentArray.removeAll()
+            travelData.loadImages(imgUrlArray: travelPageInfo.content)
+        }
+        
+        if travelPageInfo.likes > 0 && userEmail != "Guest" {
+            //            checkIsLiked(userEmail: userEmail) // insteads of setIsLikedImgBtn(isLiked: travelData.isLiked)
+            travelData.loadIsLikedDB(travelID: travelID, userEmail: userEmail)
+        }
+        
+        setTravelData()
         
     }
     
@@ -93,6 +105,7 @@ class TravelPage: UIViewController, UIScrollViewDelegate, UITableViewDelegate, U
         travelData.loadCommentsDB(travelID: travelID)
     }
     
+    // delete
     func loadIsLikedData() {
         if userEmail != "Guest" { travelData.loadIsLikedDB(travelID: travelID, userEmail: userEmail) }
         else { travelData.isLiked = false }
@@ -103,14 +116,48 @@ class TravelPage: UIViewController, UIScrollViewDelegate, UITableViewDelegate, U
     }
     
     func setTravelData() {
-        titleLabel.text = travelData.newTravelInfo.title
-        authorLabel.text = travelData.newTravelInfo.author
-        changedAtLabel.text = travelData.newTravelInfo.changedAt
-        placeBtn.setTitle(travelData.newTravelInfo.place, for: .normal)
-        shotTextView.text = travelData.newTravelInfo.shortText
+//        titleLabel.text = travelData.newTravelInfo.title
+//        authorLabel.text = travelData.newTravelInfo.author
+//        changedAtLabel.text = travelData.newTravelInfo.changedAt
+//        placeBtn.setTitle(travelData.newTravelInfo.place, for: .normal)
+//        shotTextView.text = travelData.newTravelInfo.shortText
+//        likeNum.text = "(" + String(travelData.newTravelInfo.likes) + ")"
+       
+        self.navigationController?.navigationBar.tintColor = UIColor.lightGray
+        self.navigationController?.navigationBar.topItem?.title = ""
+        self.navigationItem.title = "Detail Page"
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor:#colorLiteral(red: 0.1078509044, green: 0.5802940753, blue: 0.7578327396, alpha: 1)]
+//        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor:#colorLiteral(red: 0.8549019608, green: 0.5843137255, blue: 0.3490196078, alpha: 1)]
+        if userEmail == travelPageInfo.author {
+            deleteBtn.isEnabled = true
+            deleteBtn.tintColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
+            editBtn.isEnabled = true
+            editBtn.tintColor = #colorLiteral(red: 0.1764705926, green: 0.4980392158, blue: 0.7568627596, alpha: 1)
+        } else {
+            deleteBtn.isEnabled = false
+            deleteBtn.tintColor = UIColor.clear
+            editBtn.isEnabled = false
+            editBtn.tintColor = UIColor.clear
+        }
         
-        likeNum.text = "(" + String(travelData.newTravelInfo.likes) + ")"
+        titleLabel.text = travelPageInfo.title
+        authorLabel.text = travelPageInfo.author
+        changedAtLabel.text = travelPageInfo.changedAt
+        placeBtn.setTitle(travelPageInfo.place, for: .normal)
+        shotTextView.text = travelPageInfo.shortText
+        likeNum.text = "(" + String(travelPageInfo.likes) + ")"
+
     }
+    
+//    func checkIsLiked(userEmail: String) {
+//        if travelPageInfo.likeUsers.contains(userEmail) {
+////            likeBtn.setImage(UIImage(named: "like_after"), for: UIControlState.normal)
+//            travelData.isLiked = true
+//        } else {
+////            likeBtn.setImage(UIImage(named: "like_before"), for: UIControlState.normal)
+//            travelData.isLiked = false
+//        }
+//    }
   
     func setCommentText() {
         var commentText = ""
@@ -158,7 +205,7 @@ class TravelPage: UIViewController, UIScrollViewDelegate, UITableViewDelegate, U
     @IBAction func sendComment() {
         if userEmail == "Guest" {
             self.reminder(self.remindLogin)
-            print("Log in before you do it!")
+//            print("Log in before you do it!")
         } else {
             let aMessage = messageView.text ?? ""
             if aMessage == "" {
@@ -173,7 +220,7 @@ class TravelPage: UIViewController, UIScrollViewDelegate, UITableViewDelegate, U
         if userEmail != "Guest" { travelData.updateLikesData(travelID:travelID, userEmail:userEmail) }
         else {
             self.reminder(self.remindLogin)
-            print("Log in before you like it!")
+//            print("Log in before you like it!")
         }
         
     }
@@ -183,6 +230,11 @@ class TravelPage: UIViewController, UIScrollViewDelegate, UITableViewDelegate, U
         alert.addAction(UIAlertAction(title: okBtn, style: .default, handler: { action in
             switch action.style {
             case .default:
+                if msg == self.deleteSelectMsg {
+                    self.travelData.deleteData(travelID: self.travelID)
+                    self.clearPage()
+                }
+
                 print("********** default **********")
             case .cancel:
                 print("********** cancel **********")
@@ -193,9 +245,35 @@ class TravelPage: UIViewController, UIScrollViewDelegate, UITableViewDelegate, U
         self.present(alert, animated: true, completion: nil)
     }
     
+    func clearPage() {
+        titleLabel.text = ""
+        authorLabel.text = ""
+        changedAtLabel.text = ""
+        userDefault.set("", forKey: "returnAddress")
+        placeBtn.setTitle("", for: .normal)
+        shotTextView.text = ""
+        commentsView.text = ""
+        messageView.text = ""
+        likeNum.text = ""
+        setIsLikedImgBtn(isLiked: false)
+
+        deleteBtn.isEnabled = false
+        deleteBtn.tintColor = UIColor.clear
+        editBtn.isEnabled = false
+        editBtn.tintColor = UIColor.clear
+
+        travelData.contentArray.removeAll()
+        travelData.content.removeAll()
+        self.loadTable()
+        
+        self.navigationController?.navigationBar.isUserInteractionEnabled = false
+        self.navigationController?.navigationBar.tintColor = UIColor.clear
+        
+    }
+    
     //travelData.newTravelInfo.place
     @IBAction func showMap(_ sender: Any) {
-        self.userDefault.set(travelData.newTravelInfo.place, forKey: "showMap")
+        self.userDefault.set(travelPageInfo.place, forKey: "showMap")
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -220,4 +298,27 @@ class TravelPage: UIViewController, UIScrollViewDelegate, UITableViewDelegate, U
         // Dispose of any resources that can be recreated.
     }
 
+    @IBAction func deleteTravel() {
+        if travelID != "" {
+            reminder(self.deleteSelectMsg)
+//            travelData.deleteData(travelID: travelID)
+        }
+    }
+    
+    @IBAction func editTravel() {
+//        performSegue(withIdentifier: "showEditTravel", sender: Any?)
+        performSegue(withIdentifier: "showEditTravel", sender: nil)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showEditTravel" {
+            if let editTravel = segue.destination as? EditTravel {
+                editTravel.editTravelInfo = self.travelPageInfo
+                if travelPageInfo.content.count > 0 {
+                    editTravel.editContentArray = travelData.contentArray
+                }
+            }
+        }
+    }
+    
 }

@@ -32,6 +32,8 @@
 "nocontentmsg" = "Write someting";
 "nologinmsg" = "You need to log in first";
 "savesuccessmsg" = "Save Success!";
+"deleteselectmsg" = "Sure delete it forever?";
+"deletesuccessmsg" = "Deleted!";
 "contenttextplaceholder" = "Some describtion of your photos";
 "" = "";
 "" = "";

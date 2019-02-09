@@ -1,9 +1,9 @@
 //
-//  NewTravel.swift
+//  EditTravel.swift
 //  TrevTravel
 //
-//  Created by Yangshan Liu on 2018-09-18.
-//  Copyright © 2018 TrevTravel. All rights reserved.
+//  Created by Yangshan Liu on 2019-02-07.
+//  Copyright © 2019 TrevTravel. All rights reserved.
 //
 
 import UIKit
@@ -11,15 +11,15 @@ import Firebase
 import FirebaseAuth
 import GoogleSignIn
 
-class NewTravel: UIViewController, UITableViewDelegate, UITextViewDelegate, UITableViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
+class EditTravel: UIViewController, UITableViewDelegate, UITextViewDelegate, UITableViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
     
     @IBOutlet weak var newTitle: UITextField!
-//    @IBOutlet weak var newShortText: UITextField!
+    //    @IBOutlet weak var newShortText: UITextField!
     @IBOutlet weak var newContent: UITextView!
-    
     @IBOutlet weak var contentTable: UITableView!
     @IBOutlet weak var addressBtn: UIButton!
-
+    @IBOutlet weak var deleteBtn: UIBarButtonItem!
+    
     // Translation
     let reminder:String = NSLocalizedString("reminder", comment: "")
     let okBtn:String = NSLocalizedString("ok", comment: "")
@@ -29,15 +29,24 @@ class NewTravel: UIViewController, UITableViewDelegate, UITextViewDelegate, UITa
     let guest:String = NSLocalizedString("guest", comment: "")
     let contentTextPlaceHolder:String = NSLocalizedString("contenttextplaceholder", comment: "")
     
+    var travelID = ""
     var newTravelData = TravelData()
+    var editTravelInfo = TravelData.TravelInfo()
+    var editContentArray: [TravelData.Content] = []
     var placeholderLabel: UILabel!
     var userEmail = "Guest"
     var address:String = ""
     let userDefault = UserDefaults.standard
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-//        newTravelData.dataDel = self // If needs DataDelegate method
+//        newTravelData.editTravelDel = self
+        userEmail = Auth.auth().currentUser?.email! ?? "Guest"
+        newTravelData.newTravelInfo = editTravelInfo
+        address = newTravelData.newTravelInfo.place
+        
+        loadEditInfo()
         
         self.newTitle.delegate = self
         self.newContent.delegate = self
@@ -66,11 +75,40 @@ class NewTravel: UIViewController, UITableViewDelegate, UITextViewDelegate, UITa
         if userDefault.string(forKey: "returnAddress") != nil {
             address = userDefault.string(forKey: "returnAddress")!
             addressBtn.setTitle(address, for: .normal)
+        } else {
+            address = newTravelData.newTravelInfo.place
+            addressBtn.setTitle(address, for: .normal)
         }
-        
+        setTravelData()
         loadTable()
     }
-
+    func loadEditInfo() {
+//        newTravelData.newTravelInfo = editTravelInfo
+        
+        if editContentArray.count > 0 {
+            newTravelData.contentArray = editContentArray
+            newTravelData.content = editTravelInfo.content
+        }
+        setTravelData()
+    }
+    
+    func setTravelData() {
+        self.navigationController?.navigationBar.tintColor = UIColor.lightGray
+        self.navigationController?.navigationBar.topItem?.title = ""
+        self.navigationItem.title = "Edit"
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor:#colorLiteral(red: 0.1078509044, green: 0.5802940753, blue: 0.7578327396, alpha: 1)]
+        deleteBtn.isEnabled = true
+        deleteBtn.tintColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
+        
+        newTitle.text = newTravelData.newTravelInfo.title
+        addressBtn.setTitle(address, for: .normal)
+        newContent.text = newTravelData.newTravelInfo.shortText
+        
+        if editTravelInfo.content.count > 0 {
+            loadTable()
+        }
+    }
+    
     func loadTable() {
         contentTable.reloadData()
     }
@@ -85,9 +123,10 @@ class NewTravel: UIViewController, UITableViewDelegate, UITextViewDelegate, UITa
             newTravelData.newTravelInfo.place = userDefault.string(forKey: "returnAddress") ?? ""
             newTravelData.newTravelInfo.shortText = newContent.text ?? ""
             newTravelData.newTravelInfo.title = newTitle.text ?? ""
+//            print("newTravelData.contentArray.count: ", newTravelData.contentArray.count)
             
-            // upload the saved data to Firebase
-            newTravelData.uploadData(isEdit: false)
+            // upload the saved data to Firebase , oldContentCount: editTravelInfo.content.count
+            newTravelData.uploadData(isEdit:true)
             
             reminder(saveSuccessMsg)
             
@@ -98,7 +137,7 @@ class NewTravel: UIViewController, UITableViewDelegate, UITextViewDelegate, UITa
         textView.resignFirstResponder()
         return true
     }
-
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return newTravelData.contentArray.count
     }
@@ -110,7 +149,7 @@ class NewTravel: UIViewController, UITableViewDelegate, UITextViewDelegate, UITa
         cell.newImage?.image = contentCell.img
         return cell
     }
-
+    
     @IBAction func newPicture(_ sender: UIButton) {
         let imagePicker = UIImagePickerController()
         imagePicker.delegate = self
@@ -168,25 +207,43 @@ class NewTravel: UIViewController, UITableViewDelegate, UITextViewDelegate, UITa
         newContent.text = ""
         userDefault.set("", forKey: "returnAddress")
         addressBtn.setTitle("address", for: .normal)
-
+        
         newTravelData.contentArray.removeAll()
         newTravelData.content.removeAll()
         self.loadTable()
-
+        
+        self.navigationController?.navigationBar.isUserInteractionEnabled = false
+        self.navigationController?.navigationBar.tintColor = UIColor.clear
     }
     
-
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let mapVC = segue.destination as? MapViewController else { return }
-        mapVC.address = ""
+//        guard let mapVC = segue.destination as? MapViewController else { return }
+//        mapVC.address = ""
+        if segue.identifier == "showMapView" {
+            if let mapView = segue.destination as? MapViewController {
+                if let addressBtnTitle = sender as? String {
+                    mapView.address = addressBtnTitle
+                }
+            }
+        }
     }
     
     @IBAction func getAddress(_ sender: UIStoryboardSegue) {
-//        guard let mapVC = sender.source as? MapViewController else { return }
-//        addressBtn.setTitle(mapVC.address, for: .normal)
-
+        //        guard let mapVC = sender.source as? MapViewController else { return }
+        //        addressBtn.setTitle(mapVC.address, for: .normal)
+        
     }
     
-
+    @IBAction func changeAddress() {
+        performSegue(withIdentifier: "showMapView", sender: address)
+    }
+    
+    
+    @IBAction func deleteTravel() {
+        if travelID != "" {
+            newTravelData.deleteData(travelID: travelID)
+        }
+    }
     
 }

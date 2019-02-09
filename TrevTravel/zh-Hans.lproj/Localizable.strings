@@ -32,6 +32,8 @@
 "nocontentmsg" = "请输入内容";
 "nologinmsg" = "请先登录";
 "savesuccessmsg" = "成功保存!";
+"deleteselectmsg" = "确定删除？";
+"deletesuccessmsg" = "已删除！";
 "contenttextplaceholder" = "描述你的内容";
 "" = "";
 "" = "";

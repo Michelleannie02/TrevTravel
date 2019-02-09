@@ -27,9 +27,11 @@ class TravelList: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     var travelData = TravelData()
     let searchController = UISearchController(searchResultsController: nil) // use the same view when searching
 //    var filteredTravels = [TravelData]()
+    var snapshotListener:ListenerRegistration!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+//        self.view.backgroundColor = #colorLiteral(red: 0.8847591969, green: 0.6832608143, blue: 0.07605831369, alpha: 1)
         // Setup the Search Controller
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
@@ -48,11 +50,21 @@ class TravelList: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         travelData.dataDel = self
         
         //0928
-//        loadData()
+        print("加载视图结束")
+//        loadData() // snapshotListener insteads
+//        snapshotListener = travelData.dataListener()
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        loadData()
+        print("视图即将显示")
+//        loadData()
+        snapshotListener = travelData.dataListener()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        print("视图已经显示")
+//        snapshotListener = travelData.dataListener()
     }
     
     func loadTable() {
@@ -60,10 +72,21 @@ class TravelList: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         //        loadActivity.isHidden = true
     }
     
-    // Get all the travel diaries data from Firebase
+    // Get all the travel diaries data from Firebase // delete snapshotListener insteads
     func loadData() {
-        travelData.travelArray.removeAll() // Clear the table view before getting all data
+//        print("Length before remove: ", travelData.travelArray.count)
+//        travelData.travelArray.removeAll() // Clear the table view before getting all data
         travelData.loadDB() // Get data from Firebase
+//        print("Length after: ", travelData.travelArray.count)
+    }
+    
+    @IBAction private func refresh(sender: UIRefreshControl?) {
+        if travelData.travelArray.count > 0 {
+            self.travelTable.reloadData()
+            sender?.endRefreshing()
+        } else {
+            sender?.endRefreshing()
+        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -76,6 +99,7 @@ class TravelList: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TravelCell", for:indexPath) as! TravelCell
         let row = indexPath.row
+//        print("Bug: travelData.travelArray length: ", travelData.travelArray.count," row: ",row )
         var travelCell = travelData.travelArray[row]
         
 //        let travelCell: TravelData.TravelInfo // Not right
@@ -114,6 +138,7 @@ class TravelList: UIViewController, UITableViewDelegate, UITableViewDataSource, 
                     }
                     
                     travelPage.travelID = aTravel.id
+                    travelPage.travelPageInfo = aTravel
                 }
             }
         }
@@ -140,10 +165,17 @@ class TravelList: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         return searchController.isActive && !searchBarIsEmpty()
     }
 
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        print("视图已经消失")
+//        snapshotListener.remove()
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+        snapshotListener.remove()
     }
-
+    
+    
 }

@@ -6,6 +6,7 @@ target 'TrevTravel' do
   use_frameworks!
 
 	pod 'Firebase/Core'
+	pod 'Firebase/Database'
 	pod 'Firebase/Firestore'
 	pod 'Firebase/Storage'
 	pod 'FirebaseUI'
