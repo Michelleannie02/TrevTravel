@@ -61,12 +61,13 @@ class Login: UIViewController, UITextFieldDelegate, GIDSignInUIDelegate {
         self.emailTextField.delegate = self
         self.passwordTextField.delegate = self
         
-        
-        let loginButton = LoginButton(readPermissions: [ .publicProfile, .email, .userFriends ])
-        loginButton.center = view.center
-        
-        
-        view.addSubview(loginButton)
+//        FBSignInButton.isHidden = true
+//        let loginButton = LoginButton(readPermissions: [ .publicProfile, .email, .userFriends ])
+//        loginButton.center = view.center
+//        loginButton.center.x += CGFloat(50.0)
+//        loginButton.center.y += CGFloat(120.0)
+//        
+//        view.addSubview(loginButton)
     }
     
     override func viewWillAppear(_ animated: Bool) {

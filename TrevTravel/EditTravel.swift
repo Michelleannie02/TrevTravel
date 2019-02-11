@@ -44,7 +44,6 @@ class EditTravel: UIViewController, UITableViewDelegate, UITextViewDelegate, UIT
         //        newTravelData.editTravelDel = self
         userEmail = Auth.auth().currentUser?.email! ?? "Guest"
         newTravelData.newTravelInfo = editTravelInfo
-        address = newTravelData.newTravelInfo.place
         
         loadEditInfo()
         
@@ -69,22 +68,12 @@ class EditTravel: UIViewController, UITableViewDelegate, UITextViewDelegate, UIT
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        
         userEmail = Auth.auth().currentUser?.email! ?? guest
-        
-        if userDefault.string(forKey: "returnAddress") != nil {
-            address = userDefault.string(forKey: "returnAddress")!
-            addressBtn.setTitle(address, for: .normal)
-        } else {
-            address = newTravelData.newTravelInfo.place
-            addressBtn.setTitle(address, for: .normal)
-        }
+
         setTravelData()
         loadTable()
     }
     func loadEditInfo() {
-        //        newTravelData.newTravelInfo = editTravelInfo
-        
         if editContentArray.count > 0 {
             newTravelData.contentArray = editContentArray
             newTravelData.content = editTravelInfo.content
@@ -94,13 +83,17 @@ class EditTravel: UIViewController, UITableViewDelegate, UITextViewDelegate, UIT
     
     func setTravelData() {
         self.navigationItem.hidesBackButton = false
-//        self.navigationController?.navigationBar.tintColor = UIColor.lightGray
         self.navigationController?.navigationBar.topItem?.title = ""
         self.navigationItem.title = "Edit"
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor:#colorLiteral(red: 0.1240907066, green: 0.6070433936, blue: 1, alpha: 1)]
         deleteBtn.isEnabled = false
         deleteBtn.tintColor = UIColor.clear
         
+        if userDefault.string(forKey: "returnAddress") != "" {
+            address = userDefault.string(forKey: "returnAddress")!
+        } else {
+            address = newTravelData.newTravelInfo.place
+        }
         newTitle.text = newTravelData.newTravelInfo.title
         addressBtn.setTitle(address, for: .normal)
         newContent.text = newTravelData.newTravelInfo.shortText
@@ -121,10 +114,10 @@ class EditTravel: UIViewController, UITableViewDelegate, UITextViewDelegate, UIT
             reminder(noContentMsg)
         } else {
             newTravelData.newTravelInfo.author = userEmail
-            newTravelData.newTravelInfo.place = userDefault.string(forKey: "returnAddress") ?? ""
+            newTravelData.newTravelInfo.place = address
             newTravelData.newTravelInfo.shortText = newContent.text ?? ""
             newTravelData.newTravelInfo.title = newTitle.text ?? ""
-            //            print("newTravelData.contentArray.count: ", newTravelData.contentArray.count)
+            print("newTravelData.newTravelInfo.place: ", newTravelData.newTravelInfo.place)
             
             // upload the saved data to Firebase , oldContentCount: editTravelInfo.content.count
             newTravelData.uploadData(isEdit:true)

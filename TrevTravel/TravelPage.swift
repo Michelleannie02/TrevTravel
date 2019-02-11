@@ -130,7 +130,7 @@ class TravelPage: UIViewController, UIScrollViewDelegate, UITableViewDelegate, U
         self.navigationController?.navigationBar.topItem?.title = ""
         self.navigationItem.title = "Detail Page"
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor:#colorLiteral(red: 0.1240907066, green: 0.6070433936, blue: 1, alpha: 1)]
-        shareBtn.isHidden = false
+        shareBtn.isHidden = true
         
         if userEmail == travelPageInfo.author {
             deleteBtn.isEnabled = true
