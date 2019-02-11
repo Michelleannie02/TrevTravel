@@ -40,11 +40,7 @@ class EditTravel: UIViewController, UITableViewDelegate, UITextViewDelegate, UIT
     
     
     override func viewDidLoad() {
-        super.viewDidLoad()
-        //        newTravelData.editTravelDel = self
-        userEmail = Auth.auth().currentUser?.email! ?? "Guest"
-        newTravelData.newTravelInfo = editTravelInfo
-        
+        super.viewDidLoad()        
         loadEditInfo()
         
         self.newTitle.delegate = self
@@ -73,15 +69,8 @@ class EditTravel: UIViewController, UITableViewDelegate, UITextViewDelegate, UIT
         setTravelData()
         loadTable()
     }
+
     func loadEditInfo() {
-        if editContentArray.count > 0 {
-            newTravelData.contentArray = editContentArray
-            newTravelData.content = editTravelInfo.content
-        }
-        setTravelData()
-    }
-    
-    func setTravelData() {
         self.navigationItem.hidesBackButton = false
         self.navigationController?.navigationBar.topItem?.title = ""
         self.navigationItem.title = "Edit"
@@ -89,14 +78,27 @@ class EditTravel: UIViewController, UITableViewDelegate, UITextViewDelegate, UIT
         deleteBtn.isEnabled = false
         deleteBtn.tintColor = UIColor.clear
         
+        userEmail = Auth.auth().currentUser?.email! ?? "Guest"
+        newTravelData.newTravelInfo = editTravelInfo
+        if editContentArray.count > 0 {
+            newTravelData.contentArray = editContentArray
+            newTravelData.content = editTravelInfo.content
+        }
+        
+        newTitle.text = newTravelData.newTravelInfo.title
+        newContent.text = newTravelData.newTravelInfo.shortText
+        
+        setTravelData()
+    }
+    
+    func setTravelData() {
         if userDefault.string(forKey: "returnAddress") != "" {
             address = userDefault.string(forKey: "returnAddress")!
+            newTravelData.newTravelInfo.place = address
         } else {
             address = newTravelData.newTravelInfo.place
         }
-        newTitle.text = newTravelData.newTravelInfo.title
         addressBtn.setTitle(address, for: .normal)
-        newContent.text = newTravelData.newTravelInfo.shortText
         
         if editTravelInfo.content.count > 0 {
             loadTable()
@@ -238,6 +240,5 @@ class EditTravel: UIViewController, UITableViewDelegate, UITextViewDelegate, UIT
             newTravelData.deleteData(travelID: travelID)
         }
     }
-    
     
 }

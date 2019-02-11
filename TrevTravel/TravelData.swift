@@ -28,16 +28,10 @@ protocol TravelDelegate {
     func loadCommentsData()
 }
 
-// EditTravel view
-//protocol EditTravelDelegate {
-//    func loadTable()
-//}
-
 class TravelData {
     
     var dataDel: DataDelegate?
     var travelDel: TravelDelegate?
-//    var editTravelDel: EditTravelDelegate?
     
     struct TravelInfo {
         // 11 fields. 9 fields saved to firebase
@@ -185,7 +179,6 @@ class TravelData {
 //                                self.contentArray.append(aContent)
 //                            }
                             self.contentArray.append(aContent)
-                            print("contentArray: ", self.contentArray[0].imgUrl)
                             // self.travelDel?.loadTable() // Same Better?
                         }
                     }
@@ -266,7 +259,6 @@ class TravelData {
         }
         
         let db = Firestore.firestore()
-//        newTravelInfo.createdAt = self.getCurrentTime()
         
         if !isEdit {
             newTravelInfo.createdAt = self.getCurrentTime()
@@ -286,15 +278,13 @@ class TravelData {
             "title": newTravelInfo.title
             ] as [String : Any]
         
-//        let documentKey = newTravelInfo.createdAt.replacingOccurrences(of: " ", with: "_") + newTravelInfo.author
-        
         db.collection("travelDiary").document(newTravelInfo.id).setData(dataDict) { err in
             if let error = err {
                 print("Error uploading to travelDiary: \(error)")
             } else {
                 print("Travel diary document saved")
 
-                // Upload image to Firebase
+                // Upload image to Firebase. Move to listener
 //                if self.contentArray.count != 0 { self.uploadImage(self.contentArray) }
             }
         }

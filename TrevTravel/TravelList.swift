@@ -50,21 +50,15 @@ class TravelList: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         travelData.dataDel = self
         
         //0928
-        print("加载视图结束")
+//        print("加载视图结束")
 //        loadData() // snapshotListener insteads
 //        snapshotListener = travelData.dataListener()
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        print("视图即将显示")
+//        print("视图即将显示")
 //        loadData()
         snapshotListener = travelData.dataListener()
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        print("视图已经显示")
-//        snapshotListener = travelData.dataListener()
     }
     
     func loadTable() {
@@ -74,10 +68,8 @@ class TravelList: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     
     // Get all the travel diaries data from Firebase // delete snapshotListener insteads
     func loadData() {
-//        print("Length before remove: ", travelData.travelArray.count)
 //        travelData.travelArray.removeAll() // Clear the table view before getting all data
         travelData.loadDB() // Get data from Firebase
-//        print("Length after: ", travelData.travelArray.count)
     }
     
     @IBAction private func refresh(sender: UIRefreshControl?) {
@@ -99,7 +91,6 @@ class TravelList: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TravelCell", for:indexPath) as! TravelCell
         let row = indexPath.row
-//        print("Bug: travelData.travelArray length: ", travelData.travelArray.count," row: ",row )
         var travelCell = travelData.travelArray[row]
         
 //        let travelCell: TravelData.TravelInfo // Not right
@@ -167,7 +158,7 @@ class TravelList: UIViewController, UITableViewDelegate, UITableViewDataSource, 
 
     override func viewDidDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        print("视图已经消失")
+//        print("视图已经消失")
 //        snapshotListener.remove()
     }
     
