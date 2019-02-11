@@ -46,7 +46,7 @@
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eWn-f5-Z8z">
                                                     <rect key="frame" x="10" y="23" width="300" height="26"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                     <color key="textColor" red="0.85664264899999998" green="0.58455749420000003" blue="0.34898636890000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -55,7 +55,7 @@
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="ShortText" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3mP-VY-Iua">
                                                     <rect key="frame" x="10" y="296" width="300" height="41"/>
-                                                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="12"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="16"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -67,7 +67,7 @@
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="LikeNum" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oz7-UC-n8o">
                                                     <rect key="frame" x="23" y="336" width="163" height="16"/>
-                                                    <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="9"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="10"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -80,7 +80,7 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Place" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IdV-Ft-cy6">
                                                     <rect key="frame" x="205" y="336" width="110" height="16"/>
                                                     <color key="tintColor" red="0.053355901121570182" green="0.6625011027421297" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="9"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="10"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -434,7 +434,7 @@
                                                         </constraints>
                                                     </imageView>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QqO-az-qiQ">
-                                                        <rect key="frame" x="16" y="0.0" width="284" height="16"/>
+                                                        <rect key="frame" x="16" y="0.0" width="267" height="16"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                                         <state key="normal" title="Address">
                                                             <color key="titleColor" red="0.12409070655622034" green="0.60704339359464854" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -442,6 +442,18 @@
                                                         <connections>
                                                             <action selector="showMap:" destination="dp2-Tc-pDO" eventType="touchUpInside" id="dWF-ho-4by"/>
                                                             <segue destination="Vea-I8-gXR" kind="show" id="4qs-zy-naw"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3wh-dC-pSn">
+                                                        <rect key="frame" x="283" y="0.0" width="17" height="16"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" secondItem="3wh-dC-pSn" secondAttribute="height" multiplier="1:1" constant="1" id="fqT-N9-jHf"/>
+                                                        </constraints>
+                                                        <state key="normal" image="share">
+                                                            <color key="titleColor" red="0.1240907066" green="0.60704339360000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="shareInfo" destination="dp2-Tc-pDO" eventType="touchUpInside" id="a1P-wX-b3R"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
@@ -655,6 +667,7 @@
                         <outlet property="pageScroll" destination="YFF-QH-HXz" id="YPE-EX-r8Z"/>
                         <outlet property="paragraphTable" destination="lnQ-8R-oaj" id="2yl-Cx-6Ta"/>
                         <outlet property="placeBtn" destination="QqO-az-qiQ" id="h8G-6y-FUG"/>
+                        <outlet property="shareBtn" destination="3wh-dC-pSn" id="yc6-sY-OSQ"/>
                         <outlet property="shortTextViewHeightCons" destination="5Hx-01-RRG" id="oqb-Nk-eub"/>
                         <outlet property="shotTextView" destination="Tt9-Ps-Rdg" id="Vbb-EU-2tm"/>
                         <outlet property="titleLabel" destination="B5W-x6-ppJ" id="1ln-bu-hBx"/>
@@ -1018,9 +1031,6 @@
                                                     <constraint firstAttribute="height" constant="45" id="p55-K8-RXd"/>
                                                 </constraints>
                                                 <state key="normal" title="facebook" image="facebook"/>
-                                                <connections>
-                                                    <action selector="facebookLogin:" destination="vhv-es-Y5Q" eventType="touchUpInside" id="YT9-ct-cmg"/>
-                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qBG-KQ-JoH">
                                                 <rect key="frame" x="80" y="78" width="45" height="45"/>
@@ -1071,8 +1081,6 @@
                         <viewLayoutGuide key="safeArea" id="sBz-OM-R9b"/>
                     </view>
                     <connections>
-                        <outlet property="FBSignInButton" destination="coZ-DB-trz" id="G5d-TI-MZJ"/>
-                        <outlet property="GIDSignInButton" destination="qBG-KQ-JoH" id="xXg-ot-mf5"/>
                         <outlet property="emailTextField" destination="LOI-7q-qpQ" id="Kdb-4m-D3T"/>
                         <outlet property="passwordTextField" destination="4TO-Tx-Ire" id="6RK-gO-69X"/>
                     </connections>
@@ -1336,6 +1344,7 @@
         <image name="photos" width="46.545455932617188" height="46.545455932617188"/>
         <image name="placeholder" width="51.200000762939453" height="51.200000762939453"/>
         <image name="setting" width="354.4615478515625" height="354.4615478515625"/>
+        <image name="share" width="45.623764038085938" height="45.623764038085938"/>
         <image name="travel" width="970" height="450"/>
         <image name="user" width="460.79998779296875" height="460.79998779296875"/>
     </resources>

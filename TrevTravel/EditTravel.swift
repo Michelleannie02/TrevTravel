@@ -93,12 +93,13 @@ class EditTravel: UIViewController, UITableViewDelegate, UITextViewDelegate, UIT
     }
     
     func setTravelData() {
-        self.navigationController?.navigationBar.tintColor = UIColor.lightGray
+        self.navigationItem.hidesBackButton = false
+//        self.navigationController?.navigationBar.tintColor = UIColor.lightGray
         self.navigationController?.navigationBar.topItem?.title = ""
         self.navigationItem.title = "Edit"
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor:#colorLiteral(red: 0.1240907066, green: 0.6070433936, blue: 1, alpha: 1)]
-        deleteBtn.isEnabled = true
-        deleteBtn.tintColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
+        deleteBtn.isEnabled = false
+        deleteBtn.tintColor = UIColor.clear
         
         newTitle.text = newTravelData.newTravelInfo.title
         addressBtn.setTitle(address, for: .normal)
@@ -212,8 +213,7 @@ class EditTravel: UIViewController, UITableViewDelegate, UITextViewDelegate, UIT
         newTravelData.content.removeAll()
         self.loadTable()
         
-        self.navigationController?.navigationBar.isUserInteractionEnabled = false
-        self.navigationController?.navigationBar.tintColor = UIColor.clear
+        self.navigationItem.hidesBackButton = true
     }
     
     
@@ -245,5 +245,6 @@ class EditTravel: UIViewController, UITableViewDelegate, UITextViewDelegate, UIT
             newTravelData.deleteData(travelID: travelID)
         }
     }
+    
     
 }

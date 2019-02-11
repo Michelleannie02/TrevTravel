@@ -17,6 +17,13 @@ target 'TrevTravel' do
 	pod 'FirebaseUI/Phone'
 	pod 'Firebase/Auth'
 	pod 'GoogleSignIn'
+	pod ‘FacebookCore’
+	pod ‘FacebookLogin’
+	pod ‘FacebookShare’
+	pod 'FBSDKCoreKit'  
+	pod 'FBSDKLoginKit'
+	pod 'FBSDKShareKit'
+	pod 'FBSDKPlacesKit'
 
 
   # Pods for TrevTravel

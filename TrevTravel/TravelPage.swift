@@ -10,8 +10,11 @@ import UIKit
 import Firebase
 import FirebaseAuth
 import GoogleSignIn
+import FacebookCore
+import FacebookLogin
+import FacebookShare
 
-class TravelPage: UIViewController, UIScrollViewDelegate, UITableViewDelegate, UITableViewDataSource, UITextViewDelegate, UITextFieldDelegate, UINavigationControllerDelegate, TravelDelegate {
+class TravelPage: UIViewController, UIScrollViewDelegate, UITableViewDelegate, UITableViewDataSource, UITextViewDelegate, UITextFieldDelegate, UINavigationControllerDelegate, UIDocumentPickerDelegate, TravelDelegate {
     
     @IBOutlet weak var pageScroll: UIScrollView!
     @IBOutlet weak var paragraphTable: UITableView!
@@ -29,6 +32,7 @@ class TravelPage: UIViewController, UIScrollViewDelegate, UITableViewDelegate, U
     
     @IBOutlet weak var deleteBtn: UIBarButtonItem!
     @IBOutlet weak var editBtn: UIBarButtonItem!
+    @IBOutlet weak var shareBtn: UIButton!
     
     var travelID = ""
     let travelData = TravelData()
@@ -66,8 +70,6 @@ class TravelPage: UIViewController, UIScrollViewDelegate, UITableViewDelegate, U
         let sWidth = pageScroll.frame.size.width
         let sHeight = pageScroll.frame.size.height
         pageScroll.contentSize = CGSize(width: sWidth, height: 300 + sHeight + self.commentsView.contentSize.height + self.shotTextView.contentSize.height)
-//        print("Scroll content size w*h: ",sWidth, " ", sHeight)
-        
         
     }
     
@@ -85,9 +87,10 @@ class TravelPage: UIViewController, UIScrollViewDelegate, UITableViewDelegate, U
     func loadPageData() {
 //        travelData.loadPageDB(travelID: travelID, userEmail: userEmail) // Segue sends travelPageInfo insteads
         travelData.newTravelInfo = travelPageInfo
+        travelData.content = travelPageInfo.content
+        travelData.contentArray.removeAll()
         if travelPageInfo.content.count > 0 {
-//            travelData.contentArray.removeAll()
-            travelData.loadImages(imgUrlArray: travelPageInfo.content)
+            travelData.loadImages(imgUrlArray: travelData.content)
         }
         
         if travelPageInfo.likes > 0 && userEmail != "Guest" {
@@ -123,11 +126,12 @@ class TravelPage: UIViewController, UIScrollViewDelegate, UITableViewDelegate, U
 //        shotTextView.text = travelData.newTravelInfo.shortText
 //        likeNum.text = "(" + String(travelData.newTravelInfo.likes) + ")"
        
-        self.navigationController?.navigationBar.tintColor = UIColor.lightGray
+        self.navigationItem.hidesBackButton = false
         self.navigationController?.navigationBar.topItem?.title = ""
         self.navigationItem.title = "Detail Page"
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor:#colorLiteral(red: 0.1240907066, green: 0.6070433936, blue: 1, alpha: 1)]
-//        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor:#colorLiteral(red: 0.8549019608, green: 0.5843137255, blue: 0.3490196078, alpha: 1)]
+        shareBtn.isHidden = false
+        
         if userEmail == travelPageInfo.author {
             deleteBtn.isEnabled = true
             deleteBtn.tintColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
@@ -199,7 +203,28 @@ class TravelPage: UIViewController, UIScrollViewDelegate, UITableViewDelegate, U
         let row = indexPath.row
         let paragraphCell = travelData.contentArray[row]
         cell.parImgView.image = paragraphCell.img
+
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let row = indexPath.row
+        
+        let fileName = travelData.contentArray[row].imgUrl
+        let tempURL = NSURL(fileURLWithPath: NSTemporaryDirectory())
+        if let fileURL = tempURL.appendingPathComponent(fileName), let theImage = travelData.contentArray[row].img, let jpegData = UIImageJPEGRepresentation(theImage, 0.7) {
+            do {
+                try jpegData.write(to: fileURL)
+                
+                let objectsToShare = [fileURL] as [Any]
+                let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
+                self.present(activityVC, animated: true, completion: nil)
+            }
+            catch {
+                // hantera fel
+            }
+        }
+        
     }
     
     @IBAction func sendComment() {
@@ -266,8 +291,8 @@ class TravelPage: UIViewController, UIScrollViewDelegate, UITableViewDelegate, U
         travelData.content.removeAll()
         self.loadTable()
         
-        self.navigationController?.navigationBar.isUserInteractionEnabled = false
-        self.navigationController?.navigationBar.tintColor = UIColor.clear
+        self.navigationItem.hidesBackButton = true
+        shareBtn.isHidden = true
         
     }
     
@@ -319,6 +344,28 @@ class TravelPage: UIViewController, UIScrollViewDelegate, UITableViewDelegate, U
                 }
             }
         }
+    }
+    
+    @IBAction func shareInfo() {
+        if travelData.contentArray.count > 0 {
+//            var photoArray:Array<Photo> = []
+//            for i in 0...(travelData.contentArray.count-1) {
+//                let photo = Photo(image: travelData.contentArray[i].img!, userGenerated: false)
+//                photoArray.append(photo)
+//            }
+            
+//            let photo = Photo(image: travelData.contentArray[0].img!, userGenerated: false)
+//            let content = PhotoShareContent(photos: [photo])
+//            let shareDialog = ShareDialog(content:content)
+//            
+//            do {
+//                try shareDialog.show()
+//            } catch {
+//                print(error)
+//            }
+            
+        }
+
     }
     
 }

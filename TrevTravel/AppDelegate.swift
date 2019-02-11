@@ -13,6 +13,9 @@ import FirebaseDatabase
 import FirebaseStorage
 import FirebaseAuth
 import GoogleSignIn
+import FacebookCore
+import FacebookLogin
+import FacebookShare
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {

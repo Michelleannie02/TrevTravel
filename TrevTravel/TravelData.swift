@@ -185,6 +185,7 @@ class TravelData {
 //                                self.contentArray.append(aContent)
 //                            }
                             self.contentArray.append(aContent)
+                            print("contentArray: ", self.contentArray[0].imgUrl)
                             // self.travelDel?.loadTable() // Same Better?
                         }
                     }
@@ -261,7 +262,7 @@ class TravelData {
             // Upload image to Firebase
             self.uploadImage(self.contentArray)
         } else {
-            newTravelInfo.coverImgUrl = ("iiipocdiaucpjigowhcyqchxzgpmxj153910115505137_0.jpg"as String?)! // Default img for NO IMAGE
+            newTravelInfo.coverImgUrl = ("NoImage.jpg"as String?)! // Default img for NO IMAGE
         }
         
         let db = Firestore.firestore()

@@ -10,7 +10,8 @@ import UIKit
 import Firebase
 import FirebaseAuth
 import GoogleSignIn
-
+import FacebookCore
+import FacebookLogin
 
 class Login: UIViewController, UITextFieldDelegate, GIDSignInUIDelegate {
     
@@ -60,6 +61,12 @@ class Login: UIViewController, UITextFieldDelegate, GIDSignInUIDelegate {
         self.emailTextField.delegate = self
         self.passwordTextField.delegate = self
         
+        
+        let loginButton = LoginButton(readPermissions: [ .publicProfile, .email, .userFriends ])
+        loginButton.center = view.center
+        
+        
+        view.addSubview(loginButton)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -75,7 +82,6 @@ class Login: UIViewController, UITextFieldDelegate, GIDSignInUIDelegate {
             self.view.transform = CGAffineTransform(translationX: 0, y: moveDistance)
         }
     }
-
     
     @IBAction func signup(_ sender: Any) {
         Auth.auth().createUser(withEmail: self.emailTextField.text!, password: self.passwordTextField.text!) { (user, error) in
@@ -123,9 +129,23 @@ class Login: UIViewController, UITextFieldDelegate, GIDSignInUIDelegate {
         GIDSignIn.sharedInstance().signIn()
     }
     
-    @IBAction func facebookLogin(_ sender: Any) {
-        
+    @IBAction func facebookLogin() {
+      
     }
+    
+//    @objc func loginButtonClicked() {
+//        let loginManager = LoginManager()
+//        loginManager.logIn([ .publicProfile ], viewController: self) { loginResult in
+//            switch loginResult {
+//            case .Failed(let error):
+//                print(error)
+//            case .Cancelled:
+//                print("User cancelled login.")
+//            case .Success(let grantedPermissions, let declinedPermissions, let accessToken):
+//                print("Logged in!")
+//            }
+//        }
+//    }
     
     
     func reminder(_ msg:String) {
@@ -163,7 +183,5 @@ class Login: UIViewController, UITextFieldDelegate, GIDSignInUIDelegate {
         passwordTextField.resignFirstResponder()
         return(true)
     }
-    
-    
 
 }

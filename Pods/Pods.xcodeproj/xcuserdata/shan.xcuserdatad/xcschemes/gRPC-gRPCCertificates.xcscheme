@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "8066E5FB3C066C3C97FA8DD2DD6D2891"
+               BlueprintIdentifier = "800E4A8A4AE93AF75C240E7F0BA63DD6"
                BuildableName = "gRPCCertificates.bundle"
                BlueprintName = "gRPC-gRPCCertificates"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "8066E5FB3C066C3C97FA8DD2DD6D2891"
+            BlueprintIdentifier = "800E4A8A4AE93AF75C240E7F0BA63DD6"
             BuildableName = "gRPCCertificates.bundle"
             BlueprintName = "gRPC-gRPCCertificates"
             ReferencedContainer = "container:Pods.xcodeproj">
