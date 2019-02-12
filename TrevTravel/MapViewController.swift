@@ -156,9 +156,10 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         var addressText = ""
         let returnAdd:String = self.searchTextField.text ?? ""
 
-        if returnAdd.contains(",") {
-            addressText = returnAdd.getSubString(of: ",")
-        }
+//        if returnAdd.contains(",") {
+//            addressText = returnAdd.getSubString(of: ",")
+//        }
+        addressText = returnAdd
 
         self.userDefault.set(addressText, forKey: "returnAddress")
         print("Saved info: \(addressText)")

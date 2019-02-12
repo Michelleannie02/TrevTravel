@@ -46,7 +46,7 @@
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eWn-f5-Z8z">
                                                     <rect key="frame" x="10" y="23" width="300" height="26"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                                     <color key="textColor" red="0.85664264899999998" green="0.58455749420000003" blue="0.34898636890000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -55,7 +55,7 @@
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="ShortText" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3mP-VY-Iua">
                                                     <rect key="frame" x="10" y="296" width="300" height="41"/>
-                                                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="16"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="20"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -67,7 +67,7 @@
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="LikeNum" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oz7-UC-n8o">
                                                     <rect key="frame" x="23" y="336" width="163" height="16"/>
-                                                    <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="10"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="11"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -80,7 +80,7 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Place" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IdV-Ft-cy6">
                                                     <rect key="frame" x="205" y="336" width="110" height="16"/>
                                                     <color key="tintColor" red="0.053355901121570182" green="0.6625011027421297" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="10"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="11"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -1190,10 +1190,10 @@
             </objects>
             <point key="canvasLocation" x="1425" y="-120"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--TrevTravel-->
         <scene sceneID="5bq-We-a9Z">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="66O-C0-N3p" sceneMemberID="viewController">
+                <tabBarController title="TrevTravel" automaticallyAdjustsScrollViewInsets="NO" id="66O-C0-N3p" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="1Pc-gy-e4H">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
@@ -1209,7 +1209,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DhO-nx-cBn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="737" y="-1812"/>
+            <point key="canvasLocation" x="643" y="-1813"/>
         </scene>
         <!--Setting-->
         <scene sceneID="yPf-3v-obZ">

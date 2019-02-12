@@ -31,6 +31,7 @@ class TravelList: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     override func viewDidLoad() {
         super.viewDidLoad()
 //        self.view.backgroundColor = #colorLiteral(red: 0.8847591969, green: 0.6832608143, blue: 0.07605831369, alpha: 1)
+       
         // Setup the Search Controller
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
@@ -57,6 +58,7 @@ class TravelList: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     override func viewWillAppear(_ animated: Bool) {
 //        print("视图即将显示")
 //        loadData()
+         self.navigationItem.title = NSLocalizedString("title", comment: "")
         snapshotListener = travelData.dataListener()
 //        loadTable()
     }
