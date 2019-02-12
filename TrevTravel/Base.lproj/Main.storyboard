@@ -1081,6 +1081,7 @@
                         <viewLayoutGuide key="safeArea" id="sBz-OM-R9b"/>
                     </view>
                     <connections>
+                        <outlet property="FBSignInButton" destination="coZ-DB-trz" id="v8T-Wf-kI4"/>
                         <outlet property="emailTextField" destination="LOI-7q-qpQ" id="Kdb-4m-D3T"/>
                         <outlet property="passwordTextField" destination="4TO-Tx-Ire" id="6RK-gO-69X"/>
                     </connections>

@@ -48,6 +48,8 @@ class TravelPage: UIViewController, UIScrollViewDelegate, UITableViewDelegate, U
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        shareBtn.isHidden = true
+        
         travelData.travelDel = self
         // 0925 Load data when viewDidLoad
         userEmail = Auth.auth().currentUser?.email! ?? "Guest"
@@ -130,7 +132,6 @@ class TravelPage: UIViewController, UIScrollViewDelegate, UITableViewDelegate, U
         self.navigationController?.navigationBar.topItem?.title = ""
         self.navigationItem.title = "Detail Page"
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor:#colorLiteral(red: 0.1240907066, green: 0.6070433936, blue: 1, alpha: 1)]
-        shareBtn.isHidden = false
         
         if userEmail == travelPageInfo.author {
             deleteBtn.isEnabled = true
@@ -292,7 +293,6 @@ class TravelPage: UIViewController, UIScrollViewDelegate, UITableViewDelegate, U
         self.loadTable()
         
         self.navigationItem.hidesBackButton = true
-        shareBtn.isHidden = true
         
     }
     
@@ -303,18 +303,16 @@ class TravelPage: UIViewController, UIScrollViewDelegate, UITableViewDelegate, U
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         messageView.resignFirstResponder()
-       
-        UIView.animate(withDuration: 1.0, delay: 0.0, options: [], animations: {
+        UIView.animate(withDuration: 0.5, delay: 0.0, options: [], animations: {
             self.view.transform = .identity
         })
         return true
     }
     
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-        UIView.animate(withDuration: 1.0, delay: 0.0, options: [], animations: {
-            self.view.transform = CGAffineTransform(translationX: 0, y: -177)
+        UIView.animate(withDuration: 0.5, delay: 0.0, options: [], animations: {
+            self.view.transform = CGAffineTransform(translationX: 0, y: -self.view.frame.size.height/3.24)
         })
-        
         return true
     }
     
