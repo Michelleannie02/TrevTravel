@@ -35,6 +35,11 @@
 "deleteselectmsg" = "Sure delete it forever?";
 "deletesuccessmsg" = "Deleted!";
 "contenttextplaceholder" = "Some describtion of your photos";
+"moreinfo" = "Read more information on Wikipedia.";
+"nocamera" = "No Camera Found";
+"close" = "Close";
+"more" = "More info";
+"focus" = "Focus within frame to scan";
 "" = "";
 "" = "";
 "" = "";

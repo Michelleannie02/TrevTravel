@@ -35,6 +35,11 @@
 "deleteselectmsg" = "Säkert att radera?";
 "deletesuccessmsg" = "Raderats!";
 "contenttextplaceholder" = "Några beskrivningar";
+"moreinfo" = "Läs mer information på Wikipedia.";
+"nocamera" = "Ingen kamera";
+"close" = "Stänga";
+"more" = "Mer info";
+"focus" = "Fokusera inom ramen för att skanna";
 "" = "";
 "" = "";
 "" = "";

@@ -35,6 +35,11 @@
 "deleteselectmsg" = "确定删除？";
 "deletesuccessmsg" = "已删除！";
 "contenttextplaceholder" = "描述你的内容";
+"moreinfo" = "阅读维基百科上更多信息.";
+"nocamera" = "无法找到相机";
+"close" = " 关闭";
+"more" = "更多";
+"focus" = "请用手机对准以扫描";
 "" = "";
 "" = "";
 "" = "";
