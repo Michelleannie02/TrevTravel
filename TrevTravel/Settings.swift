@@ -39,6 +39,7 @@ class Settings: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         
+        changeLangBtn.setTitle(NSLocalizedString("change", comment: ""), for: .normal)
         // Set the language bar current Language
         let lang = userDefault.string(forKey: "appLanguage") ?? "en"
         

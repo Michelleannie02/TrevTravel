@@ -1,147 +1,147 @@
 
 /* Class = "UILabel"; text = "ShortText"; ObjectID = "3mP-VY-Iua"; */
-"3mP-VY-Iua.text" = "短文字";
+"3mP-VY-Iua.text" = "ShortText";
 
 /* Class = "UIButton"; normalTitle = "SAVE"; ObjectID = "4d1-Xz-v12"; */
-"4d1-Xz-v12.normalTitle" = "保存";
+"4d1-Xz-v12.normalTitle" = "SAVE";
 
 /* Class = "UIButton"; normalTitle = "Sign up"; ObjectID = "581-As-ys0"; */
-"581-As-ys0.normalTitle" = "注册";
+"581-As-ys0.normalTitle" = "Sign up";
 
 /* Class = "UITextView"; text = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda."; ObjectID = "5sW-oH-Qcq"; */
-"5sW-oH-Qcq.text" = "随机文字";
+"5sW-oH-Qcq.text" = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.";
 
 /* Class = "UILabel"; text = "XXXX-XX-XX"; ObjectID = "69n-cz-oXT"; */
 "69n-cz-oXT.text" = "XXXX-XX-XX";
 
 /* Class = "UIButton"; normalTitle = "Login"; ObjectID = "99t-1t-kFz"; */
-"99t-1t-kFz.normalTitle" = "登录";
+"99t-1t-kFz.normalTitle" = "Login";
 
 /* Class = "UIButton"; normalTitle = "User's email"; ObjectID = "AXh-Mn-hfX"; */
-"AXh-Mn-hfX.normalTitle" = "用户邮箱";
+"AXh-Mn-hfX.normalTitle" = "User's email";
 
 /* Class = "UILabel"; text = "Title"; ObjectID = "B5W-x6-ppJ"; */
-"B5W-x6-ppJ.text" = "标题";
+"B5W-x6-ppJ.text" = "Title";
 
 /* Class = "UIButton"; normalTitle = "Like"; ObjectID = "BTP-Pq-WsN"; */
-"BTP-Pq-WsN.normalTitle" = "喜欢";
+"BTP-Pq-WsN.normalTitle" = "Like";
 
 /* Class = "UIButton"; normalTitle = "Chinese (中文)"; ObjectID = "Cjt-24-ebr"; */
-"Cjt-24-ebr.normalTitle" = "中文";
+"Cjt-24-ebr.normalTitle" = "Chinese (中文)";
 
 /* Class = "UIBarButtonItem"; title = "Delete"; ObjectID = "DWS-NZ-eTB"; */
-"DWS-NZ-eTB.title" = "删除";
+"DWS-NZ-eTB.title" = "Delete";
 
 /* Class = "UIButton"; normalTitle = "Button"; ObjectID = "GWy-kj-Hvj"; */
-"GWy-kj-Hvj.normalTitle" = "按钮";
+"GWy-kj-Hvj.normalTitle" = "Button";
 
 /* Class = "UILabel"; text = "Place"; ObjectID = "IdV-Ft-cy6"; */
-"IdV-Ft-cy6.text" = "地点";
+"IdV-Ft-cy6.text" = "Place";
 
 /* Class = "UIButton"; normalTitle = "English"; ObjectID = "NF5-FF-Muy"; */
-"NF5-FF-Muy.normalTitle" = "英语";
+"NF5-FF-Muy.normalTitle" = "English";
 
 /* Class = "UILabel"; text = "ChangedAt"; ObjectID = "Nrn-xZ-Gzp"; */
-"Nrn-xZ-Gzp.text" = "更换";
+"Nrn-xZ-Gzp.text" = "ChangedAt";
 
 /* Class = "UIButton"; normalTitle = "Address"; ObjectID = "OA8-Py-k9P"; */
-"OA8-Py-k9P.normalTitle" = "地址";
+"OA8-Py-k9P.normalTitle" = "Address";
 
 /* Class = "UIButton"; normalTitle = "Change"; ObjectID = "P52-0U-ofX"; */
-"P52-0U-ofX.normalTitle" = "更改";
+"P52-0U-ofX.normalTitle" = "Change";
 
 /* Class = "UIButton"; normalTitle = "Swedish (Svenska)"; ObjectID = "PkB-VQ-LMY"; */
-"PkB-VQ-LMY.normalTitle" = "Svenska";
+"PkB-VQ-LMY.normalTitle" = "Swedish (Svenska)";
 
 /* Class = "UIButton"; normalTitle = "Address"; ObjectID = "QqO-az-qiQ"; */
-"QqO-az-qiQ.normalTitle" = "地址";
+"QqO-az-qiQ.normalTitle" = "Address";
 
 /* Class = "UILabel"; text = "(0)"; ObjectID = "RG4-I7-ihZ"; */
 "RG4-I7-ihZ.text" = "(0)";
 
 /* Class = "UIButton"; normalTitle = "Address"; ObjectID = "Swm-rr-ljc"; */
-"Swm-rr-ljc.normalTitle" = "地址";
+"Swm-rr-ljc.normalTitle" = "Address";
 
 /* Class = "UITextView"; text = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo"; ObjectID = "Tt9-Ps-Rdg"; */
-"Tt9-Ps-Rdg.text" = "随机文字";
+"Tt9-Ps-Rdg.text" = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo";
 
 /* Class = "UIButton"; normalTitle = "SAVE"; ObjectID = "aCz-bd-kqB"; */
-"aCz-bd-kqB.normalTitle" = "保存";
+"aCz-bd-kqB.normalTitle" = "SAVE";
 
 /* Class = "UINavigationItem"; title = "Title"; ObjectID = "bJa-1j-ikY"; */
-"bJa-1j-ikY.title" = "标题";
+"bJa-1j-ikY.title" = "Title";
 
 /* Class = "UITabBarItem"; title = "Add"; ObjectID = "bZA-pl-kO6"; */
-"bZA-pl-kO6.title" = "添加";
+"bZA-pl-kO6.title" = "Add";
 
 /* Class = "UIBarButtonItem"; title = "Done"; ObjectID = "bdP-8E-GCw"; */
-"bdP-8E-GCw.title" = "完成";
+"bdP-8E-GCw.title" = "Done";
 
 /* Class = "UITabBarItem"; title = "Setting"; ObjectID = "cYB-DK-GwT"; */
-"cYB-DK-GwT.title" = "设置";
+"cYB-DK-GwT.title" = "Setting";
 
 /* Class = "UIButton"; normalTitle = "facebook"; ObjectID = "coZ-DB-trz"; */
-"coZ-DB-trz.normalTitle" = "脸书";
+"coZ-DB-trz.normalTitle" = "facebook";
 
 /* Class = "UIViewController"; title = "Travel Page"; ObjectID = "dp2-Tc-pDO"; */
-"dp2-Tc-pDO.title" = "旅行页面";
+"dp2-Tc-pDO.title" = "Travel Page";
 
 /* Class = "UILabel"; text = "Title"; ObjectID = "eWn-f5-Z8z"; */
-"eWn-f5-Z8z.text" = "标题";
+"eWn-f5-Z8z.text" = "Title";
 
 /* Class = "UITextField"; placeholder = "Title"; ObjectID = "hZs-kM-QJX"; */
-"hZs-kM-QJX.placeholder" = "标题";
+"hZs-kM-QJX.placeholder" = "Title";
 
 /* Class = "UITabBarItem"; title = "Shop"; ObjectID = "k9M-cL-Tcx"; */
-"k9M-cL-Tcx.title" = "购物";
+"k9M-cL-Tcx.title" = "Shop";
 
 /* Class = "UIBarButtonItem"; title = "Delete"; ObjectID = "kf7-b8-GV8"; */
-"kf7-b8-GV8.title" = "删除";
+"kf7-b8-GV8.title" = "Delete";
 
 /* Class = "UIButton"; normalTitle = "Current Language"; ObjectID = "o9W-JD-zgc"; */
-"o9W-JD-zgc.normalTitle" = "当前语言";
+"o9W-JD-zgc.normalTitle" = "Current Language";
 
 /* Class = "UILabel"; text = "LikeNum"; ObjectID = "oz7-UC-n8o"; */
-"oz7-UC-n8o.text" = "点赞数";
+"oz7-UC-n8o.text" = "LikeNum";
 
 /* Class = "UITextField"; placeholder = "Title"; ObjectID = "q0j-gO-ZpS"; */
-"q0j-gO-ZpS.placeholder" = "标题";
+"q0j-gO-ZpS.placeholder" = "Title";
 
 /* Class = "UIButton"; normalTitle = "gogole"; ObjectID = "qBG-KQ-JoH"; */
-"qBG-KQ-JoH.normalTitle" = "谷歌";
+"qBG-KQ-JoH.normalTitle" = "gogole";
 
 /* Class = "UISegmentedControl"; t40-cd-2Oq.segmentTitles[0] = "Standard"; ObjectID = "t40-cd-2Oq"; */
-"t40-cd-2Oq.segmentTitles[0]" = "标准";
+"t40-cd-2Oq.segmentTitles[0]" = "Standard";
 
 /* Class = "UISegmentedControl"; t40-cd-2Oq.segmentTitles[1] = "Satellite"; ObjectID = "t40-cd-2Oq"; */
-"t40-cd-2Oq.segmentTitles[1]" = "卫星";
+"t40-cd-2Oq.segmentTitles[1]" = "Satellite";
 
 /* Class = "UISegmentedControl"; t40-cd-2Oq.segmentTitles[2] = "Hybrid"; ObjectID = "t40-cd-2Oq"; */
-"t40-cd-2Oq.segmentTitles[2]" = "混合";
+"t40-cd-2Oq.segmentTitles[2]" = "Hybrid";
 
 /* Class = "UIButton"; normalTitle = "Log in"; ObjectID = "tJy-9d-12b"; */
-"tJy-9d-12b.normalTitle" = "登录";
+"tJy-9d-12b.normalTitle" = "Log in";
 
 /* Class = "UIButton"; normalTitle = "Forgot password"; ObjectID = "tmD-kq-9PK"; */
-"tmD-kq-9PK.normalTitle" = "忘记密码";
+"tmD-kq-9PK.normalTitle" = "Forgot password";
 
 /* Class = "UIBarButtonItem"; title = "Edit"; ObjectID = "uRk-iL-6B9"; */
-"uRk-iL-6B9.title" = "编辑";
+"uRk-iL-6B9.title" = "Edit";
 
 /* Class = "UITabBarItem"; title = "Home"; ObjectID = "ub1-Yl-TCH"; */
-"ub1-Yl-TCH.title" = "主页";
+"ub1-Yl-TCH.title" = "Home";
 
 /* Class = "UIButton"; normalTitle = "Comment"; ObjectID = "ueK-Ry-4Xz"; */
-"ueK-Ry-4Xz.normalTitle" = "评论";
+"ueK-Ry-4Xz.normalTitle" = "Comment";
 
 /* Class = "UILabel"; text = "Author"; ObjectID = "unp-dm-N5H"; */
-"unp-dm-N5H.text" = "作者";
+"unp-dm-N5H.text" = "Author";
 
 /* Class = "UILabel"; text = "current language"; ObjectID = "x1m-Mw-WBA"; */
-"x1m-Mw-WBA.text" = "当前语言";
+"x1m-Mw-WBA.text" = "current language";
 
 /* Class = "UILabel"; text = "Author"; ObjectID = "xze-Ng-E97"; */
-"xze-Ng-E97.text" = "作者";
+"xze-Ng-E97.text" = "Author";
 
 /* Class = "UILabel"; text = "Othe login ways"; ObjectID = "zJa-R6-P6S"; */
-"zJa-R6-P6S.text" = "其它登录方式";
+"zJa-R6-P6S.text" = "Othe login ways";

@@ -56,9 +56,7 @@
 		12FD649B2E98F09B26238A62 /* Pods-TrevTravelUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TrevTravelUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TrevTravelUITests/Pods-TrevTravelUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		327B4B42E0F4CE5A905FE059 /* Pods_TrevTravelUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TrevTravelUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A4AD4603A746440FB2383E8 /* Pods-TrevTravel.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TrevTravel.release.xcconfig"; path = "Pods/Target Support Files/Pods-TrevTravel/Pods-TrevTravel.release.xcconfig"; sourceTree = "<group>"; };
-		410F1F5C215853AA003495A7 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
 		410F1F5D215853AA003495A7 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
-		410F1F5E215853C2003495A7 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/Main.strings; sourceTree = "<group>"; };
 		410F1F5F215853C2003495A7 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		410F1F65215854F5003495A7 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		410F1F6721585547003495A7 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -69,6 +67,9 @@
 		41399D3521542E770077E6B2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		419134A02211B692007A2575 /* Fruit.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = Fruit.mlmodel; sourceTree = "<group>"; };
 		419134A42211C3F6007A2575 /* ShopController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopController.swift; sourceTree = "<group>"; };
+		419134A722135B12007A2575 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
+		419134A922135B35007A2575 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/Main.strings; sourceTree = "<group>"; };
+		419134AB22135B3E007A2575 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
 		41B2B250215C26FB00211E6B /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		41C5DEDE2158BC1900E90F43 /* ChangeLanguage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeLanguage.swift; sourceTree = "<group>"; };
 		41C5DEE821597DB100E90F43 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
@@ -585,8 +586,9 @@
 			isa = PBXVariantGroup;
 			children = (
 				74D950E021426A8100667497 /* Base */,
-				410F1F5C215853AA003495A7 /* zh-Hans */,
-				410F1F5E215853C2003495A7 /* sv */,
+				419134A722135B12007A2575 /* en */,
+				419134A922135B35007A2575 /* sv */,
+				419134AB22135B3E007A2575 /* zh-Hans */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
