@@ -478,7 +478,7 @@ class TravelData {
     
     func dataListener() -> ListenerRegistration {
         let db = Firestore.firestore()
-        let listener = db.collection("travelDiary").addSnapshotListener { querySnapshot, error in
+        let listener = db.collection("travelDiary").order(by:"createdAt", descending: true).addSnapshotListener { querySnapshot, error in
             guard let snapshot = querySnapshot else {
                 print("Error fetching snapshots: \(error!)")
                 return
@@ -489,7 +489,7 @@ class TravelData {
 //                    print("New data: \(diff.document.data())")
                     print("added index: ",Int(diff.newIndex))
                     if !self.travelKeyArray.contains(diff.document.documentID) {
-                        self.travelKeyArray.append(diff.document.documentID)
+//                        self.travelKeyArray.append(diff.document.documentID)
                         
                         aDiary.id = diff.document.documentID
                         aDiary.author = diff.document.data()["author"] as? String ?? ""
@@ -504,7 +504,10 @@ class TravelData {
 
                         self.travelKeyArray.insert(aDiary.id, at: Int(diff.newIndex))
                         self.travelArray.insert(aDiary, at: Int(diff.newIndex))
-                        self.loadCoverImg(index:Int(diff.newIndex))
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
+                            self.loadCoverImg(index:Int(diff.newIndex))
+                        }
+                        
 //                        if aDiary.coverImgUrl != "" { self.loadCoverImg(index:Int(diff.newIndex)) }
 //                        print("Listener add.")
 //                        self.dataDel?.loadTable()
@@ -525,15 +528,21 @@ class TravelData {
                         aDiary.title = diff.document.data()["title"] as? String ?? ""
                         
                         self.travelArray[index] = aDiary
-                        if aDiary.coverImgUrl != "" { self.loadCoverImg(index:Int(diff.newIndex)) }
+                        if aDiary.coverImgUrl != "NoImage.jpg" {
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
+                                self.loadCoverImg(index:Int(diff.newIndex))
+                            }
+                        } else {
+                            self.dataDel?.loadTable()
+                        }
 //                        print("Listener edit. travelArray[index]: NO. ", index)
-                        self.dataDel?.loadTable()
+//                        self.dataDel?.loadTable()
                     }
                 }
                 if (diff.type == .removed) {
 //                        print("Removed data: \(diff.document.data())")
                     if let index = self.travelKeyArray.firstIndex(of: diff.document.documentID), index <= self.travelArray.count {
-                        print("index of delete: ", index)
+//                        print("index of delete: ", index)
                         // delete images
                         if self.travelArray[index].content.count > 0 {
                             self.deleteImages(imgUrlArray: self.travelArray[index].content)
@@ -550,5 +559,4 @@ class TravelData {
         return listener
     }
     
-
 }

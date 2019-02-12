@@ -184,7 +184,6 @@ class NewTravel: UIViewController, UITableViewDelegate, UITextViewDelegate, UITa
 
     }
     
-
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let mapVC = segue.destination as? MapViewController else { return }
         mapVC.address = ""
@@ -195,7 +194,5 @@ class NewTravel: UIViewController, UITableViewDelegate, UITextViewDelegate, UITa
 //        addressBtn.setTitle(mapVC.address, for: .normal)
 
     }
-    
-
     
 }

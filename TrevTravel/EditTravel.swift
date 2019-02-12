@@ -40,7 +40,7 @@ class EditTravel: UIViewController, UITableViewDelegate, UITextViewDelegate, UIT
     
     
     override func viewDidLoad() {
-        super.viewDidLoad()        
+        super.viewDidLoad()
         loadEditInfo()
         
         self.newTitle.delegate = self
@@ -233,7 +233,6 @@ class EditTravel: UIViewController, UITableViewDelegate, UITextViewDelegate, UIT
     @IBAction func changeAddress() {
         performSegue(withIdentifier: "showMapView", sender: address)
     }
-    
     
     @IBAction func deleteTravel() {
         if travelID != "" {

@@ -19,7 +19,6 @@ extension TravelList: UISearchResultsUpdating {
     }
 }
 
-
 class TravelList: UIViewController, UITableViewDelegate, UITableViewDataSource, DataDelegate{
     
     @IBOutlet weak var travelTable: UITableView!
@@ -59,6 +58,7 @@ class TravelList: UIViewController, UITableViewDelegate, UITableViewDataSource, 
 //        print("视图即将显示")
 //        loadData()
         snapshotListener = travelData.dataListener()
+//        loadTable()
     }
     
     func loadTable() {
@@ -167,6 +167,5 @@ class TravelList: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         // Dispose of any resources that can be recreated.
         snapshotListener.remove()
     }
-    
     
 }
