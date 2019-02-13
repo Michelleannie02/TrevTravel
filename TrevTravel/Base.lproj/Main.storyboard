@@ -271,23 +271,33 @@
                                     <action selector="saveData" destination="zJZ-Vr-nXE" eventType="touchUpInside" id="yh6-wd-XgB"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q6L-Zm-Ws2">
+                                <rect key="frame" x="20" y="484" width="59" height="30"/>
+                                <state key="normal" title="CANCEL"/>
+                                <connections>
+                                    <action selector="cancelSave" destination="zJZ-Vr-nXE" eventType="touchUpInside" id="Vbu-xY-m5u"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="Hne-fc-VeI" secondAttribute="trailing" constant="20" id="0ZC-r0-Hn3"/>
                             <constraint firstItem="hZs-kM-QJX" firstAttribute="leading" secondItem="Lv4-pc-8hv" secondAttribute="leading" constant="20" id="4Md-KA-tQy"/>
                             <constraint firstItem="F93-xf-IAg" firstAttribute="top" secondItem="unx-hN-FXF" secondAttribute="bottom" constant="1" id="8i7-bd-J2Y"/>
+                            <constraint firstItem="q6L-Zm-Ws2" firstAttribute="top" secondItem="F93-xf-IAg" secondAttribute="bottom" id="9Ts-yc-HVa"/>
                             <constraint firstItem="6wJ-et-hnz" firstAttribute="height" secondItem="unx-hN-FXF" secondAttribute="height" id="AaZ-55-Gdc"/>
                             <constraint firstItem="unx-hN-FXF" firstAttribute="width" secondItem="5oJ-d1-mMg" secondAttribute="width" multiplier="1:6" id="CLk-Ey-WEq"/>
                             <constraint firstItem="OA8-Py-k9P" firstAttribute="top" secondItem="Hne-fc-VeI" secondAttribute="bottom" constant="8" id="DQY-mi-Swr"/>
                             <constraint firstItem="F93-xf-IAg" firstAttribute="leading" secondItem="Lv4-pc-8hv" secondAttribute="leading" id="EBz-Hd-7bX"/>
-                            <constraint firstItem="aCz-bd-kqB" firstAttribute="leading" secondItem="5oJ-d1-mMg" secondAttribute="leading" constant="20" id="FSG-2j-1RX"/>
+                            <constraint firstItem="aCz-bd-kqB" firstAttribute="leading" secondItem="q6L-Zm-Ws2" secondAttribute="leading" id="FSG-2j-1RX"/>
                             <constraint firstItem="6wJ-et-hnz" firstAttribute="top" secondItem="unx-hN-FXF" secondAttribute="top" id="HC1-mm-Yvb"/>
                             <constraint firstItem="Hne-fc-VeI" firstAttribute="leading" secondItem="Lv4-pc-8hv" secondAttribute="leading" constant="20" id="HDj-jv-JRG"/>
                             <constraint firstItem="F93-xf-IAg" firstAttribute="width" secondItem="Lv4-pc-8hv" secondAttribute="width" id="HT9-bC-efO"/>
                             <constraint firstItem="unx-hN-FXF" firstAttribute="top" secondItem="Hne-fc-VeI" secondAttribute="bottom" constant="8" id="JaZ-QD-4rR"/>
                             <constraint firstItem="Lv4-pc-8hv" firstAttribute="bottom" secondItem="aCz-bd-kqB" secondAttribute="bottom" constant="5" id="LNb-rk-v4a"/>
                             <constraint firstItem="aCz-bd-kqB" firstAttribute="top" secondItem="F93-xf-IAg" secondAttribute="bottom" id="QHm-g0-wut"/>
+                            <constraint firstItem="q6L-Zm-Ws2" firstAttribute="leading" secondItem="Lv4-pc-8hv" secondAttribute="leading" constant="20" id="T43-Ji-T1C"/>
+                            <constraint firstItem="Lv4-pc-8hv" firstAttribute="bottom" secondItem="q6L-Zm-Ws2" secondAttribute="bottom" constant="5" id="TbK-QL-O5P"/>
                             <constraint firstItem="unx-hN-FXF" firstAttribute="leading" secondItem="Lv4-pc-8hv" secondAttribute="leading" constant="20" id="XSZ-OA-cdJ"/>
                             <constraint firstItem="6wJ-et-hnz" firstAttribute="width" secondItem="Lv4-pc-8hv" secondAttribute="width" multiplier="1:6" id="aYd-RB-3Ch"/>
                             <constraint firstItem="OA8-Py-k9P" firstAttribute="leading" secondItem="6wJ-et-hnz" secondAttribute="trailing" constant="8" id="cMW-r2-NL5"/>
@@ -1452,6 +1462,6 @@
         <image name="user" width="460.79998779296875" height="460.79998779296875"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="4qs-zy-naw"/>
+        <segue reference="CfV-H3-e4z"/>
     </inferredMetricsTieBreakers>
 </document>

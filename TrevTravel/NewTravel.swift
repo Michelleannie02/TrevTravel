@@ -209,4 +209,7 @@ class NewTravel: UIViewController, UITableViewDelegate, UITextViewDelegate, UITa
 
     }
     
+    @IBAction func cancelSave() {
+        clearContent()
+    }
 }
