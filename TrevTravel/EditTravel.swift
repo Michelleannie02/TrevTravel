@@ -37,7 +37,7 @@ class EditTravel: UIViewController, UITableViewDelegate, UITextViewDelegate, UIT
     var userEmail = "Guest"
     var address:String = ""
     let userDefault = UserDefaults.standard
-    
+    var imgsToDelete:Array<String> = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -123,6 +123,9 @@ class EditTravel: UIViewController, UITableViewDelegate, UITextViewDelegate, UIT
             
             // upload the saved data to Firebase , oldContentCount: editTravelInfo.content.count
             newTravelData.uploadData(isEdit:true)
+            if imgsToDelete.count > 0 {
+                newTravelData.deleteImages(imgUrlArray: imgsToDelete)
+            }
             
             reminder(saveSuccessMsg)
             
@@ -146,6 +149,30 @@ class EditTravel: UIViewController, UITableViewDelegate, UITextViewDelegate, UIT
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let row = indexPath.row
+        newTravelData.rowToChange = String(row)
+        if editTravelInfo.content.contains(newTravelData.content[row]) {
+            imgsToDelete.append(newTravelData.content[row])
+        }
+        
+        let imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
+        imagePicker.sourceType = .photoLibrary
+        self.present(imagePicker, animated: true, completion: nil)
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        let row = indexPath.row
+        if editingStyle == .delete {            
+            let imgUrlToDelete = newTravelData.content[row]
+            newTravelData.deleteImages(imgUrlArray: [imgUrlToDelete])
+            newTravelData.content.remove(at: row)
+            newTravelData.contentArray.remove(at: row)
+            self.loadTable()
+        }
+    }
+    
     @IBAction func newPicture(_ sender: UIButton) {
         let imagePicker = UIImagePickerController()
         imagePicker.delegate = self
@@ -159,9 +186,6 @@ class EditTravel: UIViewController, UITableViewDelegate, UITextViewDelegate, UIT
         newTravelData.saveContent(img: (info[UIImagePickerControllerOriginalImage] as? UIImage)!)
         dismiss(animated: true, completion: nil)
     }
-    
-    
-    
     
     // Hide keyboard when user touch outside
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -206,6 +230,7 @@ class EditTravel: UIViewController, UITableViewDelegate, UITextViewDelegate, UIT
         
         newTravelData.contentArray.removeAll()
         newTravelData.content.removeAll()
+        imgsToDelete.removeAll()
         self.loadTable()
         
         self.navigationItem.hidesBackButton = true
@@ -234,9 +259,14 @@ class EditTravel: UIViewController, UITableViewDelegate, UITextViewDelegate, UIT
         performSegue(withIdentifier: "showMapView", sender: address)
     }
     
+    // deleteBtn isHidden
     @IBAction func deleteTravel() {
         if travelID != "" {
+            newTravelData.contentArray = editContentArray
+            newTravelData.content = editTravelInfo.content
             newTravelData.deleteData(travelID: travelID)
+            
+            clearContent()
         }
     }
     
