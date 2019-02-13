@@ -224,8 +224,7 @@ class TravelPage: UIViewController, UIScrollViewDelegate, UITableViewDelegate, U
             catch {
                 // hantera fel
             }
-        }
-        
+        }   
     }
     
     @IBAction func sendComment() {
