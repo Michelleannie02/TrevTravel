@@ -60,7 +60,6 @@ class NewTravel: UIViewController, UITableViewDelegate, UITextViewDelegate, UITa
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        
         userEmail = Auth.auth().currentUser?.email! ?? guest
         
         if userDefault.string(forKey: "returnAddress") != nil {
@@ -119,6 +118,24 @@ class NewTravel: UIViewController, UITableViewDelegate, UITextViewDelegate, UITa
         cell.newImage?.image = contentCell.img
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        newTravelData.rowToChange = String(indexPath.row)
+        
+        let imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
+        imagePicker.sourceType = .photoLibrary
+        self.present(imagePicker, animated: true, completion: nil)
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        let row = indexPath.row
+        if editingStyle == .delete {
+            newTravelData.content.remove(at: row)
+            newTravelData.contentArray.remove(at: row)
+            self.loadTable()
+        }
+    }
 
     @IBAction func newPicture(_ sender: UIButton) {
         let imagePicker = UIImagePickerController()
@@ -133,9 +150,6 @@ class NewTravel: UIViewController, UITableViewDelegate, UITextViewDelegate, UITa
         newTravelData.saveContent(img: (info[UIImagePickerControllerOriginalImage] as? UIImage)!)
         dismiss(animated: true, completion: nil)
     }
-    
-    
-    
     
     // Hide keyboard when user touch outside
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
