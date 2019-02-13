@@ -152,8 +152,9 @@ class EditTravel: UIViewController, UITableViewDelegate, UITextViewDelegate, UIT
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let row = indexPath.row
         newTravelData.rowToChange = String(row)
-        if editTravelInfo.content.contains(newTravelData.content[row]) {
-            imgsToDelete.append(newTravelData.content[row])
+        let imgUrlToDelete = newTravelData.content[row]
+        if editTravelInfo.content.contains(imgUrlToDelete), !imgsToDelete.contains(imgUrlToDelete) {
+            imgsToDelete.append(imgUrlToDelete)
         }
         
         let imagePicker = UIImagePickerController()
@@ -166,7 +167,10 @@ class EditTravel: UIViewController, UITableViewDelegate, UITextViewDelegate, UIT
         let row = indexPath.row
         if editingStyle == .delete {            
             let imgUrlToDelete = newTravelData.content[row]
-            newTravelData.deleteImages(imgUrlArray: [imgUrlToDelete])
+//            newTravelData.deleteImages(imgUrlArray: [imgUrlToDelete])
+            if editTravelInfo.content.contains(imgUrlToDelete), !imgsToDelete.contains(imgUrlToDelete) {
+                imgsToDelete.append(imgUrlToDelete)
+            }
             newTravelData.content.remove(at: row)
             newTravelData.contentArray.remove(at: row)
             self.loadTable()
