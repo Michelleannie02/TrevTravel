@@ -71,6 +71,7 @@ class TravelData {
     var newTravelInfo = TravelInfo()
     
     var isLiked:Bool = false
+    var rowToChange:String = "" // EditTravel
    
     // Load data from Firebase. HOME // delete HOME snapshotListener, func dataListener() insteads
     func loadDB(){
@@ -244,8 +245,18 @@ class TravelData {
         // Set the name of the imgUrl: randomString+currentTimeInterval+index in the array.jpg
         newContent.imgUrl = randomString(length:30) + "_" + String(self.contentArray.count) + ".jpg"
         newContent.img = img
-        self.contentArray.append(newContent)
-        self.content.append(newContent.imgUrl)
+        if self.rowToChange != "" {
+            if let index = Int(rowToChange), index < self.content.count {
+                
+                
+                self.contentArray[index] = newContent
+                self.content[index] = newContent.imgUrl
+                self.rowToChange = ""
+            }
+        } else {
+            self.contentArray.append(newContent)
+            self.content.append(newContent.imgUrl)
+        }
     }
     
     // Add/Edit a travel diary
@@ -487,10 +498,8 @@ class TravelData {
             snapshot.documentChanges.forEach { diff in
                 if (diff.type == .added) {
 //                    print("New data: \(diff.document.data())")
-                    print("added index: ",Int(diff.newIndex))
+//                     print("added index: ",Int(diff.newIndex))
                     if !self.travelKeyArray.contains(diff.document.documentID) {
-//                        self.travelKeyArray.append(diff.document.documentID)
-                        
                         aDiary.id = diff.document.documentID
                         aDiary.author = diff.document.data()["author"] as? String ?? ""
                         aDiary.changedAt = diff.document.data()["changedAt"] as? String ?? ""
@@ -504,13 +513,10 @@ class TravelData {
 
                         self.travelKeyArray.insert(aDiary.id, at: Int(diff.newIndex))
                         self.travelArray.insert(aDiary, at: Int(diff.newIndex))
+                        
                         DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
                             self.loadCoverImg(index:Int(diff.newIndex))
                         }
-                        
-//                        if aDiary.coverImgUrl != "" { self.loadCoverImg(index:Int(diff.newIndex)) }
-//                        print("Listener add.")
-//                        self.dataDel?.loadTable()
                     }
                 }
                 if (diff.type == .modified) {
@@ -528,15 +534,13 @@ class TravelData {
                         aDiary.title = diff.document.data()["title"] as? String ?? ""
                         
                         self.travelArray[index] = aDiary
-                        if aDiary.coverImgUrl != "NoImage.jpg" {
+                        if aDiary.coverImgUrl != "" {
                             DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
                                 self.loadCoverImg(index:Int(diff.newIndex))
                             }
                         } else {
                             self.dataDel?.loadTable()
                         }
-//                        print("Listener edit. travelArray[index]: NO. ", index)
-//                        self.dataDel?.loadTable()
                     }
                 }
                 if (diff.type == .removed) {
